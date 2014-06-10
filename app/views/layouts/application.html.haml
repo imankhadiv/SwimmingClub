@@ -1,0 +1,34 @@
+!!!
+%html
+  %head
+    %title SwimmingClub
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.6">
+    = stylesheet_link_tag "application", media: :all
+    = javascript_include_tag "application"
+    = favicon_link_tag '/favicon.ico'
+    = csrf_meta_tags
+
+  %body
+    .flash-messages
+      - flash.each do |name, msg|
+        .alert.fade.in{ class: "alert-#{flash_class(name)}" }
+          %a.close{ data: { dismiss: :alert } } &times;
+          = msg
+    #wrap
+      %nav.navbar.navbar-inverse.navbar-fixed-top
+        .container
+          .navbar-header
+            %button.navbar-toggle{ data: { target: ".navbar-collapse", toggle: :collapse, type: :button } }
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+
+
+      #navbar-background
+      #main-container.container= yield
+
+    #footer
+      .container
+        %p
+          &copy;#{Date.today.year} Swimming Club
