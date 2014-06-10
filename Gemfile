@@ -55,3 +55,4 @@ group :test do
                                        #gem 'capybara-bootstrap-datepicker'
 end
 gem 'rails_12factor', group: :production
+gem 'unicorn'
