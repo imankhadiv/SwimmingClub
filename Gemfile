@@ -54,3 +54,4 @@ group :test do
   gem 'simplecov','~> 0.8.2'           # Code test coverage
                                        #gem 'capybara-bootstrap-datepicker'
 end
+gem 'rails_12factor', group: :production
