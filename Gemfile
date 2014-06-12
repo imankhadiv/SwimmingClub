@@ -7,6 +7,8 @@ gem 'haml-rails'
 
 gem 'devise'
 
+gem 'html2haml'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
