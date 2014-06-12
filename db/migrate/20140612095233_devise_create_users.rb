@@ -32,7 +32,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       t.string :first_name
       t.string :last_name
-      t.boolean :approved
+      t.boolean :approved, default: false
       t.string :role
 
       t.timestamps
