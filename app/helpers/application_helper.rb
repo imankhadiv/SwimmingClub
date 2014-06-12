@@ -16,5 +16,17 @@ module ApplicationHelper
   def no_record_tr(colspan, text = 'No records to display')
     content_tag(:tr, content_tag(:td, text, colspan: colspan, class: 'text-center text-muted' ), class: 'tr-no-record')
   end
+
+  #this is the method for generating different flash messages. Sometimes info might be needed for different kind of messages
+  def flash_class(name)
+    puts "#{name}........................."
+    if name == 'notice'
+      'success'
+    #elsif name == :notifications
+    #    'info'
+    else
+      'danger'
+    end
+  end
 end
 
