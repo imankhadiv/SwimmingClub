@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :swimmers
+
   resources :addresses
 
   get 'users/index'

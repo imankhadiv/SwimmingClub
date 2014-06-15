@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Asa number:
+  = @swimmer.asa_number
+%p
+  %b Asa category:
+  = @swimmer.asa_category
+%p
+  %b Date of birth:
+  = @swimmer.date_of_birth
+%p
+  %b Sex:
+  = @swimmer.sex
+%p
+  %b Photo consent:
+  = @swimmer.photo_consent
+%p
+  %b Current squad:
+  = @swimmer.current_squad
+%p
+  %b User:
+  = @swimmer.user
+
+= link_to 'Edit', edit_swimmer_path(@swimmer)
+\|
+= link_to 'Back', swimmers_path

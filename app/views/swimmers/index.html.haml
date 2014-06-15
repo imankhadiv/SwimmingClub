@@ -1,0 +1,31 @@
+%h1 Listing swimmers
+
+%table
+  %tr
+    %th Asa number
+    %th Asa category
+    %th Date of birth
+    %th Sex
+    %th Photo consent
+    %th Current squad
+    %th User
+    %th
+    %th
+    %th
+
+  - @swimmers.each do |swimmer|
+    %tr
+      %td= swimmer.asa_number
+      %td= swimmer.asa_category
+      %td= swimmer.date_of_birth
+      %td= swimmer.sex
+      %td= swimmer.photo_consent
+      %td= swimmer.current_squad
+      %td= swimmer.user
+      %td= link_to 'Show', swimmer
+      %td= link_to 'Edit', edit_swimmer_path(swimmer)
+      %td= link_to 'Destroy', swimmer, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Swimmer', new_swimmer_path
