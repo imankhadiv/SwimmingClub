@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20140612095233) do
     t.string   "first_name"
     t.string   "last_name"
     t.boolean  "approved",               default: false
-    t.string   "role"
+    t.string   "level"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

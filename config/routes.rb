@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
-  get 'home/welcome'
+  get 'users/index'
+
+  get 'page/welcome', as: :home
+
+  get 'page/awaiting', as: :awaiting
+
+  #get 'home/welcome'
   root 'home#welcome'
+
+  #resources :users
+
+  #get 'page/awaiting' => 'page#awaiting', as: :awaiting
+
 
   #devise_for :users
   devise_for :users, controllers: { registrations: "users/registrations" }
