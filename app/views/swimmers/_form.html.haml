@@ -1,33 +1,41 @@
-= form_for @swimmer do |f|
-  - if @swimmer.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@swimmer.errors.count, "error")} prohibited this swimmer from being saved:"
-      %ul
-        - @swimmer.errors.full_messages.each do |msg|
-          %li= msg
+.container
+  .page-header{style: 'text-align:center'}
+    %h2 Register
+  .col-md-8.col-md-offset-2
+    %hr
 
-  .field
-    = f.label :asa_number
-    = f.text_field :asa_number
-  .field
-    = f.label :asa_category
-    = f.text_field :asa_category
-  .field
-    = f.label :date_of_birth
-    = f.date_select :date_of_birth
-  .field
-    = f.label :sex
-    = f.text_field :sex
-  .field
-    = f.label :photo_consent
-    = f.text_field :photo_consent
-  .field
-    = f.label :current_squad
-    = f.text_field :current_squad
-  .field
-    = f.label :user
-    = f.text_field :user
-  .actions
-    = f.submit 'Save'
+    -#= bootstrap_form_for (@swimmer, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |f|
+    = bootstrap_form_for(@swimmer, layout: :horizontal) do |f|
+      - if @swimmer.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@swimmer.errors.count, "error")} prohibited this swimmer from being saved:"
+          %ul
+            - @swimmer.errors.full_messages.each do |msg|
+              %li= msg
+
+      .form_inputs
+
+        = f.text_field :asa_number, control_col: "col-sm-3", label: 'ASA Number: '
+        = f.select :asa_category, ["Padi Cat3","Paid","parent"], control_col: "col-sm-3",label: 'ASA Category:'
+        = f.text_field :current_squad, control_col: "col-sm-3", label: 'Current Squad:'
+        =f.text_field :ethnic, control_col: "col-sm-3", label:"Ethnic:"
+        = f.date_select :date_of_birth
+
+        = f.form_group :sex, label: { text: "Gender:" } do
+          = f.radio_button :sex, 0, label: "Male", inline: true
+          = f.radio_button :sex, 1, label: "Female", inline: true
+
+        = f.form_group :photo_consent, label: { text: "Photo Consent:" } do
+          = f.radio_button :sex, 0, label: "Yes", inline: true
+          = f.radio_button :sex, 1, label: "No", inline: true
+
+        = f.hidden_field :user_id, value: session[:temp_user_id]
+
+      = f.fields_for :address do |address|
+        = render partial: 'shared/address', locals: {f: address}
+
+
+      .actions
+        = f.submit 'Save'
 
 

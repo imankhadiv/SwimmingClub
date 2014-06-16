@@ -19,7 +19,6 @@ module ApplicationHelper
 
   #this is the method for generating different flash messages. Sometimes info might be needed for different kind of messages
   def flash_class(name)
-    puts "#{name}........................."
     if name == 'notice'
       'success'
     #elsif name == :notifications

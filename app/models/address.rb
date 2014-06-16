@@ -1,3 +1,4 @@
 class Address < ActiveRecord::Base
-  belogns_to :addressable, polymorphic: true
+  belongs_to :addressable, polymorphic: true
+  #belongs_to :swimmer
 end

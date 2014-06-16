@@ -15,6 +15,7 @@ class SwimmersController < ApplicationController
   # GET /swimmers/new
   def new
     @swimmer = Swimmer.new
+    @swimmer.build_address
   end
 
   # GET /swimmers/1/edit
@@ -69,6 +70,12 @@ class SwimmersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def swimmer_params
-      params.require(:swimmer).permit(:asa_number, :asa_category, :date_of_birth, :sex, :photo_consent, :current_squad, :user_id)
+      params.require(:swimmer).permit(:asa_number, :asa_category, :date_of_birth, :sex, :photo_consent, :current_squad, :user_id, address_attributes: [:line1, :line2, :city, :postcode, :telephone, :emergency_contact, :addressable_id, :addressable_type, :ethnic])
     end
+
+  #def address_params
+  #    puts params
+  #    puts "............."
+  #    params.require(:address_attributes).permit(:line1,:line2,:city,:postcode,:telephone,:emergency_contact)
+  #end
 end

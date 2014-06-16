@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20140615112305) do
   create_table "swimmers", force: true do |t|
     t.string   "asa_number"
     t.string   "asa_category"
+    t.string   "ethnic"
     t.date     "date_of_birth"
     t.string   "sex"
     t.string   "photo_consent"

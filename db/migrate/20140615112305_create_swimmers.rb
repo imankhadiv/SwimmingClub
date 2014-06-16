@@ -3,6 +3,7 @@ class CreateSwimmers < ActiveRecord::Migration
     create_table :swimmers do |t|
       t.string :asa_number
       t.string :asa_category
+      t.string :ethnic
       t.date :date_of_birth
       t.string :sex
       t.string :photo_consent
