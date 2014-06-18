@@ -1,2 +1,39 @@
-%h1 Users#index
-%p Find me in app/views/users/index.html.haml
+%h1 Listing swimmers
+
+%table.table
+  %tr
+    %th First Name
+    %th Last Name
+    %th Email
+    %th Level
+    %th Action
+    %th
+    %th
+
+  - @awaiting_users.each do |user|
+    %tr
+      %td= user.first_name
+      %td= user.last_name
+      %td= user.email
+      %td= user.level
+      -#%td= link_to 'Approve User', edit_user_path(user)
+
+%br
+%hr
+%table.table
+  %tr
+    %th First Name
+    %th Last Name
+    %th Email
+    %th Level
+    %th Action
+    %th
+    %th
+
+  - @approved_users.each do |user|
+    %tr
+      %td= user.first_name
+      %td= user.last_name
+      %td= user.email
+      %td= user.level
+

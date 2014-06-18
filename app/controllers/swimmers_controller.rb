@@ -29,7 +29,9 @@ class SwimmersController < ApplicationController
 
     respond_to do |format|
       if @swimmer.save
-        format.html { redirect_to @swimmer, notice: 'Swimmer was successfully created.' }
+        #format.html { redirect_to @swimmer, notice: 'Swimmer was successfully created.' }
+        format.html { redirect_to :awaiting }
+
         format.json { render :show, status: :created, location: @swimmer }
       else
         format.html { render :new }

@@ -20,6 +20,10 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
+
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'      # Twitter bootstrap in sass form
 gem 'font-awesome-rails','~> 3.2.1'  # Bootstrap's icons rendered as a font
 gem 'bootstrap_form'

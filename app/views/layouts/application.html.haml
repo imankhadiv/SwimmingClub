@@ -25,6 +25,22 @@
           -#    %span.icon-bar
           -#    %span.icon-bar
           -#    %span.icon-bar
+          .collapse.navbar-collapse
+            %ul.nav.navbar-nav
+
+              = navbar_link_to home_path, title: "Homepage", identifier: :home do
+                %i.icon-home
+                HOME
+              = navbar_link_to new_user_registration_path, title: "Register", identifier: :register do
+                %i.icon-user
+                Register
+              = navbar_link_to users_index_path, title: "Register", identifier: :register do
+                %i.icon-user
+                Users
+            -#%ul.nav.navbar-nav
+            -#  = navbar_link_to :calendars, title: "Event Calendar", identifier: :calendar do
+            -#    %i.icon-calendar
+            -#    EVENT CALENDAR
 
 
       #navbar-background
