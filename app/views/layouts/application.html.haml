@@ -37,6 +37,9 @@
               = navbar_link_to users_index_path, title: "Register", identifier: :register do
                 %i.icon-user
                 Users
+              = navbar_link_to destroy_user_session_path,method: :delete, title: "Log out", identifier: :logout do
+                %i.icon-signout
+                  LOG OUT
             -#%ul.nav.navbar-nav
             -#  = navbar_link_to :calendars, title: "Event Calendar", identifier: :calendar do
             -#    %i.icon-calendar

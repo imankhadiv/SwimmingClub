@@ -75,9 +75,4 @@ class SwimmersController < ApplicationController
       params.require(:swimmer).permit(:asa_number, :asa_category, :date_of_birth, :sex, :photo_consent, :current_squad, :user_id, address_attributes: [:line1, :line2, :city, :postcode, :telephone, :emergency_contact, :addressable_id, :addressable_type, :ethnic])
     end
 
-  #def address_params
-  #    puts params
-  #    puts "............."
-  #    params.require(:address_attributes).permit(:line1,:line2,:city,:postcode,:telephone,:emergency_contact)
-  #end
 end

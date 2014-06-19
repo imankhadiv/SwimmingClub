@@ -30,4 +30,20 @@ class User < ActiveRecord::Base
     sliced_arg = arg.slice!(:password,:password_confirmation)
     user = User.where(sliced_arg).last
   end
+
+  def get_swimmer user_id
+    Swimmer.find_by user_id: user_id
+  end
+
+  def self.get_user_profile user_id
+    user = User.find(user_id)
+
+    if user.level == 'Swimmer'
+      Swimmer.find_by user_id: user_id
+    elsif user.level == 'Parent'
+       Swimmer.find_by user_id: user_id
+    else
+      user
+    end
+  end
 end

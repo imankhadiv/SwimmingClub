@@ -1,0 +1,63 @@
+.container
+  .row
+    .col-md-4
+      %table.table
+
+        %tr
+          %th First Name
+          %td= @user.first_name
+        %tr
+          %th Last Name
+          %td= @user.last_name
+        %tr
+          %th Email
+          %td= @user.email
+        %tr
+          %th Level
+          %td= @user.level
+    .col-md-2.col-md-offset-3
+      %br
+      %br
+      -#%a.btn.btn-primary.btn-lg{href:edit_user_registration_path(@user) , role: "button"} Generate User Report
+
+
+
+  .row
+    -if @user.level == 'Swimmer'
+      .col-md-12
+        %table.table.table-responsive.table-customstyle#iman
+          %thead
+            %tr
+              %th ASA Number
+              %th ASA Category
+              %th Current Squad
+              %th Sex
+              %th DOB
+              %th Ethnic
+              %th Photo Consent
+
+          %tbody
+            %tr
+              %td= @user_profile.asa_number
+              %td= @user_profile.asa_category
+              %td= @user_profile.current_squad
+              %td= @user_profile.sex
+              %td= @user_profile.date_of_birth
+              %td= @user_profile.ethnic
+              %td= @user_profile.photo_consent
+              -#%a.btn.btn-primary{href: user_path(user), role: "button"} view
+    .row
+      -if @user.level == 'Swimmer'
+        .col-md-5
+          %h3 Address
+          %hr
+          %p= @user_profile.address.line1
+          %p= @user_profile.address.line2
+          %p= @user_profile.address.city
+          %p= @user_profile.address.postcode
+          %p= @user_profile.address.telephone
+          %p= @user_profile.address.emergency_contact
+    .row
+      -#%a.btn.btn-success.btn-lg{href:edit_user_path(@user) , role: "button"} Generate User Report
+      =button_to 'Approved', user_path(@user), method: :put
+

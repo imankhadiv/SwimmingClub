@@ -1,39 +1,84 @@
-%h1 Listing swimmers
+.container
+  .row
+    .col-md-8.col-md-offset-3
+      %h3 Administrators
+      %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle#iman
+        %thead
+          %tr
+            %th First Name
+            %th Last Name
+            %th Email
+            %th Level
+            %th Action
 
-%table.table
-  %tr
-    %th First Name
-    %th Last Name
-    %th Email
-    %th Level
-    %th Action
-    %th
-    %th
+        - @awaiting_users.each do |user|
+          -if user.level == 'Administrator'
+            %tbody
+            %tr
+              %td= user.first_name
+              %td= user.last_name
+              %td= user.email
+              %td= user.level
+              %td
+                %a.btn.btn-primary{href: user_path(user), role: "button"} view
 
-  - @awaiting_users.each do |user|
-    %tr
-      %td= user.first_name
-      %td= user.last_name
-      %td= user.email
-      %td= user.level
-      -#%td= link_to 'Approve User', edit_user_path(user)
 
-%br
-%hr
-%table.table
-  %tr
-    %th First Name
-    %th Last Name
-    %th Email
-    %th Level
-    %th Action
-    %th
-    %th
+      %br
+      %hr
+    .col-md-8.col-md-offset-3
+      %h3 Swimmers
+      %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle#iman
+        %thead
 
-  - @approved_users.each do |user|
-    %tr
-      %td= user.first_name
-      %td= user.last_name
-      %td= user.email
-      %td= user.level
+          %tr
+            %th First Name
+            %th Last Name
+            %th Email
+            %th Level
+            %th Action
 
+        - @awaiting_users.each do |user|
+          -if user.level == 'Swimmer'
+            %tbody
+            %tr
+              %td= user.first_name
+              %td= user.last_name
+              %td= user.email
+              %td= user.level
+              %td
+                -#%a.btn.btn-primary{href: swimmer_path(user.get_swimmer user.id), role: "button"} view
+                %a.btn.btn-primary{href: user_path(user), role: "button"} view
+
+
+
+      %br
+      %hr
+    .col-md-8.col-md-offset-3
+      %h3 Parents
+      %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
+        %tr
+          %thead
+            %th First Name
+            %th Last Name
+            %th Email
+            %th Level
+            %th Action
+            %th
+            %th
+
+        - @awaiting_users.each do |user|
+          -if user.level == 'Parent'
+            %tr
+              %tbody
+                %td= user.first_name
+                %td= user.last_name
+                %td= user.email
+                %td= user.level
+
+
+%script
+  $('.table').each(function(){
+  var v = $('.table').width();
+  -#alert(v);
+  });
+  $('hr').css('width',$('.table').width())
