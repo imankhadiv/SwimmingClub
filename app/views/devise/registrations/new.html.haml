@@ -1,21 +1,24 @@
 .container
   %h2 Sign up
-  .signup.col-md-8
 
-    = bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      -#= devise_error_messages!
-      .col-md-4
-        .form_inputs
-          = f.text_field :first_name
-          = f.text_field :last_name
-          = f.select :level, %w(Administrator Committee Welfare\ Officer Swimmer Parent)
-          = f.email_field :email
-          = f.password_field :password
-          = f.password_field :password_confirmation
+  .row
+    .signup.col-md-4
 
-        .form-actions
-          = f.submit 'Sign Up', :class=>'btn btn-primary btn-lg active'
-    %br
-    %br
-    %br
+
+      = bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        -#= devise_error_messages!
+        .col-md-8
+          .form_inputs
+            = f.text_field :first_name
+            = f.text_field :last_name
+            = f.select :level, %w(Administrator Committee Welfare\ Officer Swimmer Parent)
+            = f.email_field :email
+            = f.password_field :password
+            = f.password_field :password_confirmation
+
+          .form-actions
+            = f.submit 'Sign Up', :class=>'btn btn-primary btn-lg active'
+      %br
+      %br
+      %br
 

@@ -5,7 +5,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :line2
       t.string :city
       t.string :postcode
-      t.integer :telephone
+      t.string :telephone
       t.string :emergency_contact
       t.integer :addressable_id
       t.string :addressable_type

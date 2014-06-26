@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show]
+  before_filter :check_user_level
 
 
 
@@ -39,6 +40,17 @@ class UsersController < ApplicationController
   #def user_params
   #  params.require(:user).permit(:approved,:id)
   #end
+  def check_user_level
+
+    if !current_user
+    redirect_to :home, alert:'You need to log in to view this page'
+    elsif current_user.level != 'Administrator'
+    redirect_to :home, alert: 'You do not have permission to access this page'
+    else
+      index
+    end
+
+  end
 
 
 end

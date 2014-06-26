@@ -25,12 +25,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
       session[:temp_user_id] = user.id
       new_swimmer_path
 
-    elsif user.level == 'Administrator'
-
-      :awaiting
     else
 
-      :home
+      :awaiting
+    #else
+    #
+    #  :home
     end
   end
 
