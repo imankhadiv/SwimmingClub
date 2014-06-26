@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :swimmer_times
+
   resources :swimmers
 
   resources :addresses

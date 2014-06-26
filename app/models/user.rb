@@ -46,4 +46,8 @@ class User < ActiveRecord::Base
       user
     end
   end
+  def combined_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
 end

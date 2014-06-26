@@ -1,0 +1,31 @@
+%h1 Listing swimmer_times
+
+%table
+  %tr
+    %th Swimmer
+    %th Stroke
+    %th Length
+    %th Times
+    %th Club
+    %th Venue
+    %th Date
+    %th
+    %th
+    %th
+
+  - @swimmer_times.each do |swimmer_time|
+    %tr
+      %td= swimmer_time.swimmer
+      %td= swimmer_time.stroke
+      %td= swimmer_time.length
+      %td= swimmer_time.times
+      %td= swimmer_time.club
+      %td= swimmer_time.venue
+      %td= swimmer_time.date
+      %td= link_to 'Show', swimmer_time
+      %td= link_to 'Edit', edit_swimmer_time_path(swimmer_time)
+      %td= link_to 'Destroy', swimmer_time, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Swimmer time', new_swimmer_time_path

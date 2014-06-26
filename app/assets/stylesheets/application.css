@@ -7,5 +7,7 @@
   *= require misc
   *= require demo-styles
   *= require rails_bootstrap_forms
+  *= require bootstrap-datepicker
+
 
 */

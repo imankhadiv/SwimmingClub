@@ -1,0 +1,32 @@
+.container.times
+
+  = bootstrap_form_for @swimmer_time do |f|
+    - if @swimmer_time.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@swimmer_time.errors.count, "error")} prohibited this swimmer_time from being saved:"
+        %ul
+          - @swimmer_time.errors.full_messages.each do |msg|
+            %li= msg
+    .row
+      .input.col-md-2
+        = f.collection_select(:swimmer_id, @swimmers, :id, :swimmer_name)
+      .input.col-md-2
+        = f.select :stroke, SwimmerTime::STROKE_TYPES
+      .input.col-md-1
+        = f.select :length, SwimmerTime::LENGTH
+      .input.col-md-2
+        = f.text_field :club
+      .input.col-md-2
+        = f.text_field :venue
+      .input.col-md-1
+        = f.text_field :date, as: :bootstrap_datepicker
+      .input.col-md-1
+        = f.text_field :times
+
+    .actions
+      = f.submit 'Add', :class=>'btn btn-primary btn-lg'
+
+-#
+-#%script
+-#  $('.datepicker').datepicker();
+-#  alert('hi')

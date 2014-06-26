@@ -10,7 +10,18 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-datepicker
 //= require bootstrap
+
+
+//= require_tree .
+
+$(function (){
+    $('#swimmer_time_date').datepicker({
+        dateFormat: "dd-mm-yy"
+    });
+
+
+});

@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Swimmer:
+  = @swimmer_time.swimmer
+%p
+  %b Stroke:
+  = @swimmer_time.stroke
+%p
+  %b Length:
+  = @swimmer_time.length
+%p
+  %b Times:
+  = @swimmer_time.times
+%p
+  %b Club:
+  = @swimmer_time.club
+%p
+  %b Venue:
+  = @swimmer_time.venue
+%p
+  %b Date:
+  = @swimmer_time.date
+
+= link_to 'Edit', edit_swimmer_time_path(@swimmer_time)
+\|
+= link_to 'Back', swimmer_times_path
