@@ -1,6 +1,6 @@
 .container.times
 
-  = bootstrap_form_for @swimmer_time do |f|
+  = bootstrap_form_for @swimmer_time, remote: true do |f|
     - if @swimmer_time.errors.any?
       #error_explanation
         %h2= "#{pluralize(@swimmer_time.errors.count, "error")} prohibited this swimmer_time from being saved:"

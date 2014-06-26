@@ -7,7 +7,6 @@ class Swimmer < ActiveRecord::Base
 
 
   def swimmer_name
-    #u = User.find_by(swimmer_id: self.swimmer_id)
     u = User.find(self.user_id)
     u.combined_name
   end

@@ -31,14 +31,12 @@ class SwimmerTimesController < ApplicationController
   # POST /swimmer_times.json
   def create
     @swimmer_time = SwimmerTime.new(swimmer_time_params)
-    puts '.......................'
-    puts @swimmer_time.date
-    puts params
-    puts '.....................'
 
     respond_to do |format|
       if @swimmer_time.save
-        format.html { redirect_to @swimmer_time, notice: 'Swimmer time was successfully created.' }
+        #format.html { redirect_to @swimmer_time, notice: 'Swimmer time was successfully created.' }
+        format.js
+
         format.json { render :show, status: :created, location: @swimmer_time }
       else
         format.html { render :new }
@@ -53,6 +51,7 @@ class SwimmerTimesController < ApplicationController
     respond_to do |format|
       if @swimmer_time.update(swimmer_time_params)
         format.html { redirect_to @swimmer_time, notice: 'Swimmer time was successfully updated.' }
+        format.js
         format.json { render :show, status: :ok, location: @swimmer_time }
       else
         format.html { render :edit }

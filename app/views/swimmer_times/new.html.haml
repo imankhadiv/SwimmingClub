@@ -1,5 +1,28 @@
 %h1 New swimmer_time
 
 = render 'form'
+= debugger
+
+#tb.row
+  .col-md-11.col-md-offset-1
+    %h3 Swimmer Times
+    %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
+      %thead
+        %tr
+          %th Swimmer Name
+          %th Stroke
+          %th Length
+          %th Times
+          %th Club
+          %th Venue
+          %th Date
+
+
+
+      %tbody
+      #swimmer_time
 
 = link_to 'Back', swimmer_times_path
+
+%script
+  $('#tb').hide()
