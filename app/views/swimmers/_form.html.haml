@@ -7,7 +7,7 @@
       %br
 
       -#= bootstrap_form_for (@swimmer, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |f|
-      = bootstrap_form_for(@swimmer) do |f|
+      = bootstrap_form_for(@swimmer,html: {onsubmit:'return go()' } )do |f|
         -#- if @swimmer.errors.any?
         -#  #error_explanation
         -#    %h2= "#{pluralize(@swimmer.errors.count, "error")} prohibited this swimmer from being saved:"
@@ -16,11 +16,11 @@
         -#        %li= msg
 
         .col-md-4
-          =f.text_field :asa_number, control_col: 'col-sm-3', label: 'ASA Number'
-          = f.select :asa_category,Swimmer::ASA_CATEGORY, control_col: 'col-sm-3',label: 'ASA Category:'
-          = f.select :current_squad,Swimmer::CURRENT_SQUAD, control_col: 'col-sm-3', label: 'Current Squad:'
+          =f.text_field :asa_number, label: 'ASA Number'
+          =f.select :asa_category,Swimmer::ASA_CATEGORY,label: 'ASA Category:'
+          =f.select :current_squad,Swimmer::CURRENT_SQUAD, label: 'Current Squad:'
           =f.select :ethnic, Swimmer::ETHNICITY, label:'Ethnicity'
-          = f.text_field :date_of_birth
+          =f.text_field :date_of_birth
 
 
           = f.form_group :sex, label: { text: 'Gender:' } do

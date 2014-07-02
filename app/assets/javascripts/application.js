@@ -22,10 +22,3 @@
 
 //= require_tree .
 
-//$(function (){
-//    $('#swimmer_time_date input').datepicker({
-////        dateFormat: "dd-mm-yy"
-//    });
-//
-//
-//});
