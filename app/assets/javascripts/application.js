@@ -12,16 +12,20 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-datepicker
+//= require twitter/bootstrap
 //= require bootstrap
+//= require bootstrap-datepicker
+//= require jquery.ui.datepicker
+
+
 
 
 //= require_tree .
 
-$(function (){
-    $('#swimmer_time_date').datepicker({
-        dateFormat: "dd-mm-yy"
-    });
-
-
-});
+//$(function (){
+//    $('#swimmer_time_date input').datepicker({
+////        dateFormat: "dd-mm-yy"
+//    });
+//
+//
+//});

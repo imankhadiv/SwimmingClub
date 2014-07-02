@@ -28,17 +28,20 @@
           .collapse.navbar-collapse
             %ul.nav.navbar-nav
 
-              = navbar_link_to home_path, title: "Homepage", identifier: :home do
+              = navbar_link_to home_path, title: 'HomePage', identifier: :home do
                 %i.icon-home
                 HOME
-              = navbar_link_to new_user_registration_path, title: "Register", identifier: :register do
+              = navbar_link_to swimmer_times_path, title: 'Times', identifier: :times do
+                %i.icon-time
+                Times
+              = navbar_link_to new_user_registration_path, title: 'Register', identifier: :register do
                 %i.icon-user
                 Register
-              = navbar_link_to users_index_path, title: "Register", identifier: :register do
+              = navbar_link_to users_index_path, title: 'Register', identifier: :register do
                 %i.icon-user
                 Users
               - if user_signed_in?
-                = navbar_link_to destroy_user_session_path,method: :delete, title: "Log out", identifier: :logout do
+                = navbar_link_to destroy_user_session_path,method: :delete, title: 'Log Out', identifier: :logout do
                   %i.icon-signout
                   Log Out
               -else

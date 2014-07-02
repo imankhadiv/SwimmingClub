@@ -9,27 +9,33 @@ gem 'devise'
 
 gem 'html2haml'
 
+gem 'rake', '~> 10.3.2'
+
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '~> 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
+gem 'therubyracer', '~> 0.12.1'
 
-gem "therubyracer"
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-gem "twitter-bootstrap-rails"
+gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+
+
 
 gem 'bootstrap-datepicker-rails'
 
 
-gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'      # Twitter bootstrap in sass form
+gem 'bootstrap-sass', :github => 'thomas-mcdonald/bootstrap-sass'      # Twitter bootstrap in sass form
 gem 'font-awesome-rails','~> 3.2.1'  # Bootstrap's icons rendered as a font
 gem 'bootstrap_form'
+gem 'jquery-ui-rails'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -38,10 +44,10 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'sdoc', '~> 0.4.0', :group => :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+#gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -65,7 +71,8 @@ group :test do
   gem 'simplecov','~> 0.8.2'           # Code test coverage
                                        #gem 'capybara-bootstrap-datepicker'
 end
-gem 'rails_12factor', group: :production
-gem 'unicorn'
-gem 'webshims-rails'
-
+#gem 'rails_12factor', group::production
+#gem 'unicorn'
+#gem 'webshims-rails'
+gem 'rack-cache'
+gem 'nokogiri', '~> 1.6.1'

@@ -10,6 +10,7 @@ class SwimmerTimesController < ApplicationController
   # GET /swimmer_times/1
   # GET /swimmer_times/1.json
   def show
+
   end
 
   # GET /swimmer_times/new
