@@ -35,6 +35,8 @@ gem 'bootstrap-sass', :github => 'thomas-mcdonald/bootstrap-sass'      # Twitter
 gem 'font-awesome-rails','~> 3.2.1'  # Bootstrap's icons rendered as a font
 gem 'bootstrap_form'
 gem 'jquery-ui-rails'
+gem 'simple_form'
+
 
 
 # Use jquery as the JavaScript library

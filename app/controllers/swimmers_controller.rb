@@ -31,6 +31,8 @@ class SwimmersController < ApplicationController
       if @swimmer.save
         #format.html { redirect_to @swimmer, notice: 'Swimmer was successfully created.' }
         format.html { redirect_to :awaiting }
+        session[:temp_user_id] = nil
+
 
         format.json { render :show, status: :created, location: @swimmer }
       else

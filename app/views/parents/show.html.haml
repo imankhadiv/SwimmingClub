@@ -1,0 +1,12 @@
+%p#notice= notice
+=debug @parent
+%p
+  %b Relation:
+  = @parent.relation
+%p
+  %b User:
+  = @parent.user
+
+= link_to 'Edit', edit_parent_path(@parent)
+\|
+= link_to 'Back', parents_path

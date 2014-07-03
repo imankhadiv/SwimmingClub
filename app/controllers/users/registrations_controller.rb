@@ -1,5 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, if: :devise_controller?
+  
 
 
   protected
@@ -16,14 +17,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 
   def after_inactive_sign_up_path_for(resource)
-    session[:user] = resource.id
-    user = resource
+    # session[:user] = resource.id
+    # user = resource
 
     if resource.level == 'Swimmer'
 
       flash[:notice] = 'Please Complete Your Registration'
-      session[:temp_user_id] = user.id
+      session[:temp_user_id] = resource.id
       new_swimmer_path
+
+    elsif resource.level == 'Parent'
+
+      flash[:notice] = 'Please Complete Your Registration'
+      session[:temp_user_id] = resource.id
+      puts resource.id
+      new_parent_path
 
     else
 

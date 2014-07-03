@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140626093918) do
+ActiveRecord::Schema.define(version: 20140702214241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,20 @@ ActiveRecord::Schema.define(version: 20140626093918) do
     t.string   "addressable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "parents", force: true do |t|
+    t.string   "relation"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "parents", ["user_id"], name: "index_parents_on_user_id", using: :btree
+
+  create_table "parents_swimmers", id: false, force: true do |t|
+    t.integer "swimmer_id"
+    t.integer "parent_id"
   end
 
   create_table "swimmer_times", force: true do |t|
