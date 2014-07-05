@@ -16,7 +16,7 @@ class SwimmerTimesController < ApplicationController
   # GET /swimmer_times/new
   def new
     @swimmer_time = SwimmerTime.new
-    #@swimmers = User.swimmers
+    # @swimmers = User.swimmers
     @swimmers = Swimmer.all
 
   end
@@ -33,15 +33,18 @@ class SwimmerTimesController < ApplicationController
   def create
     @swimmer_time = SwimmerTime.new(swimmer_time_params)
 
+    puts params
+
     respond_to do |format|
       if @swimmer_time.save
-        #format.html { redirect_to @swimmer_time, notice: 'Swimmer time was successfully created.' }
+        # format.html { redirect_to @swimmer_time, notice: 'Swimmer time was successfully created.' }
         format.js
 
         format.json { render :show, status: :created, location: @swimmer_time }
       else
-        format.html { render :new }
-        format.json { render json: @swimmer_time.errors, status: :unprocessable_entity }
+        # format.html { render :new }
+        format.js { render 'create_failure' }
+        # format.json { render json: @swimmer_time.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -79,6 +82,6 @@ class SwimmerTimesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def swimmer_time_params
-      params.require(:swimmer_time).permit(:swimmer_id, :stroke, :length, :times, :club, :venue, :date)
+      params.require(:swimmer_time).permit(:swimmer_id, :stroke, :length, :times, :club, :venue, :date, :minutes,:seconds,:milli_seconds)
     end
 end

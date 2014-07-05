@@ -7,5 +7,10 @@
  */
 $('#tb').show()
 $('tbody').prepend("<%= escape_javascript render(@swimmer_time) %>");
+//alert("<%=  @swimmer_time.stroke%>")
+// var js_array = [<%= raw @swimmer_time.to_json %>]
+//alert(js_array)
+//alert($.parseJSON(js_array))
+
 
 
