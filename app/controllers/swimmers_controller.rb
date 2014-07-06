@@ -22,6 +22,7 @@ class SwimmersController < ApplicationController
   def edit
   end
 
+
   # POST /swimmers
   # POST /swimmers.json
   def create

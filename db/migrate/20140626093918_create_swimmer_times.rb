@@ -4,7 +4,7 @@ class CreateSwimmerTimes < ActiveRecord::Migration
       t.references :swimmer, index: true
       t.string :stroke
       t.integer :length
-      t.string :times
+      t.integer :times
       t.string :club
       t.string :venue
       t.date :date

@@ -1,0 +1,29 @@
+=bootstrap_form_tag( url: :check, remote:true,layout: :horizantal,id:'sub') do |f|
+  = f.collection_select(:swimmer_id, @swimmers, :id, :swimmer_name,hide_label: true)
+  = f.text_field :date, hide_label: true, required: true,placeholder: 'your child\'s date of birth'
+  #child_submit=f.submit
+
+  -#=f.submit 'Add',id: 'sub', class: 'btn btn-small brn-success',data: {class: 'btn btn-success btn-mini', role: 'button', id: 's'}
+  -#= f.submit 'Save',{class: 'btn btn-primary btn-small'}
+
+  -#%a.btn.btn-success.btn-large.icon-plus{ role: 'button', onclick: 'submit()'}
+
+
+
+%button#btn.btn.btn-success.btn-small.icon-plus{ onclick: 'submit()'} Add
+
+
+
+
+
+:javascript
+  $(document).ready(function(){
+    $('#child_submit').hide();
+  });
+
+  function submit() {
+    $('#child_submit .btn').click();
+  }
+
+
+

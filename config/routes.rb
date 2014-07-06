@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   resources :parents
 
+  post 'parents/check_relation', as: :check
+
   resources :swimmer_times
 
   resources :swimmers
+
 
   resources :addresses
 

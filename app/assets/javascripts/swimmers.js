@@ -8,16 +8,16 @@
 $(document).ready(function(){
 
     $('#tb').hide()
-    $('#swimmer_date_of_birth').datepicker(
+    $('#swimmer_date_of_birth,#date').datepicker(
        {
           dateFormat: 'dd-mm-yy',
           changeYear: 'true',
           changeMonth: 'true',
-          yearRange: "-100:+0"
+          yearRange: '-100:+0',
+          required: 'true'
 
         }
     );
-
 
 });
 

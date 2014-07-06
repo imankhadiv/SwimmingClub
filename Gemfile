@@ -78,3 +78,5 @@ end
 #gem 'webshims-rails'
 gem 'rack-cache'
 gem 'nokogiri', '~> 1.6.1'
+
+gem "chartkick"

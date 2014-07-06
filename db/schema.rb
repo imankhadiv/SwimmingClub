@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20140702214241) do
     t.integer  "swimmer_id"
     t.string   "stroke"
     t.integer  "length"
-    t.string   "times"
+    t.integer  "times"
     t.string   "club"
     t.string   "venue"
     t.date     "date"

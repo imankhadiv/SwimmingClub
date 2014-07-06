@@ -10,3 +10,14 @@
 = link_to 'Edit', edit_parent_path(@parent)
 \|
 = link_to 'Back', parents_path
+
+
+-#%script
+-#:javascript
+-#  $('document').ready(function(){
+-#  var js_array = [<%= raw @parent.to_json %>]
+-#  alert('hi')
+-#  alert(js_array)
+
+:javascript
+  var v = #{@parent}

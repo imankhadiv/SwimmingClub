@@ -11,7 +11,7 @@ class ParentsController < ApplicationController
   # GET /parents/1.json
   def show
 
-  end
+    end
 
   # GET /parents/new
   def new
@@ -24,18 +24,42 @@ class ParentsController < ApplicationController
   def edit
   end
 
+  def check_relation
+    @swimmers = Swimmer.all
+    @swimmer = Swimmer.find(params[:swimmer_id])
+    dob = Date.parse(params[:date])
+    dob.strftime('%F')
+    puts @swimmer.date_of_birth
+
+    respond_to do |format|
+      if dob == @swimmer.date_of_birth
+        @swimmers = @swimmers - Swimmer.where(id:@swimmer.id)
+        format.js
+      else
+         @swimmer = nil
+        format.js {}
+        format.html { render :edit }
+      end
+    end
+
+  end
+
   # POST /parents
   # POST /parents.json
   def create
     puts params
-    @parent = Parent.new(parent_params)
+     @parent = Parent.new(parent_params)
+     ids = params[:swimmer]['ids']
+     swimmers = Swimmer.where id: ids
 
     respond_to do |format|
       if @parent.save
-        # format.html { redirect_to @parent, notice: 'Parent was successfully created.' }
-        format.html { redirect_to :awaiting}
-        session[:temp_user_id] = nil
-        format.json { render :show, status: :created, location: @parent }
+        @parent.swimmers << swimmers
+
+         # format.html { redirect_to @parent, notice: 'Parent was successfully created.' }
+         format.html { redirect_to :awaiting}
+         session[:temp_user_id] = nil
+         format.json { render :show, status: :created, location: @parent }
       else
         format.html { render :new }
         format.json { render json: @parent.errors, status: :unprocessable_entity }

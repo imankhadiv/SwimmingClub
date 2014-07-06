@@ -1,0 +1,33 @@
+$('#_swimmer_id,#date,#child_submit,#child_form,#btn,.alert').remove();
+$('#check').prepend("<%= escape_javascript render('child_form') %>");
+
+<% if @swimmer %>
+    $('#swimmer').append("<%= escape_javascript render(:partial => 'parents/swimmer', :locals => { :swimmer => @swimmer }) %>");
+    var v = <%= @swimmer.id %>
+    $('<input>').attr({
+        type: 'hidden',
+        multiple: 'multiple',
+        name: 'swimmer[ids][]',
+        id: 'temp',
+        value: v
+
+    }).appendTo('#new_parent');
+
+    $('#temp').attr('id','');
+
+<% else %>
+
+ $('#check').append("<div class='alert alert-danger' role='alert'>Not Valid</div>");
+
+<% end %>
+
+$('#date').datepicker(
+        {
+            dateFormat: 'dd-mm-yy',
+            changeYear: 'true',
+            changeMonth: 'true',
+            yearRange: "-100:+0"
+
+        }
+);
+
