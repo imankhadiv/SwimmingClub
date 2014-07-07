@@ -8,26 +8,20 @@
       %br
 
       = bootstrap_form_for(@parent)do |f|
-        -#- if @swimmer.errors.any?
-        -#  #error_explanation
-        -#    %h2= "#{pluralize(@swimmer.errors.count, "error")} prohibited this swimmer from being saved:"
-        -#    %ul
-        -#      - @swimmer.errors.full_messages.each do |msg|
-        -#        %li= msg
 
         .col-md-9
           =f.select :relation,Parent::RELATION,label: 'Relation:'
           =f.hidden_field :user_id, value: session[:temp_user_id]
-          -#=f.hidden_field :user_ids[], value: [], ids
-          -##ids.input= check_box_tag 'swimmer_ids[]', options_for_select(@swimmers.collect{ |u| [u.swimmer_name, u.id] },{:multiple => :multiple, :size => 10})
-          -##ids.input= select_tag 'swimmer_ids[]'
+          %input{type: 'hidden',name: 'swimmer[ids][]', require: true}
 
           %hr
           = f.fields_for :address do |address|
             = render partial: 'shared/address', locals: {f: address}
 
           .actions
-            = f.submit 'Save',{class: 'btn btn-primary btn-large'}
+            = f.submit 'Save',{class: 'btn btn-primary btn-large',id:'parent_submit'}
+          %br
+          %br
 
 
             -#= select_tag 'swimmer_ids[]', options_for_select(@swimmers.collect{ |u| [u.swimmer_name, u.id] },{:multiple => :multiple, :size => 10})
@@ -43,6 +37,10 @@
           %ol
             #swimmer
 
+
+
+
+:javascript
 
 
 

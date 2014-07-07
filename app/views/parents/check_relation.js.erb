@@ -17,7 +17,7 @@ $('#check').prepend("<%= escape_javascript render('child_form') %>");
 
 <% else %>
 
- $('#check').append("<div class='alert alert-danger' role='alert'>Not Valid</div>");
+ $('#check').append("<div class='alert alert-danger' role='alert'><p>Not Valid</p><br/></div>");
 
 <% end %>
 

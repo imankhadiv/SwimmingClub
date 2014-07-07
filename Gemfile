@@ -73,6 +73,11 @@ group :test do
   gem 'simplecov','~> 0.8.2'           # Code test coverage
                                        #gem 'capybara-bootstrap-datepicker'
 end
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+
+end
 #gem 'rails_12factor', group::production
 #gem 'unicorn'
 #gem 'webshims-rails'

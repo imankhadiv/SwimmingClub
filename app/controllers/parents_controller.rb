@@ -50,7 +50,9 @@ class ParentsController < ApplicationController
     puts params
      @parent = Parent.new(parent_params)
      ids = params[:swimmer]['ids']
-     swimmers = Swimmer.where id: ids
+    # redirect_to new_parent_url if ids.size == 1
+
+    swimmers = Swimmer.where id: ids
 
     respond_to do |format|
       if @parent.save
