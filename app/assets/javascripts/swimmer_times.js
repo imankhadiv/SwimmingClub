@@ -4,8 +4,8 @@
 
 
 $(document).ready(function(){
-
-    $('#tb').hide()
+    $('#tb').hide();
+    $('#tabs').tabs();
     $('#swimmer_time_date').datepicker(
         {
             dateFormat: 'dd-mm-yy',

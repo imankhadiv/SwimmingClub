@@ -13,6 +13,38 @@ class SwimmerTimesController < ApplicationController
 
   end
 
+  #Get
+  def search
+
+    render text: (filtering_params params)
+      puts params[:Gender]
+      puts params
+      puts '........'
+     @swimmers = Swimmer.sex(params[:gender])
+    puts @swimmers
+     @swimmer_times = SwimmerTime.swimmer @swimmers
+
+    @swimmer_times.each do |item|
+      puts item.swimmer.id
+    end
+    puts ";;;;;;;"
+
+
+     # @swimmer_times = @swimmer_times.
+    filtering_params(params).each do |key, value|
+      @swimmer_times = @swimmer_times.public_send(key, value.to_i) if value.present?
+    end
+
+    # puts 'hello'
+    # puts @swimmer_times
+    #  @products = Product.where(nil)
+    # filtering_params(params).each do |key, value|
+    #   @products = @products.public_send(key, value) if value.present?
+    # end
+
+
+  end
+
   # GET /swimmer_times/new
   def new
     @swimmer_time = SwimmerTime.new
@@ -83,5 +115,9 @@ class SwimmerTimesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def swimmer_time_params
       params.require(:swimmer_time).permit(:swimmer_id, :stroke, :length, :times, :club, :venue, :date, :minutes,:seconds,:milli_seconds)
+    end
+    def filtering_params(params)
+       params.slice(:stroke,:date)
+      # params.slice(:length)
     end
 end

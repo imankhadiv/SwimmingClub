@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   post 'parents/check_relation', as: :check
 
-  resources :swimmer_times
+  resources :swimmer_times do
+    get 'search', on: :collection
+  end
 
   resources :swimmers
 

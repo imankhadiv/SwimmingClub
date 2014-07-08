@@ -21,9 +21,10 @@ gem 'uglifier', '~> 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', '~> 0.12.1'
+gem 'therubyracer'
 
 gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 
@@ -35,12 +36,15 @@ gem 'bootstrap-sass', :github => 'thomas-mcdonald/bootstrap-sass'      # Twitter
 gem 'font-awesome-rails','~> 3.2.1'  # Bootstrap's icons rendered as a font
 gem 'bootstrap_form'
 gem 'jquery-ui-rails'
+
 gem 'simple_form'
+
 
 
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

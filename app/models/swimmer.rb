@@ -14,6 +14,7 @@ class Swimmer < ActiveRecord::Base
   ASA_CATEGORY = %w(Paid\ Cat3 Club\ Paid\ Cat3)
   CURRENT_SQUAD = %w(A-Squad B-Squad C-Squad Youth Masters)
 
+  scope :sex, lambda {|sex| where(sex: sex)}
 
   # def swimmer_name
   #   u = User.find(self.user_id)
