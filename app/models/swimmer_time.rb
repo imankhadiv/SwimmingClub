@@ -17,7 +17,7 @@ class SwimmerTime < ActiveRecord::Base
   # scope :swim_type, lambda { |stroke,*length| where(stroke: stroke,length: length)}
   # scope :hi, lambda {|*args|  args.each {|item| puts item}}
   scope :stroke, lambda {|stroke| where(stroke: stroke)}
-  scope :length, lambda {|length| where(length: "#{length}")}
+  scope :length, lambda {|distance| where(distance: "#{distance}")}
   scope :date, lambda {|year| where('extract(year from date) = ?',"#{year}")}
   scope :swimmer, lambda {|swimmer| where(swimmer: swimmer)}
 

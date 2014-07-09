@@ -1,1 +1,1 @@
-json.extract! @swimmer_time, :id, :swimmer_id, :stroke, :length, :times, :club, :venue, :date, :created_at, :updated_at
+json.extract! @swimmer_time, :id, :swimmer_id, :stroke, :distance, :times, :club, :venue, :date, :created_at, :updated_at

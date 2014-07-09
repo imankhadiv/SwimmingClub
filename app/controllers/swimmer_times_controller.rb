@@ -114,10 +114,10 @@ class SwimmerTimesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def swimmer_time_params
-      params.require(:swimmer_time).permit(:swimmer_id, :stroke, :length, :times, :club, :venue, :date, :minutes,:seconds,:milli_seconds)
+      params.require(:swimmer_time).permit(:swimmer_id, :stroke, :distance, :times, :club, :venue,:age, :date, :minutes,:seconds,:milli_seconds)
     end
     def filtering_params(params)
-       params.slice(:stroke,:date)
+       params.slice(:stroke,:date,:distance)
       # params.slice(:length)
     end
 end

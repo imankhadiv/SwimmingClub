@@ -9,14 +9,14 @@
 
 
 
-= line_chart([:name,:family],{Football: 100, Basketball:  5,hAxis: 'yellow'})
+-#= line_chart([:name,:family],{Football: 100, Basketball:  5,hAxis: 'yellow'})
 -#= line_chart [{Footbal: 100},{ Swimm: 40}],id: "users-chart", height: "500px"
 -#= line_chart User.find(1,3).map {|item| {name:item.first_name, data: item.created_at}},name:'ali',hAxis:{title:'iman'},backgroundColor: {stroke:'#0FF', strokeWidth: 4, fill:'#bbb'}
 
 -#= pie_chart({"Football" => 10, "Basketball" => 5})
 -#=line_chart User.all.map { |m| [m.id, m.last_name, m.first_name] }.unshift(['Year', 'Sales', 'Expenses'])
 
-= line_chart({20.day.ago => 5, 1368174456 => 10, "2013-05-07 00:00:00 UTC" => 7}, id:'Iman')
+-#= line_chart({20.day.ago => 5, 1368174456 => 10, "2013-05-07 00:00:00 UTC" => 7}, id:'Iman')
 -#= line_chart [{name: 'Iman', data:[1,2,4]},{name: 'Amir',data:5}]
 
 

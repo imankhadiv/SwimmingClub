@@ -10,22 +10,16 @@
 #
 
 FactoryGirl.define do
-  #Defines a default role for user
-  factory :role do
-    name "TechManager"
-  end
 
   #Defines a default user for use in the tests
   factory :user do
-    email "user@sheffield.ac.uk"
-    password "123456789"
-    password_confirmation "123456789"
-    firstname 'myfirstname'
-    lastname 'mylastname'
-    ucard '1234'
-    course 'mycourse'
-    level "Level1"
-    approved TRUE
+    email 'user1@yahoo.com'
+    password '123456789'
+    password_confirmation '123456789'
+    first_name 'first_name'
+    last_name 'last_name'
+    level 'Administrator'
+    approved 'False'
   end
 
 end

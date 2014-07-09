@@ -1,19 +1,14 @@
-# # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-#
-# one:
-#     asa_number: MyString
-# asa_category: MyString
-# date_of_birth: 2014-06-15
-# sex:
-#     photo_consent:
-#     current_squad: MyString
-# user_id:
-#
-#     two:
-#     asa_number: MyString
-# asa_category: MyString
-# date_of_birth: 2014-06-15
-# sex:
-#     photo_consent:
-#     current_squad: MyString
-# user_id:
+
+FactoryGirl.define do
+
+  #Defines a default user for use in the tests
+  factory :swimmer do
+    asa_number 12345
+    asa_category 'Paid Cat3'
+    date_of_birth 2010-01-01
+    sex 'Male'
+    photo_consent 'True'
+    current_squad 'B-Squad'
+  end
+
+end

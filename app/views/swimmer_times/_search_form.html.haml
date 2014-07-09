@@ -7,7 +7,7 @@
       .input.col-md-2
         = f.select :stroke, %w(--) + SwimmerTime::STROKE_TYPES
       .input.col-md-1
-        = f.select :length, %w(--) + SwimmerTime::LENGTH
+        = f.select :length, %w(--) + SwimmerTime::DISTANCE
 
       .input.col-md-1
         = f.select :date, %w(--) + SwimmerTime::YEAR, label: 'Year'
