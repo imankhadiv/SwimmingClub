@@ -41,5 +41,28 @@ class SwimmerTime < ActiveRecord::Base
     self.times = times
   end
 
+  def self.go
+
+    SwimmerTime.all.group(:stroke).first
+
+    # SwimmerTime::STROKE_TYPES.each do |item|
+    # SwimmerTime.all.group_by(&:stroke).keys.each do |item|
+
+      # SwimmerTime.all.group_by(&:stroke)[item].group_by(&:distance)
+      # self[key].group_by(&:distance)
+      # puts "#{key}"
+      # puts
+    # end
+  end
+
+  # def self.swimmer id
+  #
+  #   SwimmerTime.where(swimmer_id:  id).group_by {|e| [e.stroke,e.distance]}
+  # end
+
+
+
+
+
 
 end

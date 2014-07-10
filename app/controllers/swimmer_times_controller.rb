@@ -8,9 +8,8 @@ class SwimmerTimesController < ApplicationController
     @swimmer_time = SwimmerTime.new
     @swimmers = Swimmer.all
 
-
-
   end
+
 
   # GET /swimmer_times/1
   # GET /swimmer_times/1.json

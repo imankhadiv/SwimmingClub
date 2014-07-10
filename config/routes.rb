@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     get 'search', on: :collection
   end
 
-  resources :swimmers
+  resources :swimmers do
+    get 'swimmer_times'
+  end
 
 
   resources :addresses

@@ -1,0 +1,25 @@
+.container
+
+  .alert.alert-success
+    %h2= "#{@swimmer.swimmer_name}'s Times"
+  %br
+
+  .row
+    .col-md-10.col-md-offset-1
+      -@swimmer_times.keys.each do |item|
+        .alert.alert-info
+          %caption= "Times for #{item.first} Stroke #{item.second} meter"
+        %table.table-bordered.table-condensed.table.table-striped.table-responsive.table-customstyle
+          %thead
+            %th Age
+            %th Times
+            %th Club
+            %th Venue
+            %th Date
+          - @swimmer_times[item].each do |item|
+            %tbody
+              %td= item.age
+              %td= item.convert_times
+              %td= item.club
+              %td= item.venue
+              %td= item.date

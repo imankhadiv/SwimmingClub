@@ -17,9 +17,9 @@ $(document).ready(function(){
     );
     $('#result').hide();
 
-    $('a').click(function(){
+    $('#tabs a').click(function(){
         $('.alert').remove();
-       $('tbody').empty();
+        $('tbody').empty();
         $('#result').hide();
 
 

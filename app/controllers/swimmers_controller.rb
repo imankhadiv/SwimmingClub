@@ -1,6 +1,18 @@
 class SwimmersController < ApplicationController
   before_action :set_swimmer, only: [:show, :edit, :update, :destroy]
 
+
+
+  def swimmer_times
+
+    params[:id]
+    @swimmer = Swimmer.find(params[:swimmer_id])
+    @swimmer_times = @swimmer.details_of_times
+
+    # puts @swimmer.user.first_name
+
+  end
+
   # GET /swimmers
   # GET /swimmers.json
   def index

@@ -35,4 +35,10 @@ class Swimmer < ActiveRecord::Base
     u.combined_name
   end
 
+
+  def details_of_times
+
+    self.swimmer_times.order(:date,:times).group_by {|e| [e.stroke,e.distance]}
+  end
+
 end
