@@ -15,6 +15,28 @@ $(document).ready(function(){
 
         }
     );
+    $('#result').hide();
+
+    $('a').click(function(){
+        $('.alert').remove();
+       $('tbody').empty();
+        $('#result').hide();
+
+
+    });
 
 
 });
+
+//$('#All, #best_times').click(function(){
+//
+//    $('#result').show();
+//    alert('hi')
+//
+//})
+//$('#charts, #search').click(function(){
+//
+//    $('#result').hide();
+//
+//});
+

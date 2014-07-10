@@ -1,71 +1,52 @@
 %br
 %br
-#tabs
-  %ul
-    %li#search
-      %a{href: "#fragment-1"} Search
-    %li#best_times
-      %a{href: "#fragment-2"} Best Times
-    %li#charts
-      %a{href: "#fragment-3"} Charts
-    %li#all
-      %a{href: "#fragment-4"} All
-  #fragment-1
-    -#= render @swimmer_times
-    = render 'swimmer_times/search_form'
-  #fragment-2
+.container
+  #tabs
+    %ul
+      %li#search
+        %a{href: '#fragment-1'} Search
+      %li#charts
+        %a{href: '#fragment-2'} Charts
+      %li#best-times
+        %a{href: '#fragment-3'} Best Times        
+      %li#add-times
+        %a{href: '#fragment-4'} Add Times
+
+    #fragment-1
+      -#= render @swimmer_times
+      = render 'swimmer_times/search_form'
+      -#= render 'swimmer_times/table'
+
+    #fragment-2
+      -#= render 'swimmer_times/search_form'
+      = line_chart({20.day.ago => 5, 1368174456 => 10, "2013-05-07 00:00:00 UTC" => 7}, id:'Iman')
 
 
-  #fragment-3
-    = line_chart({20.day.ago => 5, 1368174456 => 10, "2013-05-07 00:00:00 UTC" => 7}, id:'Iman')
+    #fragment-3
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
 
-  #fragment-4
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+    #fragment-4
+      = render 'form'
 
-%h1 Listing swimmer_times
-.container#result
-  .row
-    .col-md-10.col-md-offset-1
-      %table.table.table-striped.table-responsive.table-customstyle
-        %thead
-          %tr
-          %th Swimmer
-          %th Stroke
-          %th Length
-          %th Times
-          %th Club
-          %th Venue
-          %th Date
-        = render @swimmer_times
-
-        -#- @swimmer_times.each do |swimmer_time|
-        -#  %tr
-        -#    %td= swimmer_time.swimmer.swimmer_name
-        -#    %td= swimmer_time.stroke
-        -#    %td= swimmer_time.length
-        -#    %td= swimmer_time.times
-        -#    %td= swimmer_time.club
-        -#    %td= swimmer_time.venue
-        -#    %td= swimmer_time.date
-        -#%td= link_to 'Show', swimmer_time_path(swimmer_time,name:'john')
-        -#%td= link_to 'Edit', edit_swimmer_time_path(swimmer_time)
-        -#%td= link_to 'Destroy', swimmer_time, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  .alert-message
+  #result
+    .row
+      .col-md-10.col-md-offset-1
+        %table.table.table-striped.table-responsive.table-customstyle
+          %thead
+            %tr
+            %th Swimmer
+            %th Stroke
+            %th Length
+            %th Times
+            %th Club
+            %th Venue
+            %th Date
+          %tbody
+            -#= render @swimmer_times
 
 
   %br
 
 = link_to 'New Swimmer time', new_swimmer_time_path
-
-
-:javascript
-  $('#All, #best_times').click(function(){
-
-    $('#result').show();
-
-    })
-  $('#charts, #search').click(function(){
-
-    $('#result').hide();
-
-  });
 

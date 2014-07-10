@@ -5,7 +5,11 @@
  * Time: 22:40
  * To change this template use File | Settings | File Templates.
  */
-$('#tb').show()
+
+$('#result').show();
+$('.alert').remove();
+
+//$('#tb').show()
 $('tbody').prepend("<%= escape_javascript render(@swimmer_time) %>");
 //alert("<%=  @swimmer_time.stroke%>")
 // var js_array = [<%= raw @swimmer_time.to_json %>]

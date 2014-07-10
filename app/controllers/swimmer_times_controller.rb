@@ -4,7 +4,12 @@ class SwimmerTimesController < ApplicationController
   # GET /swimmer_times
   # GET /swimmer_times.json
   def index
-    @swimmer_times = SwimmerTime.all
+    # @swimmer_times = SwimmerTime.all
+    @swimmer_time = SwimmerTime.new
+    @swimmers = Swimmer.all
+
+
+
   end
 
   # GET /swimmer_times/1
@@ -16,32 +21,23 @@ class SwimmerTimesController < ApplicationController
   #Get
   def search
 
-    render text: (filtering_params params)
-      puts params[:Gender]
-      puts params
-      puts '........'
-     @swimmers = Swimmer.sex(params[:gender])
-    puts @swimmers
+
+     @swimmers = Swimmer.sex(params[:gender]) unless params[:gender] == 'All'
+     @swimmers = Swimmer.all if params[:gender] == 'All'
+    puts @swimmers.size
      @swimmer_times = SwimmerTime.swimmer @swimmers
 
-    @swimmer_times.each do |item|
-      puts item.swimmer.id
-    end
-    puts ";;;;;;;"
 
-
-     # @swimmer_times = @swimmer_times.
     filtering_params(params).each do |key, value|
-      @swimmer_times = @swimmer_times.public_send(key, value.to_i) if value.present?
+      @swimmer_times = @swimmer_times.public_send(key, value) if value.present? && value != 'All'
     end
 
-    # puts 'hello'
-    # puts @swimmer_times
-    #  @products = Product.where(nil)
-    # filtering_params(params).each do |key, value|
-    #   @products = @products.public_send(key, value) if value.present?
-    # end
 
+     respond_to do |format|
+
+         format.js
+
+     end
 
   end
 
@@ -72,7 +68,7 @@ class SwimmerTimesController < ApplicationController
         # format.html { redirect_to @swimmer_time, notice: 'Swimmer time was successfully created.' }
         format.js
 
-        format.json { render :show, status: :created, location: @swimmer_time }
+        # format.json { render :show, status: :created, location: @swimmer_time }
       else
         # format.html { render :new }
         format.js { render 'create_failure' }
@@ -117,7 +113,7 @@ class SwimmerTimesController < ApplicationController
       params.require(:swimmer_time).permit(:swimmer_id, :stroke, :distance, :times, :club, :venue,:age, :date, :minutes,:seconds,:milli_seconds)
     end
     def filtering_params(params)
-       params.slice(:stroke,:date,:distance)
+       params.slice(:stroke,:date,:distance,:age)
       # params.slice(:length)
     end
 end

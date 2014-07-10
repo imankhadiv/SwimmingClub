@@ -1,0 +1,19 @@
+
+$('tbody').empty();
+
+//$('tbody').append("<%= escape_javascript render(@swimmer_times) %>");
+
+<% if @swimmer_times.size > 0 %>
+
+    $('#result').show();
+    $('.alert').remove();
+
+    $('tbody').append("<%= escape_javascript render(@swimmer_times) %>");
+
+<% else %>
+
+    $('#result').hide();
+    $('.alert').remove();
+    $('.alert-message').append("<div class='alert alert-danger' role='alert'>No Result Found!</div>");
+
+<% end %>

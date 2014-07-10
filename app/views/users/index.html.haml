@@ -1,6 +1,6 @@
 .container
   .row
-    .col-md-5.col-md-offset-3
+    .col-md-9.col-md-offset-2
       %h3 Awaiting Approval Users
       %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle#iman
         %thead
@@ -19,12 +19,12 @@
             %td= user.email
             %td= user.level
             %td
-              %a.btn.btn-primary{href: user_path(user), role: "button"} view
+              %a.btn.btn-success{href: user_path(user), role: "button"} view
 
 
       %br
       %hr
-    .col-md-8.col-md-offset-3
+    .col-md-9.col-md-offset-2
       %h3 Approved Users
       %table#ti.table.table-striped.table-responsive.table-nonfluid.table-customstyle
         %thead
@@ -45,7 +45,7 @@
               %td= user.level
               %td
                 -#%a.btn.btn-primary{href: swimmer_path(user.get_swimmer user.id), role: "button"} view
-                %a.btn.btn-primary{href: user_path(user), role: "button"} view
+                %a.btn.btn-success{href: user_path(user), role: "button"} view
 
 
 

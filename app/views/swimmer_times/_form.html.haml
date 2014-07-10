@@ -1,4 +1,4 @@
-.container.times
+.times
 
   = bootstrap_form_for @swimmer_time, remote: true do |f|
     - if @swimmer_time.errors.any?
@@ -11,6 +11,8 @@
       .input.col-md-2
         = f.collection_select(:swimmer_id, @swimmers, :id, :swimmer_name)
       .input.col-md-1
+        = f.select :age, SwimmerTime::AGE
+      .input.col-md-1
         = f.select :stroke, SwimmerTime::STROKE_TYPES
       .input.col-md-1
         = f.select :distance, SwimmerTime::DISTANCE
@@ -18,8 +20,9 @@
         = f.text_field :club
       .input.col-md-2
         = f.text_field :venue
-      .input.col-md-1
+      .input.col-md-2
         =f.text_field :date
+    .row
       .input.col-md-1
         #swimmer-time= f.select :minutes, SwimmerTime::MINUTES,label: 'Min:'
       .input.col-md-1
@@ -27,11 +30,9 @@
       .input.col-md-1
         = f.select :milli_seconds, SwimmerTime:: MILLI_SECONDS, label: 'Ms:'
 
-      .input.col-md-1
-        -#= f.text_field :times,type: hidden
-        -#= f.hidden_field :times
-    .actions
-      = f.submit 'Add', :class=>'btn btn-primary btn-lg'
+    .actions.col
+      %br
+      = f.submit 'Add', :class=>'btn btn-success btn-lg'
 
 
   %br

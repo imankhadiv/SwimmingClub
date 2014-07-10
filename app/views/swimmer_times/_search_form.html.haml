@@ -1,16 +1,18 @@
-.container.times
+.times
 
   = bootstrap_form_tag url: search_swimmer_times_path, remote: true, method: :get  do |f|
     .row
-      .input.col-md-1
-        = f.select :Gender, %w(-- Male Female)
       .input.col-md-2
-        = f.select :stroke, %w(--) + SwimmerTime::STROKE_TYPES
+        = f.select :gender, %w(All Male Female)
       .input.col-md-1
-        = f.select :length, %w(--) + SwimmerTime::DISTANCE
+        = f.select :age, %w(All) + SwimmerTime::AGE
+      .input.col-md-2
+        = f.select :stroke, %w(All) + SwimmerTime::STROKE_TYPES
+      .input.col-md-1
+        = f.select :distance, %w(All) + SwimmerTime::DISTANCE
 
       .input.col-md-1
-        = f.select :date, %w(--) + SwimmerTime::YEAR, label: 'Year'
+        = f.select :date, %w(All) + SwimmerTime::YEAR, label: 'Year'
 
       .input.col-md-1
         -#= f.text_field :times,type: hidden

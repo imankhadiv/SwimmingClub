@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show]
-  before_filter :check_user_level
+  # before_filter :check_user_level
 
 
 
