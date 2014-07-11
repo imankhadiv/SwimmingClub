@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :swimmer_times do
     get 'search', on: :collection
+    get 'best_times', on: :collection
   end
 
   resources :swimmers do

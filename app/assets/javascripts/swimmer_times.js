@@ -16,11 +16,13 @@ $(document).ready(function(){
         }
     );
     $('#result').hide();
+    $('#all_best_times').hide();
+
 
     $('#tabs a').click(function(){
         $('.alert').remove();
         $('tbody').empty();
-        $('#result').hide();
+//        $('#result').hide();
 
 
     });

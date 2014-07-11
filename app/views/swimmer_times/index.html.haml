@@ -8,7 +8,8 @@
       %li#charts
         %a{href: '#fragment-2'} Charts
       %li#best-times
-        %a{href: '#fragment-3'} Best Times
+        %a{href: '#fragment-3',id: 'best_times_fragment'} Best Times
+
       %li#add-times
         %a{href: '#fragment-4'} Add Times
 
@@ -23,7 +24,9 @@
 
 
     #fragment-3
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+
+      -#= render 'best_times'
+      -#Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
 
     #fragment-4
       = render 'form'
@@ -44,9 +47,60 @@
             %th Date
           %tbody
             -#= render @swimmer_times
+  -#
+  -##all_best_times
+  -#  - females = SwimmerTime.best_times 'Female'
+  -#  - males = SwimmerTime.best_times 'Male'
+  -#
+  -#  .alert.alert-success
+  -#    %h2 Best Club Times
+  -#  %br
+  -#
+  -#  .row
+  -#    .col-md-4.col-md-offset-1
+  -#      .alert.alert-warning.text-center
+  -#        %h3 Girls
+  -#      -females.keys.each do |item|
+  -#        .alert.alert-info.text-center
+  -#          %caption= " #{item.first} STROKE\t #{item.second} Meters\t"
+  -#        %table.table-bordered.table-condensed.table.table-striped.table-responsive.table-customstyle
+  -#          %thead
+  -#            %th Name
+  -#            %th Times
+  -#            %th Age
+  -#            %th Date
+  -#          %tbody
+  -#            %td= link_to females[item].first.swimmer.swimmer_name, swimmer_swimmer_times_path(females[item].first.swimmer_id)
+  -#            %td= females[item].first.convert_times
+  -#            %td= females[item].first.age
+  -#            %td= females[item].first.date
+  -#
+  -#    .col-md-4.col-md-offset-1
+  -#      .alert.alert-warning.text-center
+  -#        %h3 Boys
+  -#      -males.keys.each do |item|
+  -#        .alert.alert-info.text-center
+  -#          %caption= " #{item.first} STROKE\t #{item.second} Meters\t"
+  -#        %table.table-bordered.table-condensed.table.table-striped.table-responsive.table-customstyle
+  -#          %thead
+  -#            %th Name
+  -#            %th Times
+  -#            %th Age
+  -#            %th Date
+  -#          %tbody
+  -#            %td= link_to males[item].first.swimmer.swimmer_name, swimmer_swimmer_times_path(males[item].first.swimmer_id)
+  -#            %td= males[item].first.convert_times
+  -#            %td= males[item].first.age
+  -#            %td= males[item].first.date
+  -#
+
 
 
   %br
 
 -#= link_to 'New Swimmer time', new_swimmer_time_path
+:javascript
+  $('#best_times_fragment').click(function(){
+    $('#all_best_times').show();
 
+  });

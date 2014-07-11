@@ -13,9 +13,6 @@ class SwimmerTime < ActiveRecord::Base
   attr_accessor :minutes, :seconds, :milli_seconds
   before_save :insert_into_times
 
-  # scope :swim_type, lambda { |stroke| where('stroke = ?', stroke)}
-  # scope :swim_type, lambda { |stroke,*length| where(stroke: stroke,length: length)}
-  # scope :hi, lambda {|*args|  args.each {|item| puts item}}
   scope :stroke, lambda {|stroke| where(stroke: stroke)}
   scope :distance, lambda {|distance| where(distance: "#{distance}")}
   scope :date, lambda {|year| where('extract(year from date) = ?',"#{year}")}
@@ -55,10 +52,12 @@ class SwimmerTime < ActiveRecord::Base
     # end
   end
 
-  # def self.swimmer id
-  #
-  #   SwimmerTime.where(swimmer_id:  id).group_by {|e| [e.stroke,e.distance]}
-  # end
+  def self.best_times gender
+
+    a = SwimmerTime.swimmer(Swimmer.where(sex: gender)).order(:times).group_by{|e|[e.stroke,e.distance,e.age]}
+
+  end
+
 
 
 
