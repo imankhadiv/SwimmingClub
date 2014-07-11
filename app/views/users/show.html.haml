@@ -49,7 +49,7 @@
               %td= @user_profile.photo_consent
               -#%a.btn.btn-primary{href: user_path(user), role: "button"} view
     .row
-      -if @user.level == 'Swimmer'
+      -if @user.level == 'Swimmer' || @user.level == 'Parent'
 
         .col-md-5.col-md-offset-3
           .alert.alert-info.text-center

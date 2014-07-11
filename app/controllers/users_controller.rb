@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user_profile = User.get_user_profile @user.id
+    @user_profile = User.user_profile @user.id
   end
 
   def edit

@@ -56,13 +56,13 @@
       Swimmer.find_by user_id: user_id
     end
 
-    def self.get_user_profile user_id
+    def self.user_profile user_id
       user = User.find(user_id)
 
       if user.level == 'Swimmer'
         Swimmer.find_by user_id: user_id
       elsif user.level == 'Parent'
-         Swimmer.find_by user_id: user_id
+         Parent.find_by user_id: user_id
       else
         user
       end
