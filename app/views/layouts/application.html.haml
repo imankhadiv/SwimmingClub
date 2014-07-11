@@ -12,13 +12,18 @@
     = csrf_meta_tags
 
   %body
+    -#.flash-messages
+    -#  - flash.each do |name, msg|
+    -#    - if name == 'temp_user_id'
+    -#    - else
+    -#      .alert.fade.in{ class: "alert-#{flash_class(name)}" }
+    -#        %a.close{ data: { dismiss: :alert } } &times;
+    -#
     .flash-messages
       - flash.each do |name, msg|
-        - if name == 'temp_user_id'
-        - else
-          .alert.fade.in{ class: "alert-#{flash_class(name)}" }
-            %a.close{ data: { dismiss: :alert } } &times;
-            = msg
+        .alert.fade.in{ class: "alert-#{flash_class(name)}" }
+          %a.close{ data: { dismiss: :alert } } &times;
+          = msg      = msg
     #wrap
       %nav.navbar.navbar-inverse.navbar-fixed-top
         .container

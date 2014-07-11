@@ -1,5 +1,15 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_filter :check_temp_session
+
+
+  def check_temp_session
+    if session[:temp_swimmer_user_id]
+      redirect_to  new_swimmer_url, notice: 'Please Complete Your Registration' if session[:temp_swimmer_user_id]
+      redirect_to  new_parent_url, notice: 'Please Complete Your Registration' if session[:temp_parent_user_id] && !session[:temp_swimmer_user_id]
+    end
+
+  end
 
 
 
@@ -23,13 +33,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if resource.level == 'Swimmer'
 
       flash[:notice] = 'Please Complete Your Registration'
-      session[:temp_user_id] = resource.id
+      session[:temp_swimmer_user_id] = resource.id
       new_swimmer_path
 
     elsif resource.level == 'Parent'
 
       flash[:notice] = 'Please Complete Your Registration'
-      session[:temp_user_id] = resource.id
+      session[:temp_parent_user_id] = resource.id
       puts resource.id
       new_parent_path
 

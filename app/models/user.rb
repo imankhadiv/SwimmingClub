@@ -1,53 +1,74 @@
-class User < ActiveRecord::Base
-  validates :first_name,:last_name, presence: true
+  class User < ActiveRecord::Base
+    validates :first_name,:last_name, presence: true
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+    # Include default devise modules. Others available are:
+    # :confirmable, :lockable, :timeoutable and :omniauthable
+    devise :database_authenticatable, :registerable,
+           :recoverable, :rememberable, :trackable, :validatable
 
-  def active_for_authentication?
-    super && approved?
-  end
-
-  def inactive_message
-    if !approved?
-      :not_approved
-    else
-      super # Use whatever other message
+    def active_for_authentication?
+      super && approved?
     end
-  end
 
-  def self.get_awaiting_users
-    User.where(approved: false)
-  end
+    def inactive_message
+      if !approved?
+        :not_approved
+      else
+        super # Use whatever other message
+      end
+    end
 
-  def self.get_approved_users
-    User.where(approved: true)
-  end
+    def self.awaiting_users
+      users = User.where(approved: false,level: ['Committee','Coach','Welfare Officer'])
+      users += User.awaiting_swimmers
+      users += User.awaiting_parents
 
-  def  self.get_user_from_params arg
-    sliced_arg = arg.slice!(:password,:password_confirmation)
-    user = User.where(sliced_arg).last
-  end
+    end
 
-  def get_swimmer user_id
-    Swimmer.find_by user_id: user_id
-  end
+    def self.awaiting_swimmers
+      swimmers = []
+      users = User.where(approved: false, level: 'Swimmer')
+      users.each do |user|
+        swimmers << user unless (Swimmer.user user).empty?
+      end
+      swimmers
+    end
 
-  def self.get_user_profile user_id
-    user = User.find(user_id)
+    def self.awaiting_parents
+      parents = []
+      users = User.where(approved: false, level: 'Parent')
+      users.each do |user|
+          parents << user unless (Parent.user user).empty?
+      end
+      parents
+    end
 
-    if user.level == 'Swimmer'
+    def self.get_approved_users
+      User.where(approved: true)
+    end
+
+    def  self.get_user_from_params arg
+      sliced_arg = arg.slice!(:password,:password_confirmation)
+      user = User.where(sliced_arg).last
+    end
+
+    def get_swimmer user_id
       Swimmer.find_by user_id: user_id
-    elsif user.level == 'Parent'
-       Swimmer.find_by user_id: user_id
-    else
-      user
     end
-  end
-  def combined_name
-    "#{self.first_name} #{self.last_name}"
-  end
 
-end
+    def self.get_user_profile user_id
+      user = User.find(user_id)
+
+      if user.level == 'Swimmer'
+        Swimmer.find_by user_id: user_id
+      elsif user.level == 'Parent'
+         Swimmer.find_by user_id: user_id
+      else
+        user
+      end
+    end
+    def combined_name
+      "#{self.first_name} #{self.last_name}"
+    end
+
+  end

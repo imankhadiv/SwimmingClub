@@ -47,10 +47,8 @@ class ParentsController < ApplicationController
   # POST /parents
   # POST /parents.json
   def create
-    puts params
      @parent = Parent.new(parent_params)
      ids = params[:swimmer]['ids']
-    # redirect_to new_parent_url if ids.size == 1
 
     swimmers = Swimmer.where id: ids
 
@@ -60,7 +58,7 @@ class ParentsController < ApplicationController
 
          # format.html { redirect_to @parent, notice: 'Parent was successfully created.' }
          format.html { redirect_to :awaiting}
-         session[:temp_user_id] = nil
+         session[:temp_parent_user_id] = nil
          format.json { render :show, status: :created, location: @parent }
       else
         format.html { render :new }

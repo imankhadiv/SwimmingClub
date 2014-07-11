@@ -6,4 +6,6 @@ class Parent < ActiveRecord::Base
 
 
   RELATION = %w(Father Mother Guardian)
+  scope :user, lambda {|user| where(user: user)}
+
 end

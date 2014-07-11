@@ -15,6 +15,7 @@ class Swimmer < ActiveRecord::Base
   CURRENT_SQUAD = %w(A-Squad B-Squad C-Squad Youth Masters)
 
   scope :sex, lambda {|sex| where(sex: sex)}
+  scope :user, lambda {|user| where(user: user)}
 
   # def swimmer_name
   #   u = User.find(self.user_id)
