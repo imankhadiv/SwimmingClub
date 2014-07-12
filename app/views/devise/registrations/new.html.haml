@@ -18,6 +18,10 @@
             = f.email_field :email
             = f.password_field :password
             = f.password_field :password_confirmation
+            %br
+            -#= f.simple_captcha :label => "Enter numbers.."
+            = show_simple_captcha :label => 'Enter code'
+            %br
 
           .form-actions
             = f.submit 'Sign Up', :class=>'btn btn-primary btn-lg active'

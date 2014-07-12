@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_filter :check_temp_session
 
@@ -11,13 +12,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   end
 
+  def create
+
+        if simple_captcha_valid?
+        super
+      else
+        build_resource
+        clean_up_passwords(resource)
+        flash[:error] = 'There was an error with the captcha code below. Please re-enter the code and click submit.'
+        render '/app/views/devise/registrations/new'
+        flash[:error] = nil
+
+    end
+  end
+
 
 
   protected
 
   def configure_permitted_parameters
     #devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:first_name,:last_name,:level) }
-    devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name, :level]
+    devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name, :level,:captcha,:captcha_key]
 
   end
 
@@ -40,7 +55,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
       flash[:notice] = 'Please Complete Your Registration'
       session[:temp_parent_user_id] = resource.id
-      puts resource.id
       new_parent_path
 
     else

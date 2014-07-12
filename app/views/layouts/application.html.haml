@@ -21,7 +21,7 @@
     -#
     .flash-messages
       - flash.each do |name, msg|
-        .alert.fade.in{ class: "alert-#{flash_class(name)}" }
+        .alert.fade.in{ class: "alert-#{flash_class(name) unless msg.blank?}" }
           %a.close{ data: { dismiss: :alert } } &times;
           = msg      = msg
     #wrap
