@@ -12,12 +12,12 @@
         -#= devise_error_messages!
         .col-md-8
           .form_inputs
-            = f.text_field :first_name
-            = f.text_field :last_name
-            = f.select :level, %w(Administrator Committee Welfare\ Officer Swimmer Parent Coach)
-            = f.email_field :email
-            = f.password_field :password
-            = f.password_field :password_confirmation
+            = f.text_field :first_name, required: true, placeholder: 'first name'
+            = f.text_field :last_name, required: true, placeholder: 'last name'
+            = f.select :level, %w(Committee Welfare\ Officer Swimmer Parent Coach)
+            = f.email_field :email, required: true, placeholder: 'email'
+            = f.password_field :password, required: true, placeholder: 'password'
+            = f.password_field :password_confirmation, required: true
             %br
             -#= f.simple_captcha :label => "Enter numbers.."
             = show_simple_captcha :label => 'Enter code'
