@@ -43,6 +43,8 @@ gem 'jquery-ui-rails'
 
 gem 'simple_form'
 
+gem 'rails_12factor'
+
 
 
 
@@ -87,7 +89,7 @@ group :development do
 
 end
 
-
+ruby '2.1.2'
 group :development, :test do
   gem 'rspec-rails'
   # gem 'debugger'
