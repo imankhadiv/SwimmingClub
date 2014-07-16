@@ -16,6 +16,7 @@
             %th Club
             %th Venue
             %th Date
+          - values = Hash.new
           - @swimmer_times[item].each do |item|
             %tbody
               %td= item.age
@@ -23,3 +24,14 @@
               %td= item.club
               %td= item.venue
               %td= item.date
+              -#- values[item.date.year] = (item.times/10)
+
+        -#= line_chart({20.day.ago => 5, 1368174456 => 10, "2013-05-07 00:00:00 UTC" => 7}, id:'Iman')
+        -#= values
+        -#= @swimmer_times
+        -#= line_chart(Swimmer.first.swimmer_times.order(:date,:times).group_by {|e| [e.stroke,e.distance]})
+        = line_chart [{2012 => 10},{2014 => 20}], id:'Iman'
+
+        -#= line_chart({2012 => 10, 2010 => 20}, id:'Iman')
+
+
