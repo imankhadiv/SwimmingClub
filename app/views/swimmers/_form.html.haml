@@ -31,7 +31,7 @@
             = f.radio_button :photo_consent, 'Yes', label: 'Yes', inline: true
             = f.radio_button :photo_consent, 'No', label: 'No', inline: true
 
-          = f.hidden_field :user_id, value: session[:temp_user_id]
+          = f.hidden_field :user_id, value: session[:temp_swimmer_user_id]
           %hr
           = f.fields_for :address do |address|
             = render partial: 'shared/address', locals: {f: address}

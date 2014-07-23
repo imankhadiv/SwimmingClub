@@ -11,7 +11,7 @@
 
         .col-md-9
           =f.select :relation,Parent::RELATION,label: 'Relation:'
-          =f.hidden_field :user_id, value: session[:temp_user_id]
+          =f.hidden_field :user_id, value: session[:temp_parent_user_id]
           %input{type: 'hidden',name: 'swimmer[ids][]', require: true}
 
           %hr
