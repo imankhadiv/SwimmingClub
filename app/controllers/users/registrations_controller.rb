@@ -12,19 +12,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   end
 
-  # def create
-  #
-  #       if simple_captcha_valid?
-  #       super
-  #     else
-  #       build_resource
-  #       clean_up_passwords(resource)
-  #       flash[:error] = 'There was an error with the captcha code below. Please re-enter the code and click submit.'
-  #       render '/app/views/devise/registrations/new'
-  #       flash[:error] = nil
-  #
-  #   end
-  # end
+  def create
+
+        if simple_captcha_valid?
+        super
+      else
+        build_resource
+        clean_up_passwords(resource)
+        flash[:error] = 'There was an error with the captcha code below. Please re-enter the code and click submit.'
+        render '/app/views/devise/registrations/new'
+        flash[:error] = nil
+
+    end
+  end
 
 
 
