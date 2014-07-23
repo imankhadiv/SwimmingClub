@@ -89,7 +89,12 @@ group :development do
 
 end
 
-ruby '2.1.2'
+group :production do
+  ruby '2.0.0'
+
+end
+
+
 group :development, :test do
   gem 'rspec-rails'
   # gem 'debugger'
