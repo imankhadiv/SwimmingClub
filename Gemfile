@@ -28,13 +28,7 @@ gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'simple_captcha2', require: 'simple_captcha'
 
-
-
-
-
-
 gem 'bootstrap-datepicker-rails'
-
 
 gem 'bootstrap-sass', :github => 'thomas-mcdonald/bootstrap-sass'      # Twitter bootstrap in sass form
 gem 'font-awesome-rails','~> 3.2.1'  # Bootstrap's icons rendered as a font
@@ -44,9 +38,6 @@ gem 'jquery-ui-rails'
 gem 'simple_form'
 
 gem 'rails_12factor'
-
-
-
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
