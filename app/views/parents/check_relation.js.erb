@@ -1,9 +1,11 @@
 $('#_swimmer_id,#date,#child_submit,#child_form,#btn,.alert').remove();
+$('#check form').remove();
 $('#check').prepend("<%= escape_javascript render('child_form') %>");
 
 <% if @swimmer %>
     $('#swimmer').append("<%= escape_javascript render(:partial => 'parents/swimmer', :locals => { :swimmer => @swimmer }) %>");
     var v = <%= @swimmer.id %>
+
     $('<input>').attr({
         type: 'hidden',
         multiple: 'multiple',

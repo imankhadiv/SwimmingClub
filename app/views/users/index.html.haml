@@ -2,7 +2,7 @@
   .row
     .col-md-8.col-md-offset-2
       %h3 Awaiting Approval Users
-      %table.table.table-striped.table-responsive.table-customstyle#iman
+      %table.table.table-striped.table-responsive.table-customstyle
         %thead
           %tr
             %th First Name
@@ -19,14 +19,14 @@
             %td= user.email
             %td= user.level
             %td
-              %a.btn.btn-success{href: user_path(user), role: "button"} view
+              %a.btn.btn-success{href: user_path(user), role: 'button'} view
 
 
       %br
       %hr
     .col-md-8.col-md-offset-2
       %h3 Approved Users
-      %table#ti.table.table-striped.table-responsive.table-customstyle#iman
+      %table#ti.table.table-striped.table-responsive.table-customstyle
         %thead
 
           %tr
@@ -53,13 +53,13 @@
       %hr
 
 
-
-%script
-  $('.table').each(function(){
-  var v = $('#iman').width();
-  -#$('.table').css('width',v)
-  -#$('.table').width() = v
-  -#alert(v);
-  });
-  -#$('hr').css('width',$('#ti').width())
-  $('hr').css('width',$('#ti').width())
+-#
+-#%script
+-#  $('.table').each(function(){
+-#  var v = $('#iman').width();
+-#  -#$('.table').css('width',v)
+-#  -#$('.table').width() = v
+-#  -#alert(v);
+-#  });
+-#  -#$('hr').css('width',$('#ti').width())
+-#  $('hr').css('width',$('#ti').width())

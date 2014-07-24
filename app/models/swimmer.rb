@@ -32,7 +32,7 @@ class Swimmer < ActiveRecord::Base
   #  user.delete!
   #end
   def swimmer_name
-    u = User.find(id)
+    u = User.find(user_id)
     u.combined_name
   end
 

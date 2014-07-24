@@ -11,7 +11,7 @@ class ParentsController < ApplicationController
   # GET /parents/1.json
   def show
 
-    end
+  end
 
   # GET /parents/new
   def new
@@ -25,20 +25,18 @@ class ParentsController < ApplicationController
   end
 
   def check_relation
-    @swimmers = Swimmer.all
-    @swimmer = Swimmer.find(params[:swimmer_id])
-    dob = Date.parse(params[:date])
-    dob.strftime('%F')
-    puts @swimmer.date_of_birth
+
+    user = User.find_by(email: params[:email])
 
     respond_to do |format|
-      if dob == @swimmer.date_of_birth
-        @swimmers = @swimmers - Swimmer.where(id:@swimmer.id)
+
+      if user && user.valid_password?(params[:password])
+
+        @swimmer = Swimmer.find_by(user_id: user.id)
         format.js
       else
          @swimmer = nil
         format.js {}
-        format.html { render :edit }
       end
     end
 
