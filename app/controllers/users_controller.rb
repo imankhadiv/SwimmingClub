@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: [:show,:destroy]
   # before_filter :check_user_level
 
 
@@ -23,10 +23,26 @@ class UsersController < ApplicationController
   def update
 
       @user = set_user
-      @user.approved = true
-      @user.save
-      redirect_to users_url, notice: 'User was successfully approved'
+      if @user.approved
+        @user.approved = false
+      else
+        @user.approved = true
+      end
 
+      @user.save
+      redirect_to users_url, notice: 'User was successfully approved' if @user.approved
+      redirect_to users_url, notice: 'User was successfully suspended' unless @user.approved
+
+  end
+
+  # DELETE /swimmers/1
+  # DELETE /swimmers/1.json
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: 'User was successfully deleted' }
+      format.json { head :no_content }
+    end
   end
 
 

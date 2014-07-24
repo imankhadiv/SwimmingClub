@@ -7,6 +7,10 @@
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :trackable, :validatable
 
+    before_destroy { |user| Swimmer.destroy_all "user_id = #{user.id}"   }
+    before_destroy { |user| Parent.destroy_all "user_id = #{user.id}"   }
+
+
     def active_for_authentication?
       super && approved?
     end
