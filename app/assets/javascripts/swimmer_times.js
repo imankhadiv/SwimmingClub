@@ -4,7 +4,7 @@
 
 
 $(document).ready(function(){
-    $('#tb').hide();
+//    $('#tb').hide();
     $('#tabs').tabs();
     $('#swimmer_time_date').datepicker(
         {
@@ -16,13 +16,12 @@ $(document).ready(function(){
         }
     );
     $('#result').hide();
-    $('#all_best_times').hide();
 
+    $('#charts_fragment, #add_times_fragment, #best_times_fragment, #search_fragment').click(function(){
+        $('#result').hide();
+        $('#result_tbody').empty();
+        $('#result_alert').remove();
 
-    $('#tabs a').click(function(){
-        $('.alert').remove();
-        $('tbody').empty();
-//        $('#result').hide();
 
 
     });
@@ -30,15 +29,4 @@ $(document).ready(function(){
 
 });
 
-//$('#All, #best_times').click(function(){
-//
-//    $('#result').show();
-//    alert('hi')
-//
-//})
-//$('#charts, #search').click(function(){
-//
-//    $('#result').hide();
-//
-//});
 
