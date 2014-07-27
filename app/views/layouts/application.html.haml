@@ -47,12 +47,17 @@
               = navbar_link_to users_index_path, title: 'Register', identifier: :register do
                 %i.icon-user
                 Users
+              = navbar_link_to swimmers_path, title: 'Medical Condition', identifier: :medical do
+                %i.icon-ambulance
+                Medical
+
+
               - if user_signed_in?
                 = navbar_link_to destroy_user_session_path,method: :delete, title: 'Log Out', identifier: :logout do
                   %i.icon-signout
                   Log Out
               -else
-                = navbar_link_to user_session_path, method: :Post, title: 'Log In', identifier: :login do
+                = navbar_link_to new_user_session_path, method: :get, title: 'Log In', identifier: :login do
                   %i.icon-signin
                   Log In
             -#%ul.nav.navbar-nav

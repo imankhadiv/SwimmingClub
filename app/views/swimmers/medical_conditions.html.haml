@@ -1,0 +1,79 @@
+.container
+  .row
+    .col-md-5.col-md-offset-3
+      .alert.alert-info.text-center
+        %h3= "#{@swimmer.user.first_name} #{@swimmer.user.last_name}"
+
+      %table.table
+        %tr
+          %th First Name
+          %td= @swimmer.user.first_name
+        %tr
+          %th Last Name
+          %td= @swimmer.user.last_name
+        %tr
+          %th Email
+          %td= @swimmer.user.email
+        %tr
+          %th Date of birth
+          %td= @swimmer.date_of_birth
+
+  .row
+    .col-md-5.col-md-offset-3
+      .alert.alert-info.text-center
+        %h4 Medical Conditions
+      %table.table
+        %tr
+          %th Medical history
+          %td= @swimmer.medical_condition.medical_history
+        %tr
+          %th Medication
+          %td= @swimmer.medical_condition.medication
+        %tr
+          %th Allergies
+          %td= @swimmer.medical_condition.allergies
+        %tr
+          %th Disability
+          %td= @swimmer.medical_condition.disability
+        %tr
+          %th Doctor
+          %td= @swimmer.medical_condition.doctor
+
+  .row
+    .col-md-5.col-md-offset-3
+      .alert.alert-info.text-center
+        %h4 Doctor's Address
+      %table.table
+        %tr
+          %th Line1
+          %td= @swimmer.medical_condition.address.line1
+        %tr
+          %th Line2
+          %td= @swimmer.medical_condition.address.line2
+        %tr
+          %th City
+          %td= @swimmer.medical_condition.address.city
+        %tr
+          %th Postcode
+          %td= @swimmer.medical_condition.address.postcode
+        %tr
+          %th Telephone
+          %td= @swimmer.medical_condition.address.telephone
+        %tr
+          %th Emergency Contact
+          %td= @swimmer.medical_condition.address.emergency_contact
+
+
+    .col-md-2.col-md-offset-3
+      %br
+      %br
+
+
+    .row
+      .col-md-2-col-md-offset-3
+        %br
+        -#=button_to  'Delete', user_path(@user), method: :delete, data: {confirm: 'Are you sure'},id:'approve-btn', class: 'col-md-2-col-md-offset-3 btn btn-lg btn-danger'
+        -#%a.btn.btn-success.btn-lg{href:edit_user_path(@user) , role: "button"} Generate User Report
+
+    %br
+

@@ -9,13 +9,16 @@ Rails.application.routes.draw do
   end
 
   resources :swimmers do
-    get 'swimmer_times'
+    get 'swimmer_times', on: :member
+    get 'medical_conditions', on: :member
   end
 
 
   resources :addresses
 
   get 'users/index'
+
+
 
   get 'page/welcome', as: :home
 
