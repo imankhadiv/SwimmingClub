@@ -61,6 +61,7 @@ class SwimmerTimesController < ApplicationController
   # POST /swimmer_times.json
   def create
     @swimmer_time = SwimmerTime.new(swimmer_time_params)
+    puts s
 
     respond_to do |format|
       if @swimmer_time.save
@@ -109,7 +110,7 @@ class SwimmerTimesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def swimmer_time_params
-      params.require(:swimmer_time).permit(:swimmer_id, :stroke, :distance, :times, :club, :venue,:age, :date, :minutes,:seconds,:milli_seconds)
+      params.require(:swimmer_time).permit(:swimmer_id, :stroke, :distance, :times,:course, :club, :venue,:age, :date, :minutes,:seconds,:milli_seconds)
     end
     def filtering_params(params)
        params.slice(:stroke,:date,:distance,:age)

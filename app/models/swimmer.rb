@@ -1,5 +1,7 @@
 class Swimmer < ActiveRecord::Base
   belongs_to :user
+  has_one :medical_condition
+  accepts_nested_attributes_for :medical_condition, allow_destroy: true
   has_many :swimmer_times
   has_and_belongs_to_many :parents
   has_one :address, as: :addressable

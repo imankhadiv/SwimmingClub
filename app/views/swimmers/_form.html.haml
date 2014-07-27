@@ -34,7 +34,24 @@
           = f.hidden_field :user_id, value: session[:temp_swimmer_user_id]
           %hr
           = f.fields_for :address do |address|
+            .alert.alert-warning
+              %h4 Your Address
             = render partial: 'shared/address', locals: {f: address}
+          %br
+          .alert.alert-warning
+            %h4 Medical Conditions
+
+          = f.fields_for :medical_condition do |condition|
+            = condition.text_area :medical_history
+            = condition.text_area :medication
+            = condition.text_field :allergies
+            = condition.select :disability, MedicalCondition::DISABILITY
+            = condition.text_field :doctor
+            = condition.fields_for :address do |address|
+              .alert.alert-warning
+                %h4 Your Doctor's Address
+              = render partial: 'shared/address', locals: {f: address}
+
 
 
           .actions

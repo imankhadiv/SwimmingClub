@@ -10,14 +10,16 @@
     .row
       .input.col-md-2
         = f.collection_select(:swimmer_id, @swimmers, :id, :swimmer_name)
-      .input.col-md-1
-        = f.select :age, SwimmerTime::AGE
-      .input.col-md-1
+      -#.input.col-md-1
+      -#  = f.select :age, SwimmerTime::AGE
+      .input.col-md-2
         = f.select :stroke, SwimmerTime::STROKE_TYPES
       .input.col-md-1
         = f.select :distance, SwimmerTime::DISTANCE
+      -#.input.col-md-2
+      -#  = f.text_field :club
       .input.col-md-2
-        = f.text_field :club
+        = f.select :course, ['long course', 'short course']
       .input.col-md-2
         = f.text_field :venue
       .input.col-md-2

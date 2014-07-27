@@ -9,9 +9,10 @@ class SwimmerTime < ActiveRecord::Base
   SECONDS =  M + (10...60).to_a
   MILLI_SECONDS =  M + (10...100).to_a
   belongs_to :swimmer
-  validates :venue,:club,:date,:age, presence: true
+  validates :venue,:date, presence: true
   attr_accessor :minutes, :seconds, :milli_seconds
   before_save :insert_into_times
+  before_save :calculate_age
 
   scope :stroke, lambda {|stroke| where(stroke: stroke)}
   scope :distance, lambda {|distance| where(distance: "#{distance}")}
@@ -38,18 +39,14 @@ class SwimmerTime < ActiveRecord::Base
     self.times = times
   end
 
+  def calculate_age
+    self.age = self.date.year - self.swimmer.date_of_birth.year
+  end
+
   def self.go
 
     SwimmerTime.all.group(:stroke).first
 
-    # SwimmerTime::STROKE_TYPES.each do |item|
-    # SwimmerTime.all.group_by(&:stroke).keys.each do |item|
-
-      # SwimmerTime.all.group_by(&:stroke)[item].group_by(&:distance)
-      # self[key].group_by(&:distance)
-      # puts "#{key}"
-      # puts
-    # end
   end
 
   def self.best_times gender
@@ -57,11 +54,6 @@ class SwimmerTime < ActiveRecord::Base
     a = SwimmerTime.swimmer(Swimmer.where(sex: gender)).order(:times).group_by{|e|[e.stroke,e.distance,e.age]}
 
   end
-
-
-
-
-
 
 
 end
