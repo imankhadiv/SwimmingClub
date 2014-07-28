@@ -13,7 +13,7 @@
           %thead
             %th Age
             %th Times
-            %th Club
+            %th Course
             %th Venue
             %th Date
           - values = Hash.new
@@ -21,7 +21,7 @@
             %tbody
               %td= item.age
               %td= item.convert_times
-              %td= item.club
+              %td= item.course
               %td= item.venue
               %td= item.date
               -#- values[item.date.year] = (item.times/10)

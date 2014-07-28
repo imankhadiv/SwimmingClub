@@ -21,7 +21,7 @@
             %th Age
             %th Date
           %tbody
-            %td= link_to females[item].first.swimmer.swimmer_name, swimmer_swimmer_times_path(@females[item].first.swimmer_id)
+            %td= link_to females[item].first.swimmer.swimmer_name, swimmer_times_swimmer_path(@females[item].first.swimmer_id)
             %td= @females[item].first.convert_times
             %td= @females[item].first.age
             %td= @females[item].first.date
@@ -39,7 +39,7 @@
             %th Age
             %th Date
           %tbody
-            %td= link_to @males[item].first.swimmer.swimmer_name, swimmer_swimmer_times_path(@males[item].first.swimmer_id)
+            %td= link_to @males[item].first.swimmer.swimmer_name, swimmer_times_swimmer_path(@males[item].first.swimmer_id)
             %td= @males[item].first.convert_times
             %td= @males[item].first.age
             %td= @males[item].first.date

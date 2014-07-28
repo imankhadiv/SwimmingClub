@@ -5,8 +5,7 @@ class SwimmersController < ApplicationController
 
   def swimmer_times
 
-    params[:id]
-    @swimmer = Swimmer.find(params[:swimmer_id])
+    @swimmer = Swimmer.find(params[:id])
     @swimmer_times = @swimmer.details_of_times
 
     # puts @swimmer.user.first_name
