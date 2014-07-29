@@ -27,6 +27,8 @@ class UsersController < ApplicationController
         @user.approved = false
       else
         @user.approved = true
+        UserNotifier.activated(@user).deliver
+
       end
 
       @user.save

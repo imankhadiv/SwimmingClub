@@ -1,37 +1,76 @@
-.container
-
-  .alert.alert-success
-    %h2= "#{@swimmer.swimmer_name}'s Times"
-  %br
-
-  .row
-    .col-md-10.col-md-offset-1
-      -@swimmer_times.keys.each do |item|
-        .alert.alert-info
-          %caption= "Times for #{item.first} Stroke #{item.second} meter"
-        %table.table-bordered.table-condensed.table.table-striped.table-responsive.table-customstyle
-          %thead
-            %th Age
-            %th Times
-            %th Course
-            %th Venue
-            %th Date
-          - values = Hash.new
-          - @swimmer_times[item].each do |item|
-            %tbody
-              %td= item.age
-              %td= item.convert_times
-              %td= item.course
-              %td= item.venue
-              %td= item.date
-              -#- values[item.date.year] = (item.times/10)
-
-        -#= line_chart({20.day.ago => 5, 1368174456 => 10, "2013-05-07 00:00:00 UTC" => 7}, id:'Iman')
-        -#= values
-        -#= @swimmer_times
-        -#= line_chart(Swimmer.first.swimmer_times.order(:date,:times).group_by {|e| [e.stroke,e.distance]})
-        = line_chart [{2012 => 10},{2014 => 20}], id:'Iman'
-
-        -#= line_chart({2012 => 10, 2010 => 20}, id:'Iman')
-
-
+-#.container
+-#
+-#  .alert.alert-success
+-#    %h2= "#{@swimmer.swimmer_name}'s Times"
+-#  %br
+-#  :javascript
+-#    $(function(){
+-#
+-#        new Highcharts.Chart({
+-#
+-#            chart: {
+-#                renderTo: 'times_charts'
+-#            },
+-#            title: {
+-#
+-#                text: 'Swimmer Times'
+-#
+-#            },
+-#            xAxis: {
+-#               type: "date"
+-#            },
+-#            yAxis: {
+-#                title: {
+-#                  text: 'Times(seconds)'
+-#                }
+-#            },
+-#            series: [{
+-#
+-#                pointInterval:  "#{1.day.ago.year}",
+-#
+-#                data: [1, 2, 5, 7, 3]
+-#
+-#            }]
+-#
+-#
+-#
+-#
+-#        });
+-#
+-#
+-#    });
+-#
+-#  .row
+-#    #times_charts.col-md-10.col-md-offset-1
+-#
+-#  .row
+-#    .col-md-10.col-md-offset-1
+-#      -@swimmer_times.keys.each do |item|
+-#        .alert.alert-info
+-#          %caption= "Times for #{item.first} Stroke #{item.second} meter"
+-#        %table.table-bordered.table-condensed.table.table-striped.table-responsive.table-customstyle
+-#          %thead
+-#            %th Age
+-#            %th Times
+-#            %th Course
+-#            %th Venue
+-#            %th Date
+-#          - values = Hash.new
+-#          - @swimmer_times[item].each do |item|
+-#            %tbody
+-#              %td= item.age
+-#              %td= item.convert_times
+-#              %td= item.course
+-#              %td= item.venue
+-#              %td= item.date
+-#              -#- values[item.date.year] = (item.times/10)
+-#
+-#        -#= line_chart({20.day.ago => 5, 1368174456 => 10, "2013-05-07 00:00:00 UTC" => 7}, id:'Iman')
+-#        -#= values
+-#        -#= @swimmer_times
+-#        -#= line_chart(Swimmer.first.swimmer_times.order(:date,:times).group_by {|e| [e.stroke,e.distance]})
+-#        = line_chart [{2012 => 10},{2014 => 20}], id:'Iman'
+-#
+-#        -#= line_chart({2012 => 10, 2010 => 20}, id:'Iman')
+-#
+-#

@@ -33,6 +33,14 @@ class SwimmerTime < ActiveRecord::Base
     milli_sec = ((self.times%600)%100)
     "#{min}:#{sec}:#{milli_sec}"
   end
+  def times_in_seconds
+    min = self.times/600
+    sec = (self.times % 600) / 60
+    min * 60 + sec
+  end
+
+
+
 
   def insert_into_times
     times = self.minutes.to_i*600 + self.seconds.to_i*100 + milli_seconds.to_i
