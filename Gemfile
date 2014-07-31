@@ -21,11 +21,15 @@ gem 'uglifier', '~> 2.5.3'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer'
 
-gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 
-gem 'twitter-bootstrap-rails'
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
+
+
+
+
 gem 'simple_captcha2', require: 'simple_captcha'
 
 gem 'bootstrap-datepicker-rails'
@@ -81,7 +85,7 @@ group :development do
 end
 
 group :production do
-  ruby '2.0.0'
+  # ruby '2.0.0'
   gem 'rails_12factor'
 
 end

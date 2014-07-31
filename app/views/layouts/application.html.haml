@@ -5,10 +5,13 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=0.6">
     = stylesheet_link_tag 'application', media: :all
+
+    -#%link{href: "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css", rel: "stylesheet"}/
+    -#%script{src: "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"}
     -#= javascript_include_tag '//www.google.com/jsapi', 'chartkick'
-    %link{href: "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css", rel: "stylesheet"}/
+    -#%link{href: "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css", rel: "stylesheet"}/
     = javascript_include_tag 'application'
-    = favicon_link_tag '/favicon.ico'
+    -#= favicon_link_tag '/favicon.ico'
     = csrf_meta_tags
 
   %body
@@ -36,9 +39,8 @@
             %ul.nav.navbar-nav
 
               = navbar_link_to home_path, title: 'HomePage', identifier: :home do
-                .glyphicon.glyphicon-home
-                -#=fa_icon 'home', text: 'HOME'
-                HOME
+                -#.glyphicon.glyphicon-home
+                =fa_icon 'home', text: 'HOME'
 
               = navbar_link_to swimmer_times_path, title: 'Times', identifier: :times do
                 .glyphicon.glyphicon-time
@@ -69,6 +71,8 @@
 
       #navbar-background
       #main-container.container= yield
+
+
 
     #footer
       .container

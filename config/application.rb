@@ -4,10 +4,16 @@ require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(*Rails.groups)
+# Bundler.require(*Rails.groups)
+Bundler.require(:default, Rails.env)
+
 
 module ManagementSystem
   class Application < Rails::Application
+
+    # config.assets.paths << "#{Rails}/app/assets/fonts"
+    # puts #{Rails}/app/assets/fonts"
+
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

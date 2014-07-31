@@ -1,6 +1,5 @@
 /*
   *= require twitter_bootstrap
-  *= require bootstrap
   *= require font-awesome
   *= require layout
   *= require nav
@@ -10,6 +9,7 @@
   *= require rails_bootstrap_forms
   *= require bootstrap-datepicker
   *= require jquery-ui
+
 
 
 
