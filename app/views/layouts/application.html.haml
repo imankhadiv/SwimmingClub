@@ -4,10 +4,10 @@
     %title SwimmingClub
 
     <meta name="viewport" content="width=device-width, initial-scale=0.6">
-    = stylesheet_link_tag "application", media: :all
-    = javascript_include_tag "//www.google.com/jsapi", 'chartkick'
-
-    = javascript_include_tag "application"
+    = stylesheet_link_tag 'application', media: :all
+    -#= javascript_include_tag '//www.google.com/jsapi', 'chartkick'
+    %link{href: "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css", rel: "stylesheet"}/
+    = javascript_include_tag 'application'
     = favicon_link_tag '/favicon.ico'
     = csrf_meta_tags
 
@@ -36,30 +36,31 @@
             %ul.nav.navbar-nav
 
               = navbar_link_to home_path, title: 'HomePage', identifier: :home do
-                %i.icon-home
+                .glyphicon.glyphicon-home
+                -#=fa_icon 'home', text: 'HOME'
                 HOME
+
               = navbar_link_to swimmer_times_path, title: 'Times', identifier: :times do
-                %i.icon-time
+                .glyphicon.glyphicon-time
+
                 Times
+
+
+                -#=fa_icon 'clock-o', text: 'Times'
               = navbar_link_to new_user_registration_path, title: 'Register', identifier: :register do
                 %i.icon-user
                 Register
               = navbar_link_to users_index_path, title: 'Register', identifier: :register do
-                %i.icon-user
-                Users
+                =fa_icon 'user', text:'Users'
               = navbar_link_to swimmers_path, title: 'Medical Condition', identifier: :medical do
-                %i.icon-ambulance
-                Medical
-
+                =fa_icon 'ambulance', text: 'Medical'
 
               - if user_signed_in?
                 = navbar_link_to destroy_user_session_path,method: :delete, title: 'Log Out', identifier: :logout do
-                  %i.icon-signout
-                  Log Out
+                  =fa_icon 'sign-out', text: 'Log Out'
               -else
                 = navbar_link_to new_user_session_path, method: :get, title: 'Log In', identifier: :login do
-                  %i.icon-signin
-                  Log In
+                  =fa_icon 'sign-in', text: 'Log In'
             -#%ul.nav.navbar-nav
             -#  = navbar_link_to :calendars, title: "Event Calendar", identifier: :calendar do
             -#    %i.icon-calendar

@@ -8,6 +8,13 @@ class SwimmersController < ApplicationController
     @swimmer = Swimmer.find(params[:id])
     @swimmer_times = @swimmer.details_of_times
 
+    time = SwimmerTime.where(swimmer_id:params[:id]).sort_by {|date| date.date}
+    @years_ago = Time.now.year - time.first.date.year
+
+    puts @years_ago
+    puts 'hello world'
+
+
     # puts @swimmer.user.first_name
 
   end
