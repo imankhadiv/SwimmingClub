@@ -1,0 +1,117 @@
+<div class="container">
+  <div class="alert alert-success">
+    <h2>
+      <%= "#{@swimmer.swimmer_name}'s Times" %>
+    </h2>
+  </div>
+  <br/>
+  <script>
+
+      $(function(){
+
+
+
+          new Highcharts.Chart({
+
+              chart: {
+                  renderTo: 'times_charts'
+              },
+              title: {
+
+                  text: 'Swimmer Times'
+
+              },
+              xAxis: {
+                  type: "datetime",
+                  dateTimeLabelFormats:{
+                      month: '%Y'
+                  }
+//                  formatter: function() {
+//                      return Highcharts.dateFormat('%Y %a %b', this.value);
+//                  }
+              },
+              yAxis: {
+                  title: {
+                      text: 'Times(seconds)'
+                  }
+              },
+              series: [
+
+                  <% @swimmer_times.keys.each do |key| %>
+                  {
+                  name: '<%= "#{key.first} #{key.second}m" %>',
+                  pointInterval: <%= 1.year * 1000 %>,
+                  pointStart: <%= @years_ago.years.ago.to_i * 1000  %>,
+
+                  data: <%= @swimmer_times[key].map  {|item| item.times_in_seconds} %>
+
+
+              },
+              <% end %>
+
+              ]
+
+
+
+
+          });
+
+
+      });
+
+
+  </script>
+  <div class="row">
+
+  </div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1" id="times_charts"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <% @swimmer_times.keys.each do |item| %>
+          <div class="alert alert-info">
+            <caption>
+              <%= "Times for #{item.first} Stroke #{item.second} meter" %>
+            </caption>
+          </div>
+          <table class="table-bordered table-condensed table table-striped table-responsive table-customstyle">
+            <thead>
+            <th>Age</th>
+            <th>Times</th>
+            <th>Course</th>
+            <th>Venue</th>
+            <th>Date</th>
+            </thead>
+            <% values = Hash.new %>
+            <% @swimmer_times[item].each do |item| %>
+                <tbody>
+                <td>
+                  <%= item.age %>
+                </td>
+                <td>
+                  <%= item.convert_times %>
+                </td>
+                <td>
+                  <%= item.course %>
+                </td>
+                <td>
+                  <%= item.venue %>
+                </td>
+                <td>
+                  <%= item.date %>
+                </td>
+                <% #- values[item.date.year] = (item.times/10) %>
+                </tbody>
+            <% end %>
+          </table>
+          <% #= line_chart({20.day.ago => 5, 1368174456 => 10, "2013-05-07 00:00:00 UTC" => 7}, id:'Iman') %>
+          <% #= values %>
+          <% #= @swimmer_times %>
+          <% #= line_chart(Swimmer.first.swimmer_times.order(:date,:times).group_by {|e| [e.stroke,e.distance]}) %>
+          <%#= line_chart [{2012 => 10},{2014 => 20}], id:'Iman' %>
+          <% #= line_chart({2012 => 10, 2010 => 20}, id:'Iman') %>
+      <% end %>
+    </div>
+  </div>
+</div>
