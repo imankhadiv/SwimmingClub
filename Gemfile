@@ -91,10 +91,13 @@ group :development, :test do
   # gem 'debugger'
   gem 'pry-rails'
 end
-#gem 'rails_12factor', group::production
+gem 'rails_12factor', group: :production
+
 #gem 'unicorn'
 #gem 'webshims-rails'
 gem 'rack-cache'
 gem 'nokogiri', '~> 1.6.1'
 
 gem "chartkick"
+
+gem 'sprockets-rails', :require => 'sprockets/railtie'
