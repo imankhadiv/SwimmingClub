@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  # get 'calendar/index'
+
   resources :parents
+
+  resources :calendar, only: :index
 
   post 'parents/check_relation', as: :check
 

@@ -34,10 +34,12 @@
               %span.icon-bar
           .collapse.navbar-collapse
             %ul.nav.navbar-nav
-
               = navbar_link_to home_path, title: 'HomePage', identifier: :home do
                 %i.icon-home
                 HOME
+              = navbar_link_to calendar_index_path, title: 'Calandar', identifier: :calendar do
+                %i.icon-calendar
+                  Calendar
               = navbar_link_to swimmer_times_path, title: 'Times', identifier: :times do
                 %i.icon-time
                 Times

@@ -28,6 +28,8 @@ gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'simple_captcha2', require: 'simple_captcha'
 
+gem "watu_table_builder", :require => "table_builder"
+gem 'event-calendar', :require => 'event_calendar'
 gem 'bootstrap-datepicker-rails'
 
 gem 'bootstrap-sass', :github => 'thomas-mcdonald/bootstrap-sass'      # Twitter bootstrap in sass form

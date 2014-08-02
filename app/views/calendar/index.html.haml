@@ -1,0 +1,41 @@
+
+#calendar
+  .container
+    %br
+    .row
+      %h3
+        Calendar
+
+
+    .row
+      .col-md-3
+        %h3.alert.alert-success
+
+          %ularrow= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d")
+          %mon= @date.strftime("%B %Y")
+          %ularrow= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d")
+    = calendar_for @events, :year => @date.year, :month => @date.month do |calendar|
+      = calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday')
+      - calendar.day(:day_method => :created_at) do |date, events|
+        = date.day
+        %p
+        -#
+        -#- for event in events
+        -#  - if(event.event_name.eql?'ShowDate')
+        -#    .linkshow
+        -#      %a
+        -#        = link_to h(event .title), event
+        -#  - elsif(event.event_name.eql?"Social")
+        -#    .linksocial
+        -#      %a
+        -#        = link_to h(event .title), event
+        -#  - elsif(event.event_name.eql?"Training")
+        -#    .linktraining
+        -#      %a
+        -#        = link_to h(event .title), event
+        -#  - elsif(event.event_name.eql?"Workshop")
+        -#    .linkworkshop
+        -#      %a
+        -#        = link_to h(event .title), event
+    %br
+
