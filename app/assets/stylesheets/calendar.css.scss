@@ -1,3 +1,237 @@
 // Place all the styles related to the Calendar controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#calendar table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#calendar td,
+#calendar th {
+  font-family: 'Lato';
+  font-size: 16px;
+  padding: 6px;
+  border: 1px solid #fff;
+}
+
+#calendar th {
+  background: #26521C;
+  color: #FFF;
+  text-align: center;
+  font-weight: normal;
+  width: 14.2857142857143%;
+
+}
+
+#calendar td {
+  background: #a5c4e0;
+  color: #0e0e0e;
+  height: 80px;
+  vertical-align: top;
+  text-align: center;
+  font-weight: normal;
+  font-size: 20px;
+
+}
+
+#calendar .notmonth {
+  background: rgba(165, 196, 224, 0.58);
+  color: rgba(34, 34, 122, 0.53)
+}
+
+#calendar #month {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+#calendar #month a, #calendar #month a:hover {
+  text-decoration: none;
+  padding: 0 10px;
+  color: #49a6ed;
+}
+
+#calendar .today {
+  background-color: #36618d;
+  font-weight: bold;
+  font-size: 50px;
+  color:#fff
+}
+
+
+#calendar mon{
+  font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+  margin: .25em 0;
+  font-weight: 100;
+  font-size: 25px;
+  font-weight: normal;
+  text-align:center;
+  color:#666
+}
+
+#calendar ularrow a{
+
+  margin: 0;
+  margin-top: 0px;
+  padding-left: 3px;
+  font-size: 24px;
+  text-align: center;
+  font-weight: normal;
+  color: #666;
+  display: inline;
+}
+
+
+
+
+#calendar .linkshow a{
+  font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+  display: block;
+  color: rgb(255, 255, 255);
+  margin: 0;
+  margin-top: 0px;
+  padding-left: 3px;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  background: #00A3A3;
+  color: #FFF;
+  border: 0px none;
+  outline: 0px none;
+  width: 100%;
+}
+
+#calendar .linktraining a{
+  font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+  display: block;
+  color: rgb(255, 255, 255);
+  margin: 0;
+  margin-top: 0px;
+  padding-left: 3px;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  background: #FE7C22;
+  color: #FFF;
+  border: 0px none;
+  outline: 0px none;
+  width: 100%;
+}
+
+#calendar .linkworkshop a{
+  font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+  display: block;
+  color: rgb(255, 255, 255);
+  margin: 0;
+  margin-top: 0px;
+  padding-left: 3px;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  background: #6BA5E7;
+  color: #FFF;
+  border: 0px none;
+  outline: 0px none;
+  width: 100%;
+}
+
+#calendar .linksocial a{
+  font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+  display: block;
+  color: rgb(255, 255, 255);
+  margin: 0;
+  margin-top: 0px;
+  padding-left: 3px;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  background: #691BB8;
+  color: #FFF;
+  border: 0px none;
+  outline: 0px none;
+  width: 100%;
+}
+
+
+
+#calendar .buttonshow a{
+  font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+  display: inline;
+  text-align: center;
+  font-size: 16px;
+  padding-top:35px;
+  text-transform: uppercase;
+  background: #00A3A3;
+  color: #FFF;
+  border: 0px none;
+  outline: 0px none;
+  width: 130px;
+  height: 130px;
+  float:left;
+
+}
+
+#calendar .buttonworkshop a{
+  font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+  display: inline;
+  text-align: center;
+  font-size: 16px;
+  padding-top:35px;
+  text-transform: uppercase;
+  background: #6BA5E7;
+  color: #FFF;
+  border: 0px none;
+  outline: 0px none;
+  width: 130px;
+  height: 130px;
+  float:left;
+
+
+}
+
+#calendar .buttonsocial a{
+  font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+  display: inline;
+  text-align: center;
+  font-size: 16px;
+  padding-top:35px;
+  text-transform: uppercase;
+  background: #691BB8;
+  color: #FFF;
+  border: 0px none;
+  outline: 0px none;
+  width: 130px;
+  height: 130px;
+  float:left;
+
+
+}
+
+
+#calendar .buttontraining a{
+  font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+  display: inline;
+  text-align: center;
+  font-size: 16px;
+  padding-top:35px;
+  text-transform: uppercase;
+  background: #FE7C22;
+  color: #FFF;
+  border: 0px none;
+  outline: 0px none;
+  width: 130px;
+  height: 130px;
+  float:left;
+
+}
+
+
+
+#calendar li {
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  text-align: center;
+}
