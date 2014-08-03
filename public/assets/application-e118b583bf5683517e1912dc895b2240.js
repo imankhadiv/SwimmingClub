@@ -30372,6 +30372,25 @@ return $.widget( "ui.tooltip", {
 
 
 }).call(this);
+(function() {
+
+
+}).call(this);
+
+$(document).ready(function(){
+
+  $('#event_date').datepicker(
+    {
+      dateFormat: 'dd-mm-yy',
+      changeYear: 'true',
+      changeMonth: 'true',
+      yearRange: '+0:+10',
+      required: 'true'
+
+    }
+  );
+
+});
 /*
  Highcharts JS v4.0.3 (2014-07-03)
 
