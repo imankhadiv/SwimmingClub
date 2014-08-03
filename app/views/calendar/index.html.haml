@@ -11,7 +11,8 @@
     .row
 
       .col-md-2.col-md-offset-1
-
+        %h1
+        %br
         = link_to 'Add New Event',new_event_path, class: '.btn btn-primary btn-lg'
 
       .col-md-3.col-md-offset-8
@@ -24,28 +25,16 @@
     .row
 
       .col-md-10.col-md-offset-1
+
         = calendar_for @events, :year => @date.year, :month => @date.month do |calendar|
           = calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday')
-          - calendar.day(:day_method => :created_at) do |date, events|
+          - calendar.day(:day_method => :date) do |date, events|
             = date.day
             %p
-            -#
-            -#- for event in events
-            -#  - if(event.event_name.eql?'ShowDate')
-            -#    .linkshow
-            -#      %a
-            -#        = link_to h(event .title), event
-            -#  - elsif(event.event_name.eql?"Social")
-            -#    .linksocial
-            -#      %a
-            -#        = link_to h(event .title), event
-            -#  - elsif(event.event_name.eql?"Training")
-            -#    .linktraining
-            -#      %a
-            -#        = link_to h(event .title), event
-            -#  - elsif(event.event_name.eql?"Workshop")
-            -#    .linkworkshop
-            -#      %a
-            -#        = link_to h(event .title), event
+
+            - for event in events
+              .event-link
+                %a
+                  = link_to h(event .title), event
         %br
 

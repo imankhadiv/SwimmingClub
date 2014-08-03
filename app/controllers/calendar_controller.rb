@@ -3,7 +3,7 @@ class CalendarController < ApplicationController
 
   def index
 
-    @events = User.all
+    @events = Event.all
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
 
   end
