@@ -1,0 +1,22 @@
+
+= bootstrap_form_for(@event) do |f|
+
+  .form-inputs
+    = f.text_field :title
+    = f.text_area :details
+    .row.col-md-3
+      = f.text_field :date
+    .col-md-5.col-md-offset-1
+      = f.time_select :time
+
+    = f.number_field :duration, label: 'Duration(in minutes)'
+    = f.hidden_field :user_id, value: current_user.id if current_user
+    -#= f.input :notification
+
+  .form-actions
+    = f.submit 'Create', :class=>'btn btn-primary btn-lg active'
+
+  %br
+  %br
+  %br
+

@@ -1,0 +1,27 @@
+.container
+  .row
+    #event.col-md-5.col-md-offset-3
+      #event_alert.alert.alert-info.text-center
+        %h4= @event.title
+
+      %table.table.alert.alert-success
+        %tr
+          %th Details:
+          %td= @event.details
+        %tr
+          %th Date:
+          %td= @event.date
+        %tr
+          %th Time:
+          %td= @event.time.strftime('%H:%M')
+        %tr
+          %th Duration:
+          %th= "#{@event.duration} minutes"
+        %tr
+          %th Created By:
+          %td= "#{@event.user.first_name} #{@event.user.last_name}" if @event.user
+        %tr
+      = link_to 'Back', events_path, class: 'btn btn-success'
+    .col-md-2.col-md-offset-3
+      %br
+      %br

@@ -1,0 +1,12 @@
+.container
+  %br
+  %br
+  .event.col-md-4.col-md-offset-4
+    .alert.alert-info.text-center
+      %h4  Editing Event
+
+    = render 'form'
+
+    = link_to 'Show', @event
+    \|
+    = link_to 'Back', events_path

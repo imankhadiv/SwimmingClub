@@ -1,0 +1,39 @@
+
+.container
+  .row
+    %br
+    %br
+  .row
+    .col-md-2.col-md-offset-5
+      .alert.alert-info.text-center
+        %h3
+          Events
+
+
+
+    .col-md-10.col-md-offset-1
+      %table.table.table-striped.table-responsive.table-customstyle
+        %thead
+          %tr
+            %th Title
+            %th Details
+            %th Date
+            %th Time
+            %th Duration
+            %th
+            %th
+            %th
+
+        - @events.each do |event|
+          %tbody
+            %tr
+              %td= event.title
+              %td= truncate(strip_tags(event.details), length: 30)
+              %td= event.date
+              %td= event.time.strftime('%H:%M')
+              %td= event.duration
+              %td= link_to 'Show', event_path(event)
+              %td= link_to 'Edit', edit_event_path(event)
+              %td= link_to 'Destroy', event, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+
