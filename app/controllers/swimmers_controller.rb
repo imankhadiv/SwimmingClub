@@ -57,7 +57,7 @@ class SwimmersController < ApplicationController
     respond_to do |format|
       if @swimmer.save
         #format.html { redirect_to @swimmer, notice: 'Swimmer was successfully created.' }
-        format.html { redirect_to :awaiting }
+        format.html { redirect_to :awaiting, notice: 'Sign up successful' }
         session[:temp_swimmer_user_id] = nil
 
 

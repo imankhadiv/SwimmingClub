@@ -5,7 +5,7 @@ $(document).ready(function(){
         if (v){
             return true
         }else {
-            $('#check').append("<div class='alert alert-danger' role='alert'><br/><p>Plase add your child</div></p>");
+            $('#check').append("<div class='alert alert-danger' role='alert'><br/><p>Please add your child</div></p>");
             return false;
         }
     });
