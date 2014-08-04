@@ -2,20 +2,20 @@
 #calendar
   .container
     %br
-    .row
-      .col-md-3.col-md-offset-4.alert.alert-info.text-center
-        %h3 Club Calendar
-      %br
+    -#.row
+    -#  .col-md-3.col-md-offset-4.alert.alert-info.text-center
+    -#    %h3 Club Calendar
+    -#  %br
 
 
     .row
 
-      .col-md-2.col-md-offset-1
+      .col-md-2.col-md-offset-1{style: {display: 'inline'}}
         %h1
         %br
         = link_to 'Add New Event',new_event_path, class: '.btn btn-primary btn-lg'
 
-      .col-md-3.col-md-offset-8
+      .col-md-3.col-md-offset-5
         %h3.alert.alert-success.text-center
 
           %ularrow= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d")

@@ -24,7 +24,7 @@
     end
 
     def self.awaiting_users
-      users = User.where(approved: false,level: ['Committee','Coach','Welfare Officer'])
+      users = User.where(approved: false,level: ['Committee','Coach','Welfare Officer','Administrator'])
       users += User.awaiting_swimmers
       users += User.awaiting_parents
 
