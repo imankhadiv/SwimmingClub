@@ -9,6 +9,7 @@ FactoryGirl.define do
     sex 'Male'
     photo_consent 'True'
     current_squad 'B-Squad'
-  end
 
+
+  end
 end
