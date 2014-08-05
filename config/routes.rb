@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
   # get 'calendar/index'
 
-  resources :parents
+  resources :parents do
+    get 'cancel_parent_registration', on: :collection
+
+  end
 
   resources :calendar, only: :index
 
@@ -17,6 +20,7 @@ Rails.application.routes.draw do
   resources :swimmers do
     get 'swimmer_times', on: :member
     get 'medical_conditions', on: :member
+    get 'cancel_swimmer_registration', on: :collection
   end
 
 

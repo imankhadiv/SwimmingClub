@@ -32,10 +32,14 @@ class SwimmersController < ApplicationController
 
   # GET /swimmers/new
   def new
+    if session[:temp_swimmer_user_id]
     @swimmer = Swimmer.new
     @swimmer.build_address
     @swimmer.build_medical_condition
     @swimmer.medical_condition.build_address
+    else
+      redirect_to new_user_registration_path, notice: 'Sing Up'
+    end
     # medical = @swimmer.build_medical_condition
     # doctor_address = medical.build_address
   end
@@ -91,6 +95,13 @@ class SwimmersController < ApplicationController
       format.html { redirect_to swimmers_url, notice: 'Swimmer was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def cancel_swimmer_registration
+    user = User.find(session[:temp_swimmer_user_id])
+    user.destroy
+    session[:temp_swimmer_user_id] = nil
+    redirect_to new_user_registration_url, notice: "Registration canceled!\n Please try again"
   end
 
   private

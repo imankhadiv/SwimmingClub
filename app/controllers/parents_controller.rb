@@ -15,9 +15,13 @@ class ParentsController < ApplicationController
 
   # GET /parents/new
   def new
-    @parent = Parent.new
-    @parent.build_address
-    @swimmers = Swimmer.all
+    if session[:temp_parent_user_id]
+      @parent = Parent.new
+      @parent.build_address
+      @swimmers = Swimmer.all
+    else
+      redirect_to new_user_registration_path, notice: 'Sign Up'
+    end
   end
 
   # GET /parents/1/edit
@@ -88,6 +92,14 @@ class ParentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def cancel_parent_registration
+    user = User.find(session[:temp_parent_user_id])
+    user.destroy
+    session[:temp_parent_user_id] = nil
+    redirect_to new_user_registration_url, notice: "Registration canceled!\n Please try again"
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
