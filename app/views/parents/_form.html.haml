@@ -11,7 +11,7 @@
         =f.select :relation,Parent::RELATION,label: 'Relation:'
         =f.hidden_field :user_id, value: session[:temp_parent_user_id] unless current_user
         =f.hidden_field :user_id, value: current_user.id if current_user
-        %input{type: 'hidden',name: 'swimmer[ids][]', require: true}
+        %input{type: 'hidden',name: 'swimmer[ids][]', require: true,id: 'new_parent'}
 
         %hr
         = f.fields_for :address do |address|
@@ -40,18 +40,18 @@
     %br
     .alert.alert-warning
       %h4 Your child/children
-    - if current_user
-      %ol
-      - current_user.parent.swimmers.each do |swimmer|
+    .col-md-12.col-md-offset-1
+      - if current_user
         #parent-swimmer
           #swimmer
-            %li= swimmer.swimmer_name
-    -unless current_user
-      %br
-      %br
+            %ul
+              - current_user.parent.swimmers.each do |swimmer|
+                %li= swimmer.swimmer_name
+      -unless current_user
         #parent-swimmer
           %ol
-          #swimmer
+            #swimmer
+
 
 
 
