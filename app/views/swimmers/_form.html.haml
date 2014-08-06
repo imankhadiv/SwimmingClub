@@ -56,7 +56,7 @@
           = f.submit 'Submit', :class=>'btn btn-primary btn-lg active'
           %br
           %br
-          =link_to 'Cancel', cancel_swimmer_registration_swimmers_path(:temp_swimmer_user_id),data: {confirm: 'Are you sure?'}, class: 'col-md-2-col-md-offset-3 btn  btn-danger' unless current_user
+          =link_to 'Cancel', cancel_swimmer_registration_swimmers_path(:temp_swimmer_user_id),data: {confirm: 'Are you sure?'}, class: 'col-md-4 btn  btn-danger' unless current_user
           %br
           %br
             -#=button_tag   'Cancel', user_path(:temp_swimmer_user_id), method: :delete, data: {confirm: 'Are you sure'}, class: 'btn btn-lg btn-danger'

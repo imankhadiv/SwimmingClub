@@ -54,11 +54,12 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      if :temp_swimmer_user_id
+      if session[:temp_swimmer_user_id] || session[:temp_parent_swimmer_id]
+
         format.html { redirect_to new_user_url, notice: 'Your registration has been canceled'}
         session[:temp_swimmer_user_id] = nil
+        session[:temp_swimmer_parent_id] = nil
       else
-
       format.html { redirect_to users_url, notice: 'User was successfully deleted' }
       end
       format.json { head :no_content }

@@ -31,12 +31,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def configure_permitted_parameters
     #devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:first_name,:last_name,:level) }
     devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name, :level,:captcha,:captcha_key]
+    devise_parameter_sanitizer.for(:account_update) << [:first_name, :last_name, :level]
 
   end
 
   def after_sign_up_path_for(resource)
 
+    users_profile_url(resource)
+
+
   end
+
+  # def after_update_path_for(resource)
+  #
+  #   redirect_to users_profile_url(resource)
+  # end
 
 
   def after_inactive_sign_up_path_for(resource)
@@ -65,7 +74,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    current_user
+    puts resource
+    users_profile_url resource
   end
 
 

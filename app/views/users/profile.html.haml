@@ -56,12 +56,32 @@
       .col-md-5.col-md-offset-3
         .alert.alert-info.text-center
           %h4 Your address
-        = render partial: 'shared/address', locals: {address: @user.swimmer.address}
+        = render partial: 'shared/address', locals: {address: @user.swimmer.address} if @user.level == 'Swimmer'
+        = render partial: 'shared/address', locals: {address: @user.parent.address} if @user.level == 'Parent'
+
+  .row
+    - if @user.level == 'Parent' && !@user.parent.swimmers.empty?
+      .col-md-5.col-md-offset-3
+        .alert.alert-info.text-center
+          %h4 Your Child/Children
+        %table.table
+          %thead
+            - @user.parent.swimmers.each do |swimmer|
+              %tr
+                %td= "#{swimmer.user.first_name} #{swimmer.user.last_name}"
 
 
   .row
     .col-md-2.col-md-offset-3
-      =link_to 'Edit Your Profile', edit_swimmer_path(@user.swimmer), class: 'btn btn-lg btn-primary' if current_user.level = 'Swimmer'
-      -#=link_to 'Edit Your Profile', edit_parent_path(@user.parent), class: 'btn btn-lg btn-primary' if current_user.level = 'Parent'
+      - if @user.level == 'Swimmer'
+        =link_to 'Edit Your Details', edit_swimmer_path(@user.swimmer), class: 'btn btn-lg btn-primary'
+        =link_to 'Edit Your Account', edit_registration_path(@user), {class: 'btn btn-lg btn-primary', style: 'margin-top:13px'}
+      - elsif @user.level == 'Parent'
+        =link_to 'Edit Your Details', edit_parent_path(@user.parent), class: 'btn btn-lg btn-primary'
+        =link_to 'Edit Your Account', edit_registration_path(@user), {class: 'btn btn-lg btn-primary', style: 'margin-top:13px'}
+      -else
+        = @user.level
+        = link_to 'Edit Your Profile', edit_registration_path(@user), class: 'btn btn-lg btn-primary'
+
 %br
 

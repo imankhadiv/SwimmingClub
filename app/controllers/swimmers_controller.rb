@@ -78,7 +78,7 @@ class SwimmersController < ApplicationController
   def update
     respond_to do |format|
       if @swimmer.update(swimmer_params)
-        format.html { redirect_to users_profile_url, notice: 'Your account was successfully updated.' }
+        format.html { redirect_to users_profile_url, notice: 'Your details was successfully updated.' }
         format.json { render :show, status: :ok, location: @swimmer }
       else
         format.html { render :edit }

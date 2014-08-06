@@ -1,30 +1,75 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  %div
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      Currently waiting confirmation for: #{resource.unconfirmed_email}
-  %div
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  %div
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  %div
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password, autocomplete: "off"
-  %div= f.submit "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+.container
+  %br
+  .row
+
+    .sign-up.col-md-4.col-md-offset-4
+      %h3 Sign up
+      %br
+
+
+
+      = bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name),html: { method: :put }) do |f|
+        -#= devise_error_messages!
+        .col-md-8
+          .form_inputs
+            = f.text_field :first_name, required: true, placeholder: 'first name'
+            = f.text_field :last_name, required: true, placeholder: 'last name'
+            -#= f.select :level, %w(Committee Welfare\ Officer Swimmer Parent Coach)
+            = f.email_field :email, required: true, placeholder: 'email'
+            %i (leave blank if you don't want to change it)
+
+            = f.password_field :password, placeholder: 'password'
+            = f.password_field :password_confirmation
+            %br
+            %i (we need your current password to confirm your changes)
+            = f.password_field :current_password, required: true
+
+            -#= show_simple_captcha :label => 'Enter code'
+            %br
+
+          .form-actions
+            = f.submit 'Update', :class=>'btn btn-primary btn-lg active'
+            %br
+            %br
+      #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class: 'btn btn-primary btn-danger active'}
+    %br
+  %br
+%br
+%br
+
+
+
+
+
+
+-#
+-#%h2
+-#  Edit #{resource_name.to_s.humanize}
+-#= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+-#  = devise_error_messages!
+-#  %div
+-#    = f.label :email
+-#    %br/
+-#    = f.email_field :email, autofocus: true
+-#  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+-#    %div
+-#      Currently waiting confirmation for: #{resource.unconfirmed_email}
+-#  %div
+-#    = f.label :password
+-#    %i (leave blank if you don't want to change it)
+-#    %br/
+-#    = f.password_field :password, autocomplete: "off"
+-#  %div
+-#    = f.label :password_confirmation
+-#    %br/
+-#    = f.password_field :password_confirmation, autocomplete: "off"
+-#  %div
+-#    = f.label :current_password
+-#    %i (we need your current password to confirm your changes)
+-#    %br/
+-#    = f.password_field :current_password, autocomplete: "off"
+-#  %div= f.submit "Update"
+-#%h3 Cancel my account
+-#%p
+-#  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+-#= link_to "Back", :back
