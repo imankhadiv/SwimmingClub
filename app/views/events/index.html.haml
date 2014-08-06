@@ -20,9 +20,7 @@
             %th Date
             %th Time
             %th Duration
-            %th
-            %th
-            %th
+            %th Action
 
         - @events.each do |event|
           %tbody
@@ -32,8 +30,11 @@
               %td= event.date
               %td= event.time.strftime('%H:%M')
               %td= event.duration
-              %td= link_to 'Show', event_path(event)
-              %td= link_to 'Edit', edit_event_path(event)
-              %td= link_to 'Destroy', event, :method => :delete, :data => { :confirm => 'Are you sure?' }
+              %td
+                %a.btn.btn-success{href: event_path(event), role: 'button'} view
+
+              -#%td= link_to 'Show', event_path(event)
+              -#%td= link_to 'Edit', edit_event_path(event)
+              -#%td= link_to 'Destroy', event, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 
