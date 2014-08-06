@@ -19,9 +19,8 @@
           %th Level
           %td= @user.level
     .col-md-2.col-md-offset-3
-      %br
-      -#%a.btn.btn-primary.btn-lg{href:edit_user_registration_path(@user) , role: "button"} Generate User Report
   .row
+
     -if @user.level == 'Swimmer'
       .col-md-5.col-md-offset-3
         .alert.alert-info.text-center
@@ -51,24 +50,18 @@
               %td= @user.swimmer.photo_consent
 
               -#%a.btn.btn-primary{href: user_path(user), role: "button"} view
-    .row
-      -if @user.level == 'Swimmer' || @user.level == 'Parent'
+  .row
+    -if @user.level == 'Swimmer' || @user.level == 'Parent'
 
-        .col-md-5.col-md-offset-3
-          .alert.alert-info.text-center
-            %h4 Address
-          = render partial: 'shared/address', locals: {address: @user.swimmer.address} if @user.level == 'Swimmer'
-          = render partial: 'shared/address', locals: {address: @user.parent.address} if @user.level == 'Parent'
+      .col-md-5.col-md-offset-3
+        .alert.alert-info.text-center
+          %h4 Your address
+        = render partial: 'shared/address', locals: {address: @user.swimmer.address}
 
-    .row
-      .col-md-2-col-md-offset-3
-        =button_to 'Approve', user_path(@user), method: :put,id:'approve-btn', class: 'col-md-2-col-md-offset-3 btn btn-lg btn-success' unless @user.approved
-        =button_to 'Suspend', user_path(@user), method: :put,id:'approve-btn', class: 'col-md-2-col-md-offset-3 btn btn-lg btn-success' if @user.approved
-    .row
-      .col-md-2-col-md-offset-3
-        %br
-        =button_to  'Delete', user_path(@user), method: :delete, data: {confirm: 'Are you sure'},id:'approve-btn', class: 'col-md-2-col-md-offset-3 btn btn-lg btn-danger'
-        -#%a.btn.btn-success.btn-lg{href:edit_user_path(@user) , role: "button"} Generate User Report
 
-    %br
+  .row
+    .col-md-2.col-md-offset-3
+      =link_to 'Edit Your Profile', edit_swimmer_path(@user.swimmer), class: 'btn btn-lg btn-primary' if current_user.level = 'Swimmer'
+      -#=link_to 'Edit Your Profile', edit_parent_path(@user.parent), class: 'btn btn-lg btn-primary' if current_user.level = 'Parent'
+%br
 

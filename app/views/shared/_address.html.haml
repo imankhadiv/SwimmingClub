@@ -1,8 +1,20 @@
-
-= f.text_field :line1, control_col: 'col-sm-6',label: 'Line 1:', required: true
-= f.text_field :line2, control_col: 'col-sm-6',label: 'Line 2:'
-= f.text_field :city, control_col: 'col-sm-3',label: 'City/town:', required: true, title: 'telephone'
-= f.text_field :postcode, control_col: 'col-sm-3',label: 'Postcode:',required: true
-= f.telephone_field :telephone, control_col: 'col-sm-3',label: 'Telephone:', required:true, pattern: '^[0-9]{10,14}$', title: 'Must be at least 10 digits'
-= f.phone_field :emergency_contact,required: true, control_col: 'col-sm-4',label: 'Emergency Contact:', pattern: '^[0-9]{10,14}', title: 'Must be at least 10 digits'
--#= f.text_field :addressable_type
+%table.table
+  %thead
+    %tr
+      %th Line1
+      %td= address.line1
+    %tr
+      %th Line2
+      %td= address.line2
+    %tr
+      %th City
+      %td= address.city
+    %tr
+      %th Postcode
+      %td= address.postcode
+    %tr
+      %th Telephone
+      %td= address.telephone
+    %tr
+      %th Emergency Contact
+      %td= address.emergency_contact

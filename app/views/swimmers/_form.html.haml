@@ -1,66 +1,64 @@
-.container
-  .page-header{style: 'text-align:center'}
-    %h2 Register
-  .row
+.row
 
-    .sign-up.col-md-8.col-md-offset-2
-      %br
+  .sign-up.col-md-8.col-md-offset-2
+    %br
 
-      -#= bootstrap_form_for (@swimmer, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |f|
-      = bootstrap_form_for(@swimmer,html: {onsubmit:'return go()' } )do |f|
-        -#- if @swimmer.errors.any?
-        -#  #error_explanation
-        -#    %h2= "#{pluralize(@swimmer.errors.count, "error")} prohibited this swimmer from being saved:"
-        -#    %ul
-        -#      - @swimmer.errors.full_messages.each do |msg|
-        -#        %li= msg
+    = bootstrap_form_for(@swimmer,html: {onsubmit:'return go()' } )do |f|
+      -#- if @swimmer.errors.any?
+      -#  #error_explanation
+      -#    %h2= "#{pluralize(@swimmer.errors.count, "error")} prohibited this swimmer from being saved:"
+      -#    %ul
+      -#      - @swimmer.errors.full_messages.each do |msg|
+      -#        %li= msg
 
-        .col-md-4
-          =f.text_field :asa_number, label: 'ASA Number'
-          =f.select :asa_category,Swimmer::ASA_CATEGORY,label: 'ASA Category:'
-          =f.select :current_squad,Swimmer::CURRENT_SQUAD, label: 'Current Squad:'
-          =f.select :ethnic, Swimmer::ETHNICITY, label:'Ethnicity'
-          =f.text_field :date_of_birth
+      .col-md-4
+        =f.text_field :asa_number, label: 'ASA Number'
+        =f.select :asa_category,Swimmer::ASA_CATEGORY,label: 'ASA Category:'
+        =f.select :current_squad,Swimmer::CURRENT_SQUAD, label: 'Current Squad:'
+        =f.select :ethnic, Swimmer::ETHNICITY, label:'Ethnicity'
+        =f.text_field :date_of_birth
 
 
-          = f.form_group :sex, label: { text: 'Gender:' } do
-            = f.radio_button :sex, 'Male', label: 'Male', inline: true
-            = f.radio_button :sex,'Female', label: 'Female', inline: true
+        = f.form_group :sex, label: { text: 'Gender:' } do
+          = f.radio_button :sex, 'Male', label: 'Male', inline: true
+          = f.radio_button :sex,'Female', label: 'Female', inline: true
 
-          = f.form_group :photo_consent, label: { text: 'Photo Consent:' } do
-            = f.radio_button :photo_consent, 'Yes', label: 'Yes', inline: true
-            = f.radio_button :photo_consent, 'No', label: 'No', inline: true
+        = f.form_group :photo_consent, label: { text: 'Photo Consent:' } do
+          = f.radio_button :photo_consent, 'Yes', label: 'Yes', inline: true
+          = f.radio_button :photo_consent, 'No', label: 'No', inline: true
 
-          = f.hidden_field :user_id, value: session[:temp_swimmer_user_id]
-          %hr
-          = f.fields_for :address do |address|
-            .alert.alert-warning
-              %h4 Your Address
-            = render partial: 'shared/address', locals: {f: address}
-          %br
+        = f.hidden_field :user_id, value: session[:temp_swimmer_user_id] unless current_user
+        = f.hidden_field :user_id, value: current_user.id if current_user
+        %hr
+        = f.fields_for :address do |address|
           .alert.alert-warning
-            %h4 Medical Conditions
+            %h4 Your Address
+          = render partial: 'shared/address_form', locals: {f: address}
+        %br
+        .alert.alert-warning
+          %h4 Medical Conditions
 
-          = f.fields_for :medical_condition do |condition|
-            = condition.text_area :medical_history
-            = condition.text_area :medication
-            = condition.text_field :allergies
-            = condition.select :disability, MedicalCondition::DISABILITY
-            = condition.text_field :doctor
-            = condition.fields_for :address do |address|
-              .alert.alert-warning
-                %h4 Your Doctor's Address
-              = render partial: 'shared/address', locals: {f: address}
+        = f.fields_for :medical_condition do |condition|
+          = condition.text_area :medical_history
+          = condition.text_area :medication
+          = condition.text_field :allergies
+          = condition.select :disability, MedicalCondition::DISABILITY
+          = condition.text_field :doctor
+          = condition.fields_for :address do |address|
+            .alert.alert-warning
+              %h4 Your Doctor's Address
+            = render partial: 'shared/address_form', locals: {f: address}
 
 
 
-          .actions
-            = f.submit 'Sign Up', :class=>'btn btn-primary btn-lg active'
-            %br
-            %br
-            =link_to 'Cancel', cancel_swimmer_registration_swimmers_path(:temp_swimmer_user_id),data: {confirm: 'Are you sure?'}, class: 'col-md-2-col-md-offset-3 btn  btn-danger'
-            %br
-            %br
+        .actions
+          %br
+          = f.submit 'Submit', :class=>'btn btn-primary btn-lg active'
+          %br
+          %br
+          =link_to 'Cancel', cancel_swimmer_registration_swimmers_path(:temp_swimmer_user_id),data: {confirm: 'Are you sure?'}, class: 'col-md-2-col-md-offset-3 btn  btn-danger' unless current_user
+          %br
+          %br
             -#=button_tag   'Cancel', user_path(:temp_swimmer_user_id), method: :delete, data: {confirm: 'Are you sure'}, class: 'btn btn-lg btn-danger'
         -#= button_to  'Cancel', { action: 'destroy', id: :temp_swimmer_user_id }, method: :delete, data: {confirm: 'Are you sure?'}
 

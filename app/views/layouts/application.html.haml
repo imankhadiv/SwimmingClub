@@ -56,6 +56,10 @@
                 %i.icon-ambulance
                 Medical
 
+              = navbar_link_to users_profile_path, title: 'Profile', identifier: :profile do
+                %i.icon-users
+                My Profile
+
 
               - if user_signed_in?
                 = navbar_link_to destroy_user_session_path,method: :delete, title: 'Log Out', identifier: :logout do

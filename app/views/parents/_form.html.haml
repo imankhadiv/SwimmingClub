@@ -16,7 +16,7 @@
 
           %hr
           = f.fields_for :address do |address|
-            = render partial: 'shared/address', locals: {f: address}
+            = render partial: 'shared/address_form', locals: {f: address}
 
           .actions
             = f.submit 'Sign Up',{class: 'btn btn-primary btn-large',id:'parent_submit'}
