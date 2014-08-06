@@ -121,3 +121,54 @@
 
 
 
+
+
+
+
+
+
+
+
+
+  user5= User.create :email =>"swimmer5@sheffield.ac.uk",
+                     :password =>"123456789",
+                     :password_confirmation =>"123456789",
+                     :first_name =>'Iman  ',
+                     :last_name =>'Khadiv',
+                     :level =>'Swimmer',
+                     :approved =>TRUE
+
+
+  #
+  swimmer5 = Swimmer.create asa_number: '1234',
+                            asa_category: 'cat',
+                            ethnic: 'White',
+                            date_of_birth: Date.yesterday,
+                            sex: 'Female',
+                            photo_consent: 'yes',
+                            current_squad: 'squad',
+                            user_id: user5.id
+
+  address1 = Address.create line1: 'Solly',
+                            city: 'Sheffield',
+                            postcode: 'Sekrje',
+                            telephone: '1234567890',
+                            emergency_contact: '1234567890',
+                            addressable_id: swimmer5.id,
+                            addressable_type: 'Swimmer'
+
+  #
+  medical5 = MedicalCondition.create swimmer_id: swimmer5.id,
+                                    doctor: 'John'
+
+
+  address2 = Address.create line1: 'Solly',
+                            city: 'Sheffield',
+                            postcode: 'Sekrje',
+                            telephone: '1234567890',
+                            emergency_contact: '1234567890',
+                            addressable_id: medical5.id,
+                            addressable_type: 'MedicalCondition'
+
+
+

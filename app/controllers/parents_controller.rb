@@ -72,9 +72,22 @@ class ParentsController < ApplicationController
   # PATCH/PUT /parents/1
   # PATCH/PUT /parents/1.json
   def update
+    # @parent = Parent.new(parent_params)
+    ids = params[:swimmer]['ids']
+    puts @parent.user.email
+    puts @parent
+
+    puts ids
+    puts '.........................'
+    puts params
+    puts '...............'
+
+    swimmers = Swimmer.where id: ids
     respond_to do |format|
       if @parent.update(parent_params)
-        format.html { redirect_to @parent, notice: 'Parent was successfully updated.' }
+        @parent.swimmers << swimmers
+
+        format.html { redirect_to users_profile_path, notice: 'your profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @parent }
       else
         format.html { render :edit }

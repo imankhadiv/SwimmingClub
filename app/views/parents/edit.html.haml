@@ -1,7 +1,8 @@
-%h1 Editing parent
+.container
+  .page-header{style: 'text-align:center'}
+    %h2 Edit
+  = render 'form'
 
-= render 'form'
-
-= link_to 'Show', @parent
-\|
-= link_to 'Back', parents_path
+-#= link_to 'Show', @parent
+-#\|
+-#= link_to 'Back', parents_path

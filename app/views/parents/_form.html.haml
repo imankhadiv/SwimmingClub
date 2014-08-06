@@ -1,46 +1,57 @@
-.container
-  .page-header{style: 'text-align:center'}
-    %h2 Register
-  .row.sign-up
 
-    .go.col-md-4.col-md-offset-1
+.row.sign-up
 
-      %br
+  .go.col-md-4.col-md-offset-1
 
-      = bootstrap_form_for(@parent)do |f|
+    %br
 
-        .col-md-9
-          =f.select :relation,Parent::RELATION,label: 'Relation:'
-          =f.hidden_field :user_id, value: session[:temp_parent_user_id]
-          %input{type: 'hidden',name: 'swimmer[ids][]', require: true}
+    = bootstrap_form_for(@parent)do |f|
 
-          %hr
-          = f.fields_for :address do |address|
-            = render partial: 'shared/address_form', locals: {f: address}
+      .col-md-9
+        =f.select :relation,Parent::RELATION,label: 'Relation:'
+        =f.hidden_field :user_id, value: session[:temp_parent_user_id] unless current_user
+        =f.hidden_field :user_id, value: current_user.id if current_user
+        %input{type: 'hidden',name: 'swimmer[ids][]', require: true}
 
-          .actions
-            = f.submit 'Sign Up',{class: 'btn btn-primary btn-large',id:'parent_submit'}
-            %br
-            %br
+        %hr
+        = f.fields_for :address do |address|
+          = render partial: 'shared/address_form', locals: {f: address}
 
-            =link_to 'Cancel', cancel_parent_registration_parents_path(:temp_parent_user_id),data: {confirm: 'Are you sure?'}, class: 'col-md-2-col-md-offset-3 btn  btn-danger' unless current_user
-
+        .actions
+          = f.submit 'Sign Up',{class: 'btn btn-primary btn-large',id:'parent_submit'}
           %br
           %br
 
+          =link_to 'Cancel registration', cancel_parent_registration_parents_path(:temp_parent_user_id),data: {confirm: 'Are you sure?'}, class: 'col-md-9 btn  btn-danger' unless current_user
 
-            -#= select_tag 'swimmer_ids[]', options_for_select(@swimmers.collect{ |u| [u.swimmer_name, u.id] },{:multiple => :multiple, :size => 10})
-    .col-md-3
-      %br
-      %h4 Your Child/Children
-      #child_form= render 'child_form'
-      #check
-    .col-md-2.col-md-offset-1
+        %br
+        %br
+
+
+          -#= select_tag 'swimmer_ids[]', options_for_select(@swimmers.collect{ |u| [u.swimmer_name, u.id] },{:multiple => :multiple, :size => 10})
+  .col-md-3
+    %br
+    .alert.alert-warning
+      %h4 Add child/children
+    #child_form
+      = render 'child_form'
+    #check
+  .col-md-2.col-md-offset-1
+    %br
+    .alert.alert-warning
+      %h4 Your child/children
+    - if current_user
+      %ol
+      - current_user.parent.swimmers.each do |swimmer|
+        #parent-swimmer
+          #swimmer
+            %li= swimmer.swimmer_name
+    -unless current_user
       %br
       %br
         #parent-swimmer
           %ol
-            #swimmer
+          #swimmer
 
 
 

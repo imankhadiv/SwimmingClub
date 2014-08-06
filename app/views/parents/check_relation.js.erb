@@ -1,10 +1,14 @@
-$('#_swimmer_id,#date,#child_submit,#child_form,#btn,.alert').remove();
+$('#_swimmer_id,#date,#child_submit,#child_form,#btn').remove();
+$('#check').empty();
 $('#check form').remove();
 $('#check').prepend("<%= escape_javascript render('child_form') %>");
 
 <% if @swimmer %>
+    alert('hi')
+
     $('#swimmer').append("<%= escape_javascript render(:partial => 'parents/swimmer', :locals => { :swimmer => @swimmer }) %>");
     var v = <%= @swimmer.id %>
+
 
     $('<input>').attr({
         type: 'hidden',
