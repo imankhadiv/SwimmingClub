@@ -76,6 +76,10 @@
                         = navbar_link_to destroy_user_session_path,method: :delete, title: 'Log Out', identifier: :logout do
                           %i.icon-signout
                           Log Out
+                          .cart
+                            .badge.badge-alert= "Hi #{current_user.first_name}"
+
+                        -##current_user.pull-right="Hi #{current_user.first_name}"
                       -else
                         = navbar_link_to new_user_session_path, method: :get, title: 'Log In', identifier: :login do
                           %i.icon-signin
