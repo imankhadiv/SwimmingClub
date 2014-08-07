@@ -27,52 +27,63 @@
     #wrap
       %nav.navbar.navbar-inverse.navbar-fixed-top
         .container
-          .navbar-header
-            %button.navbar-toggle{ data: { target: ".navbar-collapse", toggle: :collapse, type: :button } }
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
-          .collapse.navbar-collapse
-            %ul.nav.navbar-nav
-              = navbar_link_to home_path, title: 'HomePage', identifier: :home do
-                %i.icon-home
-                HOME
-              = navbar_link_to calendar_index_path, title: 'Calandar', identifier: :calendar do
-                %i.icon-calendar
-                  Calendar
-              = navbar_link_to events_path, title: 'Calandar', identifier: :calendar do
-                %i.icon-calendar-empty
-                  Events
-              = navbar_link_to swimmer_times_path, title: 'Times', identifier: :times do
-                %i.icon-time
-                Times
-              -#= navbar_link_to new_user_registration_path, title: 'Register', identifier: :register do
-              -#  %i.icon-users
-              -#  Register
-              = navbar_link_to users_index_path, title: 'Register', identifier: :register do
-                %i.icon-group
-                Users
-              = navbar_link_to swimmers_path, title: 'Medical Condition', identifier: :medical do
-                %i.icon-ambulance
-                Medical
+          .row
+            .col-md-11.col-md-offset-1
+              .row
+                .col-md-9.col-md-offset-1
+                  -#= image_tag('Web Header_img.jpg', alt: 'Edit Entry')
+                  %img{src: image_path('Web Header_img.jpg'), height: "80", width: "100%"}
+              -#.col-md-3
+              -#  %img{src: image_path('SCSC-Logo.jpg'), height: "80", width: "100%"}
+              .row
+                .col-md-9.col-md-offset-1
+                  .navbar-header
 
-              = navbar_link_to users_profile_path, title: 'Profile', identifier: :profile do
-                %i.icon-users
-                My Profile
+                    %button.navbar-toggle{ data: { target: ".navbar-collapse", toggle: :collapse, type: :button } }
+                      %span.icon-bar
+                      %span.icon-bar
+                      %span.icon-bar
+                  .collapse.navbar-collapse
+                    %ul.nav.navbar-nav
+                      = navbar_link_to home_path, title: 'HomePage', identifier: :home do
+                        %i.icon-home
+                        HOME
+                      = navbar_link_to calendar_index_path, title: 'Calandar', identifier: :calendar do
+                        %i.icon-calendar
+                          Calendar
+                      = navbar_link_to events_path, title: 'Calandar', identifier: :calendar do
+                        %i.icon-calendar-empty
+                          Events
+                      = navbar_link_to swimmer_times_path, title: 'Times', identifier: :times do
+                        %i.icon-time
+                        Times
+                      -#= navbar_link_to new_user_registration_path, title: 'Register', identifier: :register do
+                      -#  %i.icon-users
+                      -#  Register
+                      = navbar_link_to users_index_path, title: 'Register', identifier: :register do
+                        %i.icon-group
+                        Users
+                      = navbar_link_to swimmers_path, title: 'Medical Condition', identifier: :medical do
+                        %i.icon-ambulance
+                        Medical
+
+                      = navbar_link_to users_profile_path, title: 'Profile', identifier: :profile do
+                        %i.icon-users
+                        My Profile
 
 
-              - if user_signed_in?
-                = navbar_link_to destroy_user_session_path,method: :delete, title: 'Log Out', identifier: :logout do
-                  %i.icon-signout
-                  Log Out
-              -else
-                = navbar_link_to new_user_session_path, method: :get, title: 'Log In', identifier: :login do
-                  %i.icon-signin
-                  Log In
-            -#%ul.nav.navbar-nav
-            -#  = navbar_link_to :calendars, title: "Event Calendar", identifier: :calendar do
-            -#    %i.icon-calendar
-            -#    EVENT CALENDAR
+                      - if user_signed_in?
+                        = navbar_link_to destroy_user_session_path,method: :delete, title: 'Log Out', identifier: :logout do
+                          %i.icon-signout
+                          Log Out
+                      -else
+                        = navbar_link_to new_user_session_path, method: :get, title: 'Log In', identifier: :login do
+                          %i.icon-signin
+                          Log In
+              -#%ul.nav.navbar-nav
+              -#  = navbar_link_to :calendars, title: "Event Calendar", identifier: :calendar do
+              -#    %i.icon-calendar
+              -#    EVENT CALENDAR
 
 
       #navbar-background
@@ -81,4 +92,4 @@
     #footer
       .container
         %p
-          &copy;#{Date.today.year} Swimming Club
+          &copy;#{Date.today.year} Sheffield City Swimming Club
