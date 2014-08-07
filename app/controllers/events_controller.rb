@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
+  before_filter :set_nav_identifier
 
 
 
@@ -73,5 +74,11 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:date, :time, :title, :details,:duration, :user_id, :notification)
+    end
+
+   def set_nav_identifier
+
+      @current_nav_identifier = :events
+
     end
 end

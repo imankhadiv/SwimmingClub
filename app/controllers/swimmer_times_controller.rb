@@ -1,5 +1,6 @@
 class SwimmerTimesController < ApplicationController
   before_action :set_swimmer_time, only: [:show, :edit, :update, :destroy]
+  before_filter :set_nav_identifier
   # load_and_authorize_resource
 
 
@@ -118,4 +119,8 @@ class SwimmerTimesController < ApplicationController
        params.slice(:stroke,:date,:distance,:age)
       # params.slice(:length)
     end
+
+  def set_nav_identifier
+    @current_nav_identifier = :times
+  end
 end

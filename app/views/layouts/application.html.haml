@@ -51,7 +51,7 @@
                       = navbar_link_to calendar_index_path, title: 'Calandar', identifier: :calendar do
                         %i.icon-calendar
                           Calendar
-                      = navbar_link_to events_path, title: 'Calandar', identifier: :calendar do
+                      = navbar_link_to events_path, title: 'Calandar', identifier: :events do
                         %i.icon-calendar-empty
                           Events
                       = navbar_link_to swimmer_times_path, title: 'Times', identifier: :times do
@@ -60,7 +60,7 @@
                       -#= navbar_link_to new_user_registration_path, title: 'Register', identifier: :register do
                       -#  %i.icon-users
                       -#  Register
-                      = navbar_link_to users_index_path, title: 'Register', identifier: :register do
+                      = navbar_link_to users_index_path, title: 'Register', identifier: :users do
                         %i.icon-group
                         Users
                       = navbar_link_to swimmers_path, title: 'Medical Condition', identifier: :medical do

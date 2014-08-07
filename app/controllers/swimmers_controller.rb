@@ -4,6 +4,7 @@ class SwimmersController < ApplicationController
   before_filter :stop_administrator, only: [:index]
   skip_before_filter :authenticate_user!, only: [:new,:cancel_swimmer_registration,:create]
   skip_authorize_resource only: [:new,:cancel_swimmer_registration,:create]
+  before_filter :set_nav_identifier
 
 
 
@@ -129,6 +130,11 @@ class SwimmersController < ApplicationController
         redirect_to users_path, alert: 'You are not authorized to access this page!'
       end
 
+    end
+    def set_nav_identifier
+  
+      @current_nav_identifier = :medical
+  
     end
 
 end

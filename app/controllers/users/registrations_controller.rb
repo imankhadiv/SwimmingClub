@@ -3,6 +3,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_filter :check_temp_session
   skip_before_filter :authenticate_user!
+  before_filter :set_nav_identifier
+
 
 
 
@@ -78,6 +80,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def after_update_path_for(resource)
     puts resource
     users_profile_url resource
+  end
+
+  def set_nav_identifier
+    @current_nav_identifier = :signup
   end
 
 

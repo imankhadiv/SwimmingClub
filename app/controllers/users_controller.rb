@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
   # before_filter :check_user_level
   # skip_before_filter :authenticate_user!
+  before_filter :current_nav_identifier
+
 
 
 
@@ -89,6 +91,17 @@ class UsersController < ApplicationController
     redirect_to :home, alert: 'You do not have permission to access this page'
     else
       index
+    end
+
+  end
+
+  def current_nav_identifier
+    if action_name == 'profile'
+      @current_nav_identifier = :profile
+    else
+
+     @current_nav_identifier = :users
+
     end
 
   end
