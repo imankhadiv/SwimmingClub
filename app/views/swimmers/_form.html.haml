@@ -12,10 +12,11 @@
       -#        %li= msg
 
       .col-md-4
-        =f.text_field :asa_number, label: 'ASA Number'
-        =f.select :asa_category,Swimmer::ASA_CATEGORY,label: 'ASA Category:'
+        =f.text_field :asa_number, label: 'ASA Number:'
+        =f.text_field :asa_category,label: 'ASA Category:'
+        -#=f.select :asa_category,Swimmer::ASA_CATEGORY,label: 'ASA Category:'
         =f.select :current_squad,Swimmer::CURRENT_SQUAD, label: 'Current Squad:'
-        =f.select :ethnic, Swimmer::ETHNICITY, label:'Ethnicity'
+        =f.select :ethnic, Swimmer::ETHNICITY, label:'Ethnicity:'
         =f.text_field :date_of_birth
 
 

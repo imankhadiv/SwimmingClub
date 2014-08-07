@@ -37,8 +37,8 @@ class SwimmersController < ApplicationController
 
   # GET /swimmers/1
   # GET /swimmers/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /swimmers/new
   def new

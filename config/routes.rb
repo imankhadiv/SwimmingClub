@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     get 'best_times', on: :collection
   end
 
-  resources :swimmers do
+  resources :swimmers, except: :show do
     get 'swimmer_times', on: :member
     get 'medical_conditions', on: :member
     get 'cancel_swimmer_registration', on: :collection

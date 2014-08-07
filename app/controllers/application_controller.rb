@@ -9,7 +9,13 @@ class ApplicationController < ActionController::Base
    protect_from_forgery with: :exception
   # before_filter :check_temp_session
 
-
+  # Catch NotFound exceptions and handle them neatly, when URLs are mistyped or mislinked
+   
+   rescue_from ActiveRecord::RecordNotFound do
+     @current_nav_identifier = :home
+     #flash[:error] = "The page does not exist"
+     render template: 'errors/not_found', status: 404
+   end
 
    before_filter do
      resource = controller_name.singularize.to_sym
