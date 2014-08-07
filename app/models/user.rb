@@ -86,7 +86,11 @@
     end
 
     def assign_roles_to_user
-      self.roles << Role.find_by(name: self.level)
+      role = Role.find_by(name: self.level)
+      unless self.roles.include? role
+      self.roles << role
+      end
+      # self.roles.uniq!
     end
 
   end

@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   # before_filter :check_temp_session
 
   # Catch NotFound exceptions and handle them neatly, when URLs are mistyped or mislinked
-   
+
    rescue_from ActiveRecord::RecordNotFound do
      @current_nav_identifier = :home
      #flash[:error] = "The page does not exist"
