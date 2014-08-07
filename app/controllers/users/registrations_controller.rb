@@ -2,6 +2,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_filter :check_temp_session
+  skip_before_filter :authenticate_user!
+
 
 
   def check_temp_session

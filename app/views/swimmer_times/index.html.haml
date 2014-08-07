@@ -5,19 +5,20 @@
     %ul
       %li#search
         %a{href: '#fragment-1', id: 'search_fragment'} Search
-      %li#charts
-        %a{href: '#fragment-2',id: 'charts_fragment'} Charts
+      -#%li#charts
+      -#  %a{href: '#fragment-2',id: 'charts_fragment'} Charts
       %li#best-times
         %a{href: '#fragment-3',id: 'best_times_fragment'} Best Times
 
-      %li#add-times
-        %a{href: '#fragment-4',id:'add_times_fragment'} Add Times
+      - if( (current_user.role? 'Coach') || (current_user.role? 'Committee') || (current_user.role? 'Administrator'))
+        %li#add-times
+          %a{href: '#fragment-4',id:'add_times_fragment'} Add Times
 
     #fragment-1
       = render 'swimmer_times/search_form'
 
-    #fragment-2
-      = line_chart({20.day.ago => 5, 1368174456 => 10, "2013-05-07 00:00:00 UTC" => 7}, id:'Iman')
+    -##fragment-2
+    -#  = line_chart({20.day.ago => 5, 1368174456 => 10, "2013-05-07 00:00:00 UTC" => 7}, id:'Iman')
 
     #fragment-3
       = render partial: 'best_times', lacals: {males: @males, females: @females}
@@ -26,8 +27,10 @@
       -#= render 'best_times'
       -#Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
 
-    #fragment-4
-      = render 'form'
+    - if( (current_user.role? 'Coach') || (current_user.role? 'Committee') || (current_user.role? 'Administrator'))
+
+      #fragment-4
+        = render 'form'
 
   .alert-message
   #result

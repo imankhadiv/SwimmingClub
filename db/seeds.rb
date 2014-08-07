@@ -7,6 +7,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+Role.create :name => 'Administrator'
+Role.create :name => 'Swimmer'
+Role.create :name => 'Parent'
+Role.create :name => 'Welfare Officer'
+Role.create :name => 'Coach'
   user1= User.create :email =>"swimmer@sheffield.ac.uk",
                      :password =>"123456789",
                      :password_confirmation =>"123456789",
@@ -170,5 +175,12 @@
                             addressable_id: medical5.id,
                             addressable_type: 'MedicalCondition'
 
+  # if Role.count < 6
+    Role.create :name => 'Administrator'
+    Role.create :name => 'Swimmer'
+    Role.create :name => 'Parent'
+    Role.create :name => 'Welfare Officer'
+    Role.create :name => 'Coach'
+  # end
 
 

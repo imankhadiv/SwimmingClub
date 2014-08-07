@@ -3,6 +3,9 @@
     validates :first_name,:last_name, presence: true
     has_one :swimmer
     has_one :parent
+    has_and_belongs_to_many :roles
+    before_save :assign_roles_to_user
+
 
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -76,6 +79,14 @@
     end
     def combined_name
       "#{self.first_name} #{self.last_name}"
+    end
+
+    def role?(role_string)
+      return !!self.roles.find_by_name(role_string.to_s.camelize)
+    end
+
+    def assign_roles_to_user
+      self.roles << Role.find_by(name: self.level)
     end
 
   end

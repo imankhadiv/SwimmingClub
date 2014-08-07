@@ -1,5 +1,10 @@
 class ParentsController < ApplicationController
   before_action :set_parent, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+  skip_before_filter :authenticate_user!, only: [:new,:cancel_parent_registration,:create,:check_relation]
+  skip_authorize_resource only: [:new,:cancel_parent_registration,:create,:check_relation]
+
+
 
   # GET /parents
   # GET /parents.json
@@ -74,13 +79,6 @@ class ParentsController < ApplicationController
   def update
     # @parent = Parent.new(parent_params)
     ids = params[:swimmer]['ids']
-    puts @parent.user.email
-    puts @parent
-
-    puts ids
-    puts '.........................'
-    puts params
-    puts '...............'
 
     swimmers = Swimmer.where id: ids
     respond_to do |format|

@@ -13,7 +13,8 @@
       .col-md-2.col-md-offset-1{style: {display: 'inline'}}
         %h1
         %br
-        = link_to 'Add New Event',new_event_path, class: '.btn btn-primary btn-lg'
+        - if( current_user && (current_user.role? 'Administrator')||(current_user.role? 'Committee'))
+          = link_to 'Add New Event',new_event_path, class: '.btn btn-primary btn-lg'
 
       .col-md-3.col-md-offset-5
         %h3.alert.alert-success.text-center

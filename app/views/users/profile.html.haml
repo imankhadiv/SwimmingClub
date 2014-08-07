@@ -80,7 +80,7 @@
         =link_to 'Edit Your Details', edit_parent_path(@user.parent), class: 'btn btn-lg btn-primary'
         =link_to 'Edit Your Account', edit_registration_path(@user), {class: 'btn btn-lg btn-primary', style: 'margin-top:13px'}
       -else
-        = @user.level
+        -#= @user.level
         = link_to 'Edit Your Profile', edit_registration_path(@user), class: 'btn btn-lg btn-primary'
 
 %br

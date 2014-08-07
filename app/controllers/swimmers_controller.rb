@@ -1,5 +1,12 @@
 class SwimmersController < ApplicationController
   before_action :set_swimmer, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+  before_filter :stop_administrator, only: [:index]
+  skip_before_filter :authenticate_user!, only: [:new,:cancel_swimmer_registration,:create]
+  skip_authorize_resource only: [:new,:cancel_swimmer_registration,:create]
+
+
+
 
 
 
@@ -10,11 +17,6 @@ class SwimmersController < ApplicationController
 
     time = SwimmerTime.where(swimmer_id:params[:id]).sort_by {|date| date.date}
     @years_ago = Time.now.year - time.first.date.year
-
-    puts @years_ago
-    puts 'hello world'
-
-
     # puts @swimmer.user.first_name
 
   end
@@ -22,7 +24,14 @@ class SwimmersController < ApplicationController
   # GET /swimmers
   # GET /swimmers.json
   def index
-    @swimmers = Swimmer.all
+    if current_user.role? 'Welfare Officer'
+      @swimmers = Swimmer.all
+    elsif current_user.role? 'Swimmer'
+      redirect_to medical_conditions_swimmer_path(current_user.swimmer.id)
+    else
+      @swimmers = Parent.find(current_user.parent.id).swimmers
+    end
+
   end
 
   # GET /swimmers/1
@@ -113,6 +122,13 @@ class SwimmersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def swimmer_params
       params.require(:swimmer).permit(:asa_number, :asa_category, :date_of_birth, :sex, :photo_consent, :current_squad, :user_id,:ethnic, address_attributes: [:line1, :line2, :city, :postcode, :telephone, :emergency_contact, :addressable_id, :addressable_type],medical_condition_attributes: [:medical_history,:medication,:allergies,:doctor,:disability,address_attributes: [:line1, :line2, :city, :postcode, :telephone, :emergency_contact, :addressable_id, :addressable_type]])
+    end
+    def stop_administrator
+
+      if current_user.role? 'Administrator'
+        redirect_to users_path, alert: 'You are not authorized to access this page!'
+      end
+
     end
 
 end

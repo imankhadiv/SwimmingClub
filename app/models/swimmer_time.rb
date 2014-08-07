@@ -50,7 +50,8 @@ class SwimmerTime < ActiveRecord::Base
   end
 
   def calculate_age
-    self.age = self.date.year - self.swimmer.date_of_birth.year
+    self.age = date.year - swimmer.date_of_birth.year
+
   end
 
   def self.go

@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
 
 
-  get 'page/welcome', as: :home
+  get 'home/welcome', as: :home
 
   get 'page/awaiting', as: :awaiting
 

@@ -11,20 +11,20 @@
     .col-md-4.col-md-offset-1
       .alert.alert-warning.text-center
         %h3 Girls
-      -@females.keys.each do |item|
-        .alert.alert-info.text-center
-          %caption= " #{item.first} STROKE\t #{item.second} Meters\t"
-        %table.table-bordered.table-condensed.table.table-striped.table-responsive.table-customstyle
-          %thead
-            %th Name
-            %th Times
-            %th Age
-            %th Date
-          %tbody
-            %td= link_to females[item].first.swimmer.swimmer_name, swimmer_times_swimmer_path(@females[item].first.swimmer_id)
-            %td= @females[item].first.convert_times
-            %td= @females[item].first.age
-            %td= @females[item].first.date
+        -@females.keys.each do |item|
+          .alert.alert-info.text-center
+            %caption= " #{item.first} STROKE\t #{item.second} Meters\t"
+          %table.table-bordered.table-condensed.table.table-striped.table-responsive.table-customstyle
+            %thead
+              %th Name
+              %th Times
+              %th Age
+              %th Date
+            %tbody
+              %td= link_to @females[item].first.swimmer.swimmer_name, swimmer_times_swimmer_path(@females[item].first.swimmer_id)
+              %td= @females[item].first.convert_times
+              %td= @females[item].first.age
+              %td= @females[item].first.date
 
     .col-md-4.col-md-offset-1
       .alert.alert-warning.text-center

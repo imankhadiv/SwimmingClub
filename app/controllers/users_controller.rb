@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show,:destroy]
+  load_and_authorize_resource
+
   # before_filter :check_user_level
+  # skip_before_filter :authenticate_user!
+
 
 
 
