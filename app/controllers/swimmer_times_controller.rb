@@ -98,9 +98,11 @@ class SwimmerTimesController < ApplicationController
   # DELETE /swimmer_times/1
   # DELETE /swimmer_times/1.json
   def destroy
+    @id = @swimmer_time.id
     @swimmer_time.destroy
     respond_to do |format|
       format.html { redirect_to swimmer_times_url, notice: 'Swimmer time was successfully destroyed.' }
+      format.js
       format.json { head :no_content }
     end
   end

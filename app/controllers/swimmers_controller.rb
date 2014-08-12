@@ -127,7 +127,7 @@ class SwimmersController < ApplicationController
     def stop_administrator
 
       if current_user.role? 'Administrator'
-        redirect_to users_path, alert: 'You are not authorized to access this page!'
+        redirect_to :home, alert: 'You are not authorized to access this page!'
       end
 
     end

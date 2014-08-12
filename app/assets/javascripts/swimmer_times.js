@@ -28,5 +28,11 @@ $(document).ready(function(){
 
 
 });
-
+var M = function($scope,$http){
+    var onComplete = function(response){
+    $scope.times = response.data;
+};
+var promise = $http.get("/swimmer_times/2.json");
+promise.then(onComplete);
+};
 

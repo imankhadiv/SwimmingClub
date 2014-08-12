@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   post 'parents/check_relation', as: :check
 
-  resources :swimmer_times do
+  resources :swimmer_times, except: [:show,:edit] do
     get 'search', on: :collection
     get 'best_times', on: :collection
   end
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :addresses
+  # resources :addresses
 
   get 'users/index'
   get 'users/profile'

@@ -1,5 +1,5 @@
 
-%tr
+%tr{id: swimmer_time.id}
   %td= link_to swimmer_time.swimmer.swimmer_name, swimmer_times_swimmer_path(swimmer_time.swimmer_id)
   %td= swimmer_time.stroke
   %td= swimmer_time.distance
@@ -9,7 +9,7 @@
   %td= swimmer_time.venue
   %td= swimmer_time.date
   - if ((current_user.role? 'Administrator') || (current_user.role? 'Coach') || (current_user.role? 'Committee'))
-    %td= link_to  'Delete', swimmer_time_path(swimmer_time),remote: false, method: :delete, data: {confirm: 'Are you sure'},id:'approve-btn', class: 'icon-remove icon-trash ',style: 'margin-left:0px'
+    %td= link_to  'Delete', swimmer_time_path(swimmer_time),remote: true, method: :delete, data: {confirm: 'Are you sure'},id:'approve-btn', class: 'icon-remove icon-trash ',style: 'margin-left:0px'
 
 
 
