@@ -1,10 +1,8 @@
 <div class="container">
   <!--<div class="alert alert-success">-->
-    <!--<h2>-->
-      <!--<%= "#{@swimmer.swimmer_name}'s Times" %>-->
-    <!--</h2>-->
+  <!--<h2>-->
+  <!--<%= "#{@swimmer.swimmer_name}'s Times" %>-->
   <!--</div>-->
-  <br/>
   <script>
 
       $(function(){
@@ -35,19 +33,29 @@
                       text: 'Times(seconds)'
                   }
               },
+              tooltip: {
+                  headerFormat: '<b>{series.name}</b><br>',
+                  pointFormat: '{point.x:%Y %b %e}:   {point.y} Sec'
+              },
               series: [
 
                   <% @swimmer_times.keys.each do |key| %>
                   {
-                  name: '<%= "#{key.first} #{key.second}m" %>',
-                  pointInterval: <%= 1.year * 1000 %>,
-                  pointStart: <%= @years_ago.years.ago.to_i * 1000  %>,
+                      name: '<%= "#{key.first} #{key.second}m" %>',
+                      pointInterval: <%= 1.year * 1000 %>,
+                      pointStart: <%= @years_ago.years.ago.to_i * 1000  %>,
+                      data: [
+                          <%  @swimmer_times[key].map do |item| %>
 
-                  data: <%= @swimmer_times[key].map  {|item| item.times_in_seconds} %>
+                          [Date.UTC(<%= item.date.year %>,<%= item.date.month - 1 %>,<%= item.date.day %>),<%= item.times_in_seconds %>],
+
+                          <% end %>
 
 
-              },
-              <% end %>
+
+                      ]
+                  },
+                  <% end %>
 
               ]
 
@@ -61,11 +69,9 @@
 
 
   </script>
-  <div class="row">
 
-  </div>
   <div class="row">
-    <div class="col-md-10 col-md-offset-1" id="times_charts"></div>
+    <div class="col-md-10 col-md-offset-1" id="times_charts" style="margin-bottom:30px"></div>
   </div>
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
@@ -105,12 +111,7 @@
                 </tbody>
             <% end %>
           </table>
-          <% #= line_chart({20.day.ago => 5, 1368174456 => 10, "2013-05-07 00:00:00 UTC" => 7}, id:'Iman') %>
-          <% #= values %>
-          <% #= @swimmer_times %>
-          <% #= line_chart(Swimmer.first.swimmer_times.order(:date,:times).group_by {|e| [e.stroke,e.distance]}) %>
-          <%#= line_chart [{2012 => 10},{2014 => 20}], id:'Iman' %>
-          <% #= line_chart({2012 => 10, 2010 => 20}, id:'Iman') %>
+         
       <% end %>
     </div>
   </div>
