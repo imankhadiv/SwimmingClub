@@ -63,16 +63,14 @@
         %tr
           %th Emergency Contact
           %td= @swimmer.medical_condition.address.emergency_contact
+        %tr
 
-
+  .row
     .col-md-2.col-md-offset-3
-      %br
+      =link_to('<i class="icon-circle-arrow-left"></i> Back'.html_safe,swimmers_path)
+
       %br
 
-
-    .row
-      .col-md-2-col-md-offset-3
-        %br
         -#=button_to  'Delete', user_path(@user), method: :delete, data: {confirm: 'Are you sure'},id:'approve-btn', class: 'col-md-2-col-md-offset-3 btn btn-lg btn-danger'
         -#%a.btn.btn-success.btn-lg{href:edit_user_path(@user) , role: "button"} Generate User Report
 

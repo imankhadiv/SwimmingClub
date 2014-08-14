@@ -64,7 +64,6 @@ class SwimmerTimesController < ApplicationController
   # POST /swimmer_times.json
   def create
     @swimmer_time = SwimmerTime.new(swimmer_time_params)
-    puts s
 
     respond_to do |format|
       if @swimmer_time.save

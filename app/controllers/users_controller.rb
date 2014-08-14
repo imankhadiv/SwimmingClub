@@ -39,19 +39,28 @@ class UsersController < ApplicationController
   # PATCH/PUT /swimmers/1
   # PATCH/PUT /swimmers/1.json
   def update
-
       @user = set_user
-      if @user.approved
-        @user.approved = false
-      else
-        @user.approved = true
+      if @user.update(user_params)
+        # AppMailer.user_update_mail(@user).deliver
         UserNotifier.activated(@user).deliver
 
+        redirect_to users_path, notice: 'User was successfully updated.'
+      else
+        render action: 'show'
       end
 
-      @user.save
-      redirect_to users_url, notice: 'User was successfully approved' if @user.approved
-      redirect_to users_url, notice: 'User was successfully suspended' unless @user.approved
+      # @user = set_user
+      # if @user.approved
+      #   @user.approved = false
+      # else
+      #   @user.approved = true
+      #   UserNotifier.activated(@user).deliver
+      #
+      # end
+      #
+      # @user.save
+      # redirect_to users_url, notice: 'User was successfully approved' if @user.approved
+      # redirect_to users_url, notice: 'User was successfully suspended' unless @user.approved
 
   end
 
@@ -77,6 +86,11 @@ class UsersController < ApplicationController
   #Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
+  end
+
+  # sets the permitted attributes for a user
+  def user_params
+    params.require(:user).permit(:approved, :role_ids => [])
   end
 
   #Never trust parameters from the scary internet, only allow the white list through.

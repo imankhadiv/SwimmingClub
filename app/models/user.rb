@@ -87,10 +87,10 @@
 
     def assign_roles_to_user
       role = Role.find_by(name: self.level)
-      unless self.roles.include? role
-      self.roles << role
-      end
-      # self.roles.uniq!
+      self.roles << role if self.roles.size == 0
+      # unless self.roles.include? role
+      # self.roles << role
+      # end
     end
 
   end

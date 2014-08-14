@@ -27,27 +27,25 @@
 -#      %td= link_to 'Destroy', swimmer, :method => :delete, :data => { :confirm => 'Are you sure?' }
 -#
 -#%br
--#
--#.container
--#  .row
--#    .col-md-8.col-md-offset-2
--#      %h3 Swimmers
--#      %table.table.table-striped.table-responsive.table-customstyle
--#        %thead
--#
--#          %tr
--#            %th First Name
--#            %th Last Name
--#            %th Email
--#            %th Action
--#
--#        - @swimmers.each do |swimmer|
--#          %tbody
--#            %tr
--#              %td= swimmer.user.first_name
--#              %td= swimmer.user.last_name
--#              %td= swimmer.user.email
--#              %td
--#                %a.btn.btn-success{href: medical_conditions_swimmer_path(swimmer.id)} view
 
--#= link_to 'New Swimmer', new_swimmer_path
+.container
+  .row
+    .col-md-8.col-md-offset-2
+      %h3 Swimmers
+      %table.table.table-striped.table-responsive.table-customstyle
+        %thead
+
+          %tr
+            %th First Name
+            %th Last Name
+            %th Email
+            %th Action
+
+        - @swimmers.each do |swimmer|
+          %tbody
+            %tr
+              %td= swimmer.user.first_name
+              %td= swimmer.user.last_name
+              %td= swimmer.user.email
+              %td
+                %a.btn.btn-success{href: medical_conditions_swimmer_path(swimmer.id)} view
