@@ -1,0 +1,15 @@
+.container
+  %br
+  %br
+  .col-md-4.col-md-offset-4
+    .alert.alert-info.text-center
+      %h4=  "Editing Payment For #{@swimmer.swimmer_name}"
+
+    = render 'form'
+
+  .row
+    .col-md-5.col-md-offset-4
+      %br
+      =link_to('<i class="icon-circle-arrow-left "></i> Back'.html_safe,payments_path)
+
+

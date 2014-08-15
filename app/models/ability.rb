@@ -13,7 +13,7 @@ class Ability
       end
 
       if user.role? 'Swimmer'
-        can [:read,:search,:edit,:update,:medical_conditions,:swimmer_times], Swimmer
+        can [:read,:search,:edit,:update,:medical_conditions,:swimmer_times,:payment], Swimmer
         can [:read], Event
         can [:profile,:update,:destroy,:create], User
         can [:read], MedicalCondition

@@ -10,6 +10,8 @@ class SwimmerTime < ActiveRecord::Base
   MILLI_SECONDS =  M + (10...100).to_a
   belongs_to :swimmer
   validates :venue,:date, presence: true
+  validate :date_cannot_be_in_the_future
+
   attr_accessor :minutes, :seconds, :milli_seconds
   before_save :insert_into_times
   before_save :calculate_age
@@ -64,6 +66,11 @@ class SwimmerTime < ActiveRecord::Base
 
     a = SwimmerTime.swimmer(Swimmer.where(sex: gender)).order(:times).group_by{|e|[e.stroke,e.distance,e.age]}
 
+  end
+
+  def date_cannot_be_in_the_future
+    errors.add(:date, "can't be in the future") if
+        !date.blank? and date > Date.today
   end
 
 

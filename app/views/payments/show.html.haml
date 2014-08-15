@@ -1,0 +1,68 @@
+.container
+  .row
+    .col-md-5.col-md-offset-3
+      .alert.alert-info.text-center
+        %h4= "Payment For #{@payment.swimmer.swimmer_name}"
+
+      %table.table.alert.alert-success
+        %tr
+          %th Details:
+          %td= @payment.details
+        %tr
+          %th Amount:
+          %td= @payment.amount
+        - if @payment.paid
+          %tr
+            %th Was Due:
+            %td= @payment.due_date
+          %tr
+            %th Paid Date:
+            %th= @payment.paid_date
+        - else
+          %tr
+            %th Due Date:
+            %td= @payment.due_date
+
+        -#%tr
+        -#  %th Created By:
+        -#  %td= "#{@event.user.first_name} #{@event.user.last_name}" if @event.user
+        %tr
+      = event_navigation_links @payment
+      -#= link_to 'Back', events_path, class: 'btn btn-success'
+      -#= link_to 'Edit', edit_event_path(@event)
+      -#= link_to 'Destroy', @event, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+    .col-md-2.col-md-offset-3
+      %br
+      %br
+
+
+
+
+
+
+
+-#%p#notice= notice
+-#
+-#%p
+-#  %b Swimmer:
+-#  = @payment.swimmer
+-#%p
+-#  %b Details:
+-#  = @payment.details
+-#%p
+-#  %b Amount:
+-#  = @payment.amount
+-#%p
+-#  %b Paid:
+-#  = @payment.paid
+-#%p
+-#  %b Due date:
+-#  = @payment.due_date
+-#%p
+-#  %b Paid date:
+-#  = @payment.paid_date
+-#
+-#= link_to 'Edit', edit_payment_path(@payment)
+-#\|
+-#= link_to 'Back', payments_path

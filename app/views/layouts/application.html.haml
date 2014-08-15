@@ -51,34 +51,53 @@
                       %span.icon-bar
                       %span.icon-bar
                   .collapse.navbar-collapse
+
                     %ul.nav.navbar-nav
-                      = navbar_link_to home_path, title: 'HomePage', identifier: :home do
-                        %i.icon-home
-                        HOME
-                      = navbar_link_to calendar_index_path, title: 'Calandar', identifier: :calendar do
-                        %i.icon-calendar
-                          Calendar
-                      = navbar_link_to events_path, title: 'Calandar', identifier: :events do
-                        %i.icon-calendar-empty
-                          Events
-                      = navbar_link_to swimmer_times_path, title: 'Times', identifier: :times do
-                        %i.icon-time
-                        Times
-                      -#= navbar_link_to new_user_registration_path, title: 'Register', identifier: :register do
-                      -#  %i.icon-users
-                      -#  Register
-                      = navbar_link_to users_index_path, title: 'Register', identifier: :users do
-                        %i.icon-group
-                        Users
-                      = navbar_link_to swimmers_path, title: 'Medical Condition', identifier: :medical do
-                        %i.icon-ambulance
-                        Medical
+                      - if user_signed_in?
+                        = navbar_link_to home_path, title: 'HomePage', identifier: :home do
+                          %i.icon-home
+                          HOME
+                        = navbar_link_to calendar_index_path, title: 'Calandar', identifier: :calendar do
+                          %i.icon-calendar
+                            Calendar
+                        = navbar_link_to events_path, title: 'Calandar', identifier: :events do
+                          %i.icon-calendar-empty
+                            Events
+                        = navbar_link_to swimmer_times_path, title: 'Times', identifier: :times do
+                          %i.icon-time
+                          Times
+                        -#= navbar_link_to new_user_registration_path, title: 'Register', identifier: :register do
+                        -#  %i.icon-users
+                        -#  Register
+                        = navbar_link_to users_index_path, title: 'Register', identifier: :users do
+                          %i.icon-group
+                          Users
+                        = navbar_link_to swimmers_path, title: 'Medical Condition', identifier: :medical do
+                          %i.icon-ambulance
+                          Medical
 
-                      = navbar_link_to users_profile_path, title: 'Profile', identifier: :profile do
-                        %i.icon-user
-                        My Profile
+                        = navbar_link_to users_profile_path, title: 'Profile', identifier: :profile do
+                          %i.icon-user
+                          My Profile
 
-
+                        %ul.nav.navbar-nav
+                          %li.dropdown{class: (:active if @current_nav_identifier == :payments)}
+                            %a.dropdown-toggle{'data-toggle' => 'dropdown', 'data-target' => "#", :href => '#'}
+                              %i.icon-money
+                              = 'Payments'
+                              %b.caret
+                            %ul.dropdown-menu
+                              - if user_signed_in? && (current_user.role? 'Administrator') || (current_user.role? 'Committee')
+                                = navbar_link_to new_payment_path, title: 'New Payment' do
+                                  %i.icon-money
+                                  Add New Payment
+                                = navbar_link_to payments_path, title: 'Payments' do
+                                  %i.icon-money
+                                  View Payments
+                              - if user_signed_in? && (current_user.role? 'Swimmer')
+                                = navbar_link_to payment_swimmer_path(current_user.swimmer), title: 'My Payment' do
+                                  %i.icon-money
+                                  Your Payment History
                       - if user_signed_in?
                         = navbar_link_to destroy_user_session_path,method: :delete, title: 'Log Out', identifier: :logout do
                           %i.icon-signout

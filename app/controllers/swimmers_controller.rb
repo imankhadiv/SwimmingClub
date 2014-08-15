@@ -62,6 +62,10 @@ class SwimmersController < ApplicationController
     @swimmer = Swimmer.find(params[:id])
   end
 
+  def payment
+    @swimmer = Swimmer.find(params[:id])
+  end
+
 
   # POST /swimmers
   # POST /swimmers.json

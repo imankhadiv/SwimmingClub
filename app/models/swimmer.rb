@@ -1,5 +1,6 @@
 class Swimmer < ActiveRecord::Base
   belongs_to :user
+  has_many :payments
   has_one :medical_condition, dependent: :destroy
   accepts_nested_attributes_for :medical_condition, allow_destroy: true
   has_many :swimmer_times, dependent: :destroy

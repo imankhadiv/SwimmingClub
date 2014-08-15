@@ -1,0 +1,60 @@
+.container
+  .row
+    .col-md-8.col-md-offset-2
+      %h3 Paid
+      %table.table.table-striped.table-responsive.table-customstyle
+        %thead
+          %tr
+            %th Swimmer
+            %th Details
+            %th Amount
+            %th Due date
+            %th Paid date
+            %th
+
+
+        - @paid.each do |payment|
+          %tr
+            %td= payment.swimmer.swimmer_name
+            %td= truncate(strip_tags(payment.details), length: 10)
+            %td= payment.amount
+            %td= payment.due_date
+            %td= payment.paid_date
+            %td
+              %a.btn.btn-success{href: payment_path(payment), role: 'button'} View
+            -#%td= link_to 'Show', payment
+            -#%td= link_to 'Edit', edit_payment_path(payment)
+            -#%td= link_to 'Destroy', payment, :method => :delete, :data => { :confirm => 'Are you sure?' } .row
+    .col-md-8.col-md-offset-2
+      %h3 Unpaid
+      %table.table.table-striped.table-responsive.table-customstyle
+        %thead
+          %tr
+            %th Swimmer
+            %th Details
+            %th Amount
+            %th Due date
+            %th
+
+
+        - @unpaid.each do |payment|
+          %tr
+            %td= payment.swimmer.swimmer_name
+            %td= truncate(strip_tags(payment.details), length: 10)
+            %td= payment.amount
+            %td= payment.due_date
+            %td
+              %a.btn.btn-success{href: payment_path(payment), role: 'button'} View
+            -#%td= link_to 'Show', payment
+            -#%td= link_to 'Edit', edit_payment_path(payment)
+            -#%td= link_to 'Destroy', payment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+  .row
+    .col-md-5.col-md-offset-2
+      %br
+      = link_to 'Add New Payment', new_payment_path, class: 'btn btn-success'
+      %br
+
+%br
+%br
+

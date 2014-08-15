@@ -1,0 +1,16 @@
+= bootstrap_form_for(@payment) do |f|
+  -#= f.error_notification
+
+  .form-inputs
+    = f.collection_select(:swimmer_id, @swimmers, :id, :swimmer_name) if @swimmers
+    -#= f.text_field :swimmer_id, value: @swimmer.id, disable: true
+    = f.hidden_field :swimmer_id, value: @swimmer.id if @swimmer
+
+    = f.text_area :details, rows: 3
+    = f.text_field :amount
+    =f.text_field :due_date
+
+    -#= f.input :paid_date
+
+  .form-actions
+    = f.submit :submit,:class=>'btn btn-primary btn-lg active'

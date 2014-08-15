@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :payments
+
   resources :events
 
   # get 'calendar/index'
@@ -20,6 +22,7 @@ Rails.application.routes.draw do
   resources :swimmers, except: :show do
     get 'swimmer_times', on: :member
     get 'medical_conditions', on: :member
+    get 'payment', on: :member
     get 'cancel_swimmer_registration', on: :collection
   end
 
