@@ -4,6 +4,7 @@
     has_one :swimmer
     has_one :parent
     has_and_belongs_to_many :roles
+    has_many :notifications
     before_save :assign_roles_to_user
 
 

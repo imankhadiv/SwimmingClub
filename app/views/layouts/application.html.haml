@@ -57,12 +57,31 @@
                         = navbar_link_to home_path, title: 'HomePage', identifier: :home do
                           %i.icon-home
                           HOME
-                        = navbar_link_to calendar_index_path, title: 'Calandar', identifier: :calendar do
-                          %i.icon-calendar
-                            Calendar
-                        = navbar_link_to events_path, title: 'Calandar', identifier: :events do
-                          %i.icon-calendar-empty
-                            Events
+                        -if events_notification_number > 0
+                          %ul.nav.navbar-nav
+                            %li.dropdown{class: (:active if @current_nav_identifier == :calendar)}
+                              %a.dropdown-toggle{'data-toggle' => 'dropdown', 'data-target' => '', href:  calendar_index_path}
+                                %i.icon-edit
+                                Calendar
+                                %b.caret
+                                -if events_notification_number > 0
+                                  .badge.badge-important{style: 'background-color:red'}= events_notification_number
+                                  -#%b.caret
+                                  %ul.dropdown-menu
+                                    -get_notifications('Event').each do |event|
+                                      = navbar_link_to (link_to_event event.id), title: "Events" do
+                                        %i.icon-comments
+                                        =event.title
+                                    = navbar_link_to calendar_index_path, title: 'Calandar' do
+                                      %i.icon-money
+                                      Calendar
+                        -else
+                          = navbar_link_to calendar_index_path, title: 'Calandar', identifier: :calendar do
+                            %i.icon-calendar
+                              Calendar
+                        -#= navbar_link_to events_path, title: 'Calandar', identifier: :events do
+                        -#  %i.icon-calendar-empty
+                        -#    Events
                         = navbar_link_to swimmer_times_path, title: 'Times', identifier: :times do
                           %i.icon-time
                           Times

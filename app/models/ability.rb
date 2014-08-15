@@ -17,6 +17,7 @@ class Ability
         can [:read], Event
         can [:profile,:update,:destroy,:create], User
         can [:read], MedicalCondition
+        can [:show], Payment
 
       end
 
@@ -27,6 +28,7 @@ class Ability
         can [:read], Event
         can [:profile,:update], User
         can [:read], MedicalCondition
+
       end
 
       if user.role? 'Welfare Officer'
@@ -40,6 +42,7 @@ class Ability
         can [:search,:swimmer_times,:medical_conditions], Swimmer
         can [:manage], Event
         can [:profile,:update], User
+        can [:manage], Payment
       end
 
       if user.role? 'Coach'

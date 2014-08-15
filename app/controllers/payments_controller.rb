@@ -1,6 +1,8 @@
 class PaymentsController < ApplicationController
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
   before_filter :set_nav_identifier
+  load_and_authorize_resource
+
 
 
   # GET /payments

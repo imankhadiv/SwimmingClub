@@ -14,6 +14,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    Notification.remove_notification current_user.id, params[:id]
   end
 
   # GET /events/new
