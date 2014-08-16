@@ -15,6 +15,11 @@ class SwimmerTimesController < ApplicationController
 
   end
 
+  def best_times
+    @females = SwimmerTime.best_times 'Female'
+    @males = SwimmerTime.best_times 'Male'
+  end
+
 
   # GET /swimmer_times/1
   # GET /swimmer_times/1.json
@@ -28,7 +33,6 @@ class SwimmerTimesController < ApplicationController
 
      @swimmers = Swimmer.sex(params[:gender]) unless params[:gender] == 'All'
      @swimmers = Swimmer.all if params[:gender] == 'All'
-    puts @swimmers.size
      @swimmer_times = SwimmerTime.swimmer @swimmers
 
 

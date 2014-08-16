@@ -86,6 +86,22 @@
       return !!self.roles.find_by_name(role_string.to_s.camelize)
     end
 
+    def get_roles
+      roles = []
+      self.roles.each do |role|
+        roles << role.name
+      end
+      roles
+    end
+
+
+    def check_roles rol
+      rol.each do |role|
+        return true if self.get_roles.include? role
+      end
+      false
+    end
+
     def assign_roles_to_user
       role = Role.find_by(name: self.level)
       self.roles << role if self.roles.size == 0

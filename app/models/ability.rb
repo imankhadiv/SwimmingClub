@@ -22,12 +22,14 @@ class Ability
       end
 
       if user.role? 'Parent'
-        can [:read,:search,:medical_conditions,:swimmer_times], Swimmer
+        can [:read,:search,:medical_conditions,:swimmer_times,:payment], Swimmer
         can [:read,:edit,:update,:destroy,:check_relation], Parent
         can [:read], SwimmerTime
         can [:read], Event
         can [:profile,:update], User
         can [:read], MedicalCondition
+        can [:show], Payment
+
 
       end
 
