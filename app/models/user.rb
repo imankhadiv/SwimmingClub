@@ -6,6 +6,10 @@
     has_and_belongs_to_many :roles
     has_many :notifications
     before_save :assign_roles_to_user
+    before_save { |user| user.first_name = user.first_name.downcase.capitalize }
+    before_save { |user| user.last_name = user.last_name.downcase.capitalize }
+
+
 
 
     # Include default devise modules. Others available are:
@@ -109,5 +113,18 @@
       # self.roles << role
       # end
     end
+
+    def self.search (first_name, last_name)
+
+    User.where("first_name LIKE ? AND last_name like ?", "%#{first_name.downcase.capitalize}%", "%#{last_name.downcase.capitalize}%").where(level: 'Swimmer')
+
+    end
+
+    def capitalize_name
+      self.first_name.downcase.upcase!
+      self.last_name.downcase.upcase!
+    end
+
+
 
   end

@@ -94,7 +94,7 @@
                               = navbar_link_to best_times_swimmer_times_path, title: 'My Payment' do
                                 %i.icon-time
                                 Best Club Times
-                              = navbar_link_to best_times_swimmer_times_path, title: 'My Payment' do
+                              = navbar_link_to compare_times_compare_path, title: 'My Payment' do
                                 %i.icon-time
                                 Compare Times
                               - if user_signed_in? && (current_user.role? 'Swimmer')

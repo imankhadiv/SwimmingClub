@@ -1,0 +1,31 @@
+.container
+  #query_swimmers.row
+    .col-md-5.col-md-offset-4
+
+      = bootstrap_form_tag url:'search', method: 'get' ,remote: true do |f|
+        .row
+          .col-md-10.alert.alert-info.text-center
+
+            Swimmer 1
+          .input.col-md-5
+            = f.text_field :first_name_1, label: 'First name', required: true
+          .input.col-md-5{style: 'margin-left:8px'}
+            = f.text_field :last_name_1, label: 'Last name', placeholder: 'optional'
+        .row
+          .col-md-10.alert.alert-info.text-center
+
+            Swimmer 2
+          .input.col-md-5
+            = f.text_field :first_name_2, label: 'First name', required: true
+          .input.col-md-5{style: 'margin-left:8px'}
+            = f.text_field :last_name_2, label: 'Last name', placeholder: 'optional'
+        .row
+        .action.col-md-1
+          = f.submit 'Find', class:'btn btn-success active'
+        .row
+
+
+  .row
+    .col-md-8.col-md-offset-4
+      #query_result
+

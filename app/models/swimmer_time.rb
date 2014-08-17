@@ -12,7 +12,7 @@ class SwimmerTime < ActiveRecord::Base
   validates :venue,:date, presence: true
   validate :date_cannot_be_in_the_future
 
-  attr_accessor :minutes, :seconds, :milli_seconds
+  attr_accessor :minutes, :seconds, :milli_seconds, :temp_swimmer
   before_save :insert_into_times
   before_save :calculate_age
 

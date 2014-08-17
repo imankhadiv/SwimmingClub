@@ -1,0 +1,22 @@
+
+= bootstrap_form_tag url:'show', method: 'get' do |f|
+
+  .row
+    .col-md-5
+      -#=debug swimmers1
+      = f.collection_select(:Swimmer1, @users1, :id, :combined_name)
+      = f.collection_select(:Swimmer2, @users2, :id, :combined_name)
+  .row
+    .col-md-2
+      = f.select :stroke, SwimmerTime::STROKE_TYPES
+    .col-md-2{style: 'margin-left:8px'}
+      = f.select :distance, SwimmerTime::DISTANCE
+
+  .actions
+
+    = submit_tag 'Compare', :class=>'btn btn-success'
+
+
+%br
+%br
+

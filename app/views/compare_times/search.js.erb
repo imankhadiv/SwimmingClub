@@ -1,0 +1,5 @@
+
+$('#query_swimmers').hide();
+$('.flash-messages').hide()
+//$('#query_result').append("<%= escape_javascript render('form') %>");
+$('#query_result').append("<%= escape_javascript render(:partial => 'compare_times/form', :locals => { users1: @users1, users2: @users2 }) %>");

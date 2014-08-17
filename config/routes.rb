@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'compare_times/compare'
+  get 'compare_times/search'
+  get 'compare_times/show'
+
   resources :payments
 
   resources :events
