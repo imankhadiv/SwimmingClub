@@ -17,8 +17,9 @@ class SwimmersController < ApplicationController
     @swimmer_times = @swimmer.details_of_times
 
     time = SwimmerTime.where(swimmer_id:params[:id]).sort_by {|date| date.date}
-    @years_ago = Time.now.year - time.first.date.year
+     @years_ago = Time.now.year - time.first.date.year unless time.empty?
     # puts @swimmer.user.first_name
+
 
   end
 

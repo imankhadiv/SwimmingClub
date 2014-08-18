@@ -25,11 +25,18 @@ class CompareTimesController < ApplicationController
 
     swimmer1 = User.find(params[:Swimmer1]).swimmer
     swimmer2 = User.find(params[:Swimmer2]).swimmer
+    swimmer_times1 = SwimmerTime.where(stroke: params[:stroke], distance: params[:distance], swimmer_id: swimmer1.id)
+    swimmer_times2 = SwimmerTime.where(stroke: params[:stroke], distance: params[:distance], swimmer_id: swimmer2.id)
+    @swimmer_times1 = swimmer_times1.order(:date)
+    @swimmer_times2 = swimmer_times2.order(:date)
+    @swimmer_times3 = swimmer_times1.order(:age)
+    @swimmer_times4 = swimmer_times2.order(:age)
 
-    @swimmer_times1 = SwimmerTime.where(stroke: params[:stroke], distance: params[:distance], swimmer_id: swimmer1.id).order(:date)
-    @swimmer_times2 = SwimmerTime.where(stroke: params[:stroke], distance: params[:distance], swimmer_id: swimmer2.id).order(:date)
-
-    if @swimmer_times1.empty? && @swimmer_times2.empty?
+    # @swimmer_times1 = SwimmerTime.where(stroke: params[:stroke], distance: params[:distance], swimmer_id: swimmer1.id).order(:date)
+    # @swimmer_times2 = SwimmerTime.where(stroke: params[:stroke], distance: params[:distance], swimmer_id: swimmer2.id).order(:date)
+    # @swimmer_times3 = SwimmerTime.where(stroke: params[:stroke], distance: params[:distance], swimmer_id: swimmer1.id).order(:age)
+    # @swimmer_times4 = SwimmerTime.where(stroke: params[:stroke], distance: params[:distance], swimmer_id: swimmer2.id).order(:age)
+    if @swimmer_times1.empty? or (@swimmer_times2.empty?)
       redirect_to compare_times_compare_path, alert: 'No match found!'
     end
 
