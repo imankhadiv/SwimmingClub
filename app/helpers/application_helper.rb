@@ -18,7 +18,6 @@ module ApplicationHelper
     content_tag(:tr, content_tag(:td, text, colspan: colspan, class: 'text-center text-muted' ), class: 'tr-no-record')
   end
 
-  #this is the method for generating different flash messages. Sometimes info might be needed for different kind of messages
   def flash_class(name)
     if name == 'notice'
       'success'
@@ -29,13 +28,17 @@ module ApplicationHelper
     end
   end
 
-  # When each page loads the number of notifications for different message boards should be updated
+  # When each page loads the number of notifications
   def events_notification_number
     @notifications = Notification.number_of_notifications_for_events current_user
   end
 
+  def roles_notification_number
+    @notifications = Notification.number_of_notifications_for_roles current_user
+  end
 
-  # For new notifications user needs to click on the conversation and navigates to that page. This method
+
+  # For new notifications user needs to click on the event and navigates to that page.
   def get_notifications notifiable_type
     n = Notification.where(user_id:current_user, notifiable_type: notifiable_type)
     events_id = Array.new

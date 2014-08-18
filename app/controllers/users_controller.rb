@@ -26,11 +26,14 @@ class UsersController < ApplicationController
     else
 
        @user = current_user
+       Notification.remove_roles_notification current_user.id, 'Role'
+
     end
 
   end
   def show
     @user_profile = User.user_profile @user.id
+
   end
 
   def edit

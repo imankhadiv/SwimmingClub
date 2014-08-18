@@ -147,9 +147,14 @@
                                       %i.icon-money
                                       ="#{swimmer.user.first_name} Payment History"
 
-                      = navbar_link_to users_profile_path, title: 'Profile', identifier: :profile do
-                        %i.icon-user
-                        My Profile
+                        = navbar_link_to users_profile_path, title: 'Profile', identifier: :profile do
+                          %i.icon-user
+                          My Profile
+                          - if roles_notification_number > 0
+                            .badge.badge-important{style: 'background-color:red'}= roles_notification_number
+
+
+
                       - if user_signed_in?
                         = navbar_link_to destroy_user_session_path,method: :delete, title: 'Log Out', identifier: :logout do
                           %i.icon-signout

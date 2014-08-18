@@ -8,6 +8,7 @@
     before_save :assign_roles_to_user
     before_save { |user| user.first_name = user.first_name.downcase.capitalize }
     before_save { |user| user.last_name = user.last_name.downcase.capitalize }
+    after_update :add_notification
 
 
 
@@ -125,6 +126,14 @@
       self.last_name.downcase.upcase!
     end
 
+
+    def add_notification
+      #
+      # users = User.all - [user_id]
+      # users.each do |user|
+        Notification.create(user_id: id,notifiable_id: self.id, notifiable_type: 'Role')
+
+    end
 
 
   end
