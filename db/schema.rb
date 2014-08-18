@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815142144) do
+ActiveRecord::Schema.define(version: 20140818092958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,14 +31,14 @@ ActiveRecord::Schema.define(version: 20140815142144) do
 
   create_table "events", force: true do |t|
     t.date     "date"
-    t.time     "time"
-    t.integer  "duration"
+    t.time     "start"
     t.string   "title"
     t.text     "details"
     t.integer  "user_id"
     t.boolean  "notification"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.time     "finish"
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
@@ -86,9 +86,9 @@ ActiveRecord::Schema.define(version: 20140815142144) do
     t.decimal  "amount",     precision: 8, scale: 2
     t.boolean  "paid",                               default: false
     t.date     "due_date"
-    t.datetime "paid_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "paid_date"
   end
 
   add_index "payments", ["swimmer_id"], name: "index_payments_on_swimmer_id", using: :btree

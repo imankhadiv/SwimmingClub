@@ -70,11 +70,13 @@ class EventsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
+      puts 'hello world'
+      puts params
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:date, :time, :title, :details,:duration, :user_id, :notification)
+      params.require(:event).permit(:date, :start, :title, :details,:finish, :user_id, :notification)
     end
 
    def set_nav_identifier

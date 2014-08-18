@@ -4,7 +4,7 @@ module PaymentsHelper
 
 
 
-  def event_navigation_links(payment)
+  def payment_navigation_links(payment)
     content_tag :h3 do
       # if (current_user.role? "ProductionTeam")
       [

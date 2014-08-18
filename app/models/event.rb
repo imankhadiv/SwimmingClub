@@ -4,10 +4,10 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :notifications, allow_destroy: true
 
 
-  validates :title,:details,:date,:time,:duration, presence: true
+  validates :title,:details,:date, presence: true
   validate :date_cannot_be_in_the_past
   validate :time_cannot_be_in_the_past
-  validates :duration, numericality: {greater_than: 0, less_than_or_equal_to: 600}
+  # validates :duration, numericality: {greater_than: 0, less_than_or_equal_to: 600}
   after_create :add_notifications
   # before_destroy :remove_notification
 
@@ -19,8 +19,8 @@ class Event < ActiveRecord::Base
   end
 
   def time_cannot_be_in_the_past
-    errors.add(:time, "can't be in the past") if
-        date == Date.today and !time.blank? and Time.parse(time.strftime("%I:%M%p"))<Time.parse(Time.now.strftime("%I:%M%p"))
+    errors.add(:start, "can't be in the past") if
+        date == Date.today and !start.blank? and Time.parse(start.strftime("%I:%M%p"))<Time.parse(Time.now.strftime("%I:%M%p"))
   end
 
   def add_notifications

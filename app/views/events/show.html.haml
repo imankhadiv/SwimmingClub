@@ -12,11 +12,11 @@
           %th Date:
           %td= @event.date
         %tr
-          %th Time:
-          %td= @event.time.strftime('%H:%M')
+          %th Start time:
+          %td= @event.start.strftime('%H:%M')
         %tr
-          %th Duration:
-          %th= "#{@event.duration} minutes"
+          %th End time:
+          %th= @event.finish.strftime('%H:%M')
         %tr
           %th Created By:
           %td= "#{@event.user.first_name} #{@event.user.last_name}" if @event.user

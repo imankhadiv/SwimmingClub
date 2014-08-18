@@ -8,7 +8,7 @@ module EventsHelper
     content_tag :h3 do
       # if (current_user.role? "ProductionTeam")
         [
-            link_to('<i class="icon-circle-arrow-left"></i> Back'.html_safe,events_path),
+            link_to('<i class="icon-circle-arrow-left"></i> Back'.html_safe,calendar_index_path),
             '|',
             link_to('<i class="icon-edit-sign"></i> Edit'.html_safe, edit_event_path(event)),
             '|'                                                        ,

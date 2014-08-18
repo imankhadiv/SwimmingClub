@@ -5,7 +5,6 @@
 = simple_form_for(@user) do |f|
   = f.error_notification
 
-  // The approval status can be set to true and the role(s) of the user can be selected from the list of roles
   .form-inputs
     -#= f.label "Approved: "
     -#= f.check_box :approved

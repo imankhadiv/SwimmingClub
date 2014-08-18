@@ -4,12 +4,17 @@
   .form-inputs
     = f.text_field :title
     = f.text_area :details,rows: 3
-    .row.col-md-3
-      = f.text_field :date
-    .col-md-5.col-md-offset-1
-      = f.time_select :time
+    .row
+      .col-md-4
+        = f.text_field :date
+    .row
+      .col-md-4
+        = f.time_select :start
+    .row
+      .col-md-4
+        = f.time_select :finish
 
-    = f.number_field :duration, label: 'Duration(in minutes)'
+    -#= f.number_field :duration, label: 'Duration(in minutes)'
     = f.hidden_field :user_id, value: current_user.id if current_user
     -#= f.input :notification
 

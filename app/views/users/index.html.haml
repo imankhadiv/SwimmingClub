@@ -42,7 +42,8 @@
               %td= user.first_name
               %td= user.last_name
               %td= user.email
-              %td= user.level
+              %td= user_levels user
+              -#%td= user.level
               %td
                 -#%a.btn.btn-primary{href: swimmer_path(user.get_swimmer user.id), role: "button"} view
                 %a.btn.btn-success{href: user_path(user), role: 'button'} view
