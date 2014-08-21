@@ -1,4 +1,4 @@
-- @records = Dir.glob("public/images/upload/*")
+- @records = Dir.glob('public/images/uploads/*')
 .container
   .row
     .col-md-8.col-md-offset-2
@@ -11,12 +11,17 @@
         = file_field_tag :file
         .span must be a csv file
         %br
-        =submit_tag 'Import', class: 'btn btn-success'
+        =button_tag 'Import', class: 'btn btn-primary', style: {width:'96px'}
+        %br
+        %br
+        %br
+    .col-md-8.col-md-offset-2
+      .alert.alert-info
+        %h4 Update Club Records
+      = link_to 'Synchronise', import_times_swimming_records_path, class: 'btn btn-lg btn-primary'
+      %br
+      %br
 
-        %br
-        %br
-        %br
-        %br
   .row
     .col-md-8.col-md-offset-2
       .alert.alert-info
@@ -26,3 +31,5 @@
         %ol
         - @records.each do |record|
           %li= record.split('/').last
+      %br
+      %br

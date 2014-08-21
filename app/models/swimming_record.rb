@@ -1,6 +1,6 @@
 class SwimmingRecord < ActiveRecord::Base
   validate :first_name,:last_name,:date_of_birth,:gender,:stroke,:distance,:level,:meet,:venue,:time,:date,:region,:region_code,:age,:information, presence: true
-  validate :file, required: true
+
   def self.import_times file
     CSV.foreach(file.path, headers: true) do |row|
 

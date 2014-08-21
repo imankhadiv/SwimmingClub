@@ -1,5 +1,5 @@
 class SwimmerTime < ActiveRecord::Base
-  STROKE_TYPES = %w(BACK BREAST BUTTERFLY MEDLEY FREESTYLE)
+  STROKE_TYPES = %w(Backstroke Breaststroke Butterfly Individual\ Medley Medley Freestyle)
   AGE = *7..30
   DISTANCE = [25,50,100,200,400,800,1500]
   YEAR = (30.years.ago.year..Time.new.year).to_a

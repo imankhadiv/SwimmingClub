@@ -16,7 +16,7 @@ class SwimmingRecordsController < ApplicationController
       redirect_to update_system_swimming_records_url,alert: 'please upload a csv file!'
       return
     end
-    directory = 'public/images/upload'
+    directory = 'public/images/uploads'
     if File.exist?("#{directory}/#{name}")
       redirect_to update_system_swimming_records_url, alert: 'This file has been uploaded before'
       return

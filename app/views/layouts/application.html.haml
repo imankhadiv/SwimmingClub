@@ -147,6 +147,19 @@
                           - if roles_notification_number > 0
                             .badge.badge-important{style: 'background-color:red'}= roles_notification_number
 
+                        - if current_user.role? 'Administrator'
+
+                          %ul.nav.navbar-nav
+                            %li.dropdown{class: (:active if @current_nav_identifier == :payments)}
+                              %a.dropdown-toggle{'data-toggle' => 'dropdown', 'data-target' => "#", :href => '#'}
+                                %i.icon-upload
+                                System
+                                %b.caret
+                              %ul.dropdown-menu
+                                - if user_signed_in? && (current_user.role? 'Administrator')
+                                  = navbar_link_to update_system_swimming_records_url, title: 'Import Records' do
+                                    %i.icon-file-text-alt
+                                    Import Records
 
 
                       - if user_signed_in?
