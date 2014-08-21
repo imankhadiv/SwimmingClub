@@ -4,7 +4,26 @@ class SwimmingRecordsController < ApplicationController
 
 
   def import_times
-    puts params[:file]
+
+    if params[:file].nil?
+      redirect_to update_system_swimming_records_url,alert: 'please upload a csv file!'
+      return
+    end
+
+    name = params[:file].original_filename
+
+    if File.extname(name) != '.csv'
+      redirect_to update_system_swimming_records_url,alert: 'please upload a csv file!'
+      return
+    end
+    directory = 'public/images/upload'
+    if File.exist?("#{directory}/#{name}")
+      redirect_to update_system_swimming_records_url, alert: 'This file has been uploaded before'
+      return
+    end
+
+    path = File.join(directory, name)
+    File.open(path, 'wb') { |f| f.write(params[:file].read) }
 
     SwimmingRecord.import_times params[:file]
     redirect_to swimming_records_url, notice: 'Swimming records imported successfully'
