@@ -1,0 +1,51 @@
+%p#notice= notice
+
+%p
+  %b First name:
+  = @swimming_record.first_name
+%p
+  %b Last name:
+  = @swimming_record.last_name
+%p
+  %b Date of birth:
+  = @swimming_record.date_of_birth
+%p
+  %b Gender:
+  = @swimming_record.gender
+%p
+  %b Stroke:
+  = @swimming_record.stroke
+%p
+  %b Distance:
+  = @swimming_record.distance
+%p
+  %b Level:
+  = @swimming_record.level
+%p
+  %b Meet:
+  = @swimming_record.meet
+%p
+  %b Venue:
+  = @swimming_record.venue
+%p
+  %b Time:
+  = @swimming_record.time
+%p
+  %b Age:
+  = @swimming_record.age
+%p
+  %b Date:
+  = @swimming_record.date
+%p
+  %b Region:
+  = @swimming_record.region
+%p
+  %b Region:
+  = @swimming_record.region
+%p
+  %b Region code:
+  = @swimming_record.region_code
+
+= link_to 'Edit', edit_swimming_record_path(@swimming_record)
+\|
+= link_to 'Back', swimming_records_path

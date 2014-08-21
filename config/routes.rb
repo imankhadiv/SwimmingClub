@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :swimming_records do
+    collection { post :import_times }
+    collection { get :update_system }
+    collection { get :results}
+  end
+
   get 'compare_times/compare'
   get 'compare_times/search'
   get 'compare_times/show'

@@ -63,6 +63,8 @@
   .row
     .col-md-5.col-md-offset-3
       %hr
+      .alert.alert-warning
+        %h4 Users should have at least one role in the system
       = simple_form_for(@user) do |f|
         = f.label 'Approved: '
         = f.check_box :approved

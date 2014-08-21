@@ -1,0 +1,1 @@
+json.extract! @swimming_record, :id, :first_name, :last_name, :date_of_birth, :gender, :stroke, :distance, :level, :meet, :venue, :time, :age, :date, :region, :region, :region_code, :created_at, :updated_at

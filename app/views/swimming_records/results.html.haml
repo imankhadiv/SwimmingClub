@@ -1,0 +1,34 @@
+.container
+  .row
+    .col-md-10.col-md-offset-1
+      .alert.alert-info
+        %h1= @records[@records.keys.first].first.information
+    .col-md-10.col-md-offset-1
+      .alert
+        - @records.keys.each do |record|
+          .alert.alert-success
+            %h2= "#{record.first}  #{record.last}"
+            %h4= "#{@records[record].first.date_of_birth}\t#{@records[record].first.region} #{@records[record].first.region_code}"
+          %table.table.table-striped.table-responsive.table-customstyle.table-hover
+            %thead
+
+              %tr
+                %th Gender
+                %th Stroke
+                %th Distance
+                %th Meet
+                %th Venue
+                %th Level
+                %th Time
+                %th Date
+
+            - @records[record].each do |item|
+              %tr
+                %td= item.gender
+                %td= item.stroke
+                %td= item.distance
+                %td= item.meet
+                %td= item.venue
+                %td= item.level
+                %td= item.convert_times_into_string_format
+                %td= item.date

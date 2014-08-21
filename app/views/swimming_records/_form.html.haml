@@ -1,0 +1,22 @@
+= simple_form_for(@swimming_record) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :date_of_birth
+    = f.input :gender
+    = f.input :stroke
+    = f.input :distance
+    = f.input :level
+    = f.input :meet
+    = f.input :venue
+    = f.input :time
+    = f.input :age
+    = f.input :date
+    = f.input :region
+    = f.input :region
+    = f.input :region_code
+
+  .form-actions
+    = f.button :submit
