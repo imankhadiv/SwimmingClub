@@ -68,4 +68,20 @@ class SwimmingRecord < ActiveRecord::Base
   end
 
 
+  def self.search (first_name, last_name)
+
+    SwimmingRecord.where("first_name LIKE ? AND last_name like ?", "%#{first_name.downcase.capitalize}%", "%#{last_name.downcase.capitalize}%")
+
+  end
+
+  def combined_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
+  def times_in_seconds
+    time / 100
+  end
+
+
+
 end

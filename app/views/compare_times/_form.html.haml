@@ -1,5 +1,10 @@
+= @status
 
-= bootstrap_form_tag url:'show', method: 'get' do |f|
+-#- @status.nil??'show': 'shwo2'
+- @url = 'show' unless @status
+- @url = 'show_external_times' if @status
+
+= bootstrap_form_tag url:"#{@url}", method: 'get' do |f|
 
   .row
     .col-md-5

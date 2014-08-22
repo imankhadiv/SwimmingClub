@@ -1,0 +1,274 @@
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<div class="container">
+
+<script>
+
+    $(function(){
+
+        new Highcharts.Chart({
+
+            chart: {
+                renderTo: 'times_charts'
+            },
+            title: {
+
+                text: '<%= "#{@swimmer_times1.first.stroke} Stroke #{@swimmer_times1.first.distance} m" %>'
+
+            },
+            xAxis: {
+                type: "datetime",
+                dateTimeLabelFormats:{
+                    month: '%Y'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Times(seconds)'
+                }
+            },
+            tooltip: {
+                headerFormat: '<b>{series.name}</b><br>',
+                pointFormat: '{point.x:%Y %b %e}:   {point.y} Sec'
+            },
+            series: [
+
+                {
+                    name: '<%= "#{@swimmer_times1.first.swimmer.swimmer_name}" %>',
+                    pointInterval: <%= 1.year * 1000 %>,
+                    data: [
+                        <%  @swimmer_times1.map do |item| %>
+
+                        [Date.UTC(<%= item.date.year %>,<%= item.date.month - 1 %>,<%= item.date.day %>),<%= item.times_in_seconds %>],
+
+                        <% end %>
+                    ]
+                },
+                {
+                    name: '<%= "#{@swimmer_times2.first.first_name}" %>',
+                    pointInterval: <%= 1.year * 1000 %>,
+                    data: [
+                        <%  @swimmer_times2.map do |item| %>
+
+                        [Date.UTC(<%= item.date.year %>,<%= item.date.month - 1 %>,<%= item.date.day %>),<%= item.times_in_seconds %>],
+
+                        <% end %>
+
+
+
+                    ]
+                }
+
+            ]
+
+        });
+
+
+        new Highcharts.Chart({
+
+            chart: {
+                renderTo: 'times_charts2'
+            },
+
+
+
+            title: {
+                text: '<%= "#{@swimmer_times1.first.stroke} Stroke #{@swimmer_times1.first.distance} m" %>'
+            },
+            subtitle: {
+//                  text: 'Click the plot area to add a point. Click a point to remove it.'
+            },
+            xAxis: {
+//                  minPadding: 1
+//                  maxPadding: 2
+//                  maxZoom: 20
+            },
+            yAxis: {
+                title: {
+                    text: 'Times(seconds)'
+                },
+
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            legend: {
+                enabled: true
+            },
+            exporting: {
+                enabled: true
+            },
+            plotOptions: {
+                series: {
+                    lineWidth: 1,
+                    point: {
+                        events: {
+                            'click': function () {
+                                if (this.series.data.length > 1) {
+                                    this.remove();
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+
+
+            tooltip: {
+                headerFormat: '<b>{series.name}</b><br>',
+                pointFormat: '{point.y} Sec, Age: {point.x}'
+            },
+            series: [
+                {
+                    name: '<%= "#{@swimmer_times3.first.swimmer.swimmer_name}" %>',
+                    data: [
+                        <%  @swimmer_times3.map do |item| %>
+
+                        [<%= item.age %>,<%= item.times_in_seconds %>],
+
+
+
+                        <% end %>
+
+
+
+                    ]
+                },
+                {
+                    name: '<%= "#{@swimmer_times4.first.first_name}" %>',
+                    data: [
+                        <%  @swimmer_times4.map do |item| %>
+
+                        [<%= item.age %>,<%= item.times_in_seconds %>],
+
+                        <% end %>
+
+
+
+                    ]
+                }
+
+            ]
+
+
+
+
+
+        });
+
+
+    });
+
+
+</script>
+
+
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+
+    <div class="alert alert-info" style="text-align: center;font-weight: bold">
+      <%= "#{@swimmer_times1.first.swimmer.swimmer_name} VS #{@swimmer_times2.first.first_name} (by year)" %>
+    </div>
+    <div  id="times_charts" style="margin-bottom:30px"></div>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+
+    <div class="alert alert-info" style="text-align: center;font-weight: bold">
+      <%= "#{@swimmer_times1.first.swimmer.swimmer_name} VS #{@swimmer_times2.first.first_name} (by age)" %>
+    </div>
+    <div id="times_charts2" style="margin-bottom:30px"></div>
+  </div>
+</div>
+
+
+
+
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+
+    <div class="alert alert-success" style="text-align: center;font-weight: bold">
+      <%= "Times for #{@swimmer_times1.first.stroke} Stroke #{@swimmer_times1.first.distance} meter" %>
+    </div>
+
+    <table class="table table-bordered table-condensed table table-striped table-responsive table-customstyle">
+      <caption>
+        <div class="alert alert-info" style="text-align: center">
+          <%= @swimmer_times1.first.swimmer.swimmer_name %>
+        </div>
+      </caption>
+      <thead>
+      <th>Age</th>
+      <th>Times</th>
+      <th>meet</th>
+      <th>Venue</th>
+      <th>Date</th>
+      </thead>
+      <% @swimmer_times1.each do |item| %>
+
+          <tbody>
+          <td>
+            <%= item.age %>
+          </td>
+          <td>
+            <%= item.convert_times %>
+          </td>
+          <td>
+            <%= item.meet %>
+          </td>
+          <td>
+            <%= item.venue %>
+          </td>
+          <td>
+            <%= item.date %>
+          </td>
+          <% #- values[item.date.year] = (item.times/10) %>
+          </tbody>
+      <% end %>
+    </table>
+    <table class="table-bordered table-condensed table table-striped table-responsive table-customstyle">
+      <caption>
+        <div class="alert alert-info" style="text-align: center">
+          <%= @swimmer_times2.first.first_name %>
+        </div>
+      </caption>
+      <thead>
+      <th>Age</th>
+      <th>Times</th>
+      <th>Meet</th>
+      <th>Venue</th>
+      <th>Date</th>
+      </thead>
+      <% @swimmer_times2.each do |item| %>
+
+          <tbody>
+          <td>
+            <%= item.age %>
+          </td>
+          <td>
+            <%= item.convert_times_into_string_format %>
+          </td>
+          <td>
+            <%= item.meet%>
+          </td>
+          <td>
+            <%= item.venue %>
+          </td>
+          <td>
+            <%= item.date %>
+          </td>
+          <% #- values[item.date.year] = (item.times/10) %>
+          </tbody>
+      <% end %>
+    </table>
+
+  </div>
+</div>
+</div>

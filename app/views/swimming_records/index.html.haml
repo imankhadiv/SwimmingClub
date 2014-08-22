@@ -1,8 +1,9 @@
 .container
   .row
-    .col-md-8.col-md-offset-2
+    .col-md-10.col-md-offset-1
       %h3 Records
-      %table.table.table-striped.table-responsive.table-customstyle
+      %table.table.table-bordered.table-striped.table-responsive.table-customstyle
+
         %thead
 
           %tr
@@ -14,54 +15,4 @@
             %tbody
               %tr
                 %td= item
-                %td= link_to 'View',results_swimming_records_path(information: item)
-                -#%a.btn.btn-success{href: results_swimming_records_path, iman: 8} View
-
-
--#%h1 Listing swimming_records
--#
--#%table
--#  %tr
--#    %th First name
--#    %th Last name
--#    %th Date of birth
--#    %th Gender
--#    %th Stroke
--#    %th Distance
--#    %th Level
--#    %th Meet
--#    %th Venue
--#    %th Time
--#    %th Age
--#    %th Date
--#    %th Region
--#    %th Region
--#    %th Region code
--#    %th
--#    %th
--#    %th
--#
--#  - @swimming_records.each do |swimming_record|
--#    %tr
--#      %td= swimming_record.first_name
--#      %td= swimming_record.last_name
--#      %td= swimming_record.date_of_birth
--#      %td= swimming_record.gender
--#      %td= swimming_record.stroke
--#      %td= swimming_record.distance
--#      %td= swimming_record.level
--#      %td= swimming_record.meet
--#      %td= swimming_record.venue
--#      %td= swimming_record.time
--#      %td= swimming_record.age
--#      %td= swimming_record.date
--#      %td= swimming_record.region
--#      %td= swimming_record.region
--#      %td= swimming_record.region_code
--#      %td= link_to 'Show', swimming_record
--#      %td= link_to 'Edit', edit_swimming_record_path(swimming_record)
--#      %td= link_to 'Destroy', swimming_record, :method => :delete, :data => { :confirm => 'Are you sure?' }
--#
--#%br
--#
--#= link_to 'New Swimming record', new_swimming_record_path
+                %td= link_to 'View',results_swimming_records_path(information: item), {class: 'btn btn-success btn-sm'}
