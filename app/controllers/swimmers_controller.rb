@@ -127,7 +127,7 @@ class SwimmersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def swimmer_params
-      params.require(:swimmer).permit(:asa_number, :asa_category, :date_of_birth, :sex, :photo_consent, :current_squad, :user_id,:ethnic, address_attributes: [:line1, :line2, :city, :postcode, :telephone, :emergency_contact, :addressable_id, :addressable_type],medical_condition_attributes: [:medical_history,:medication,:allergies,:doctor,:disability,address_attributes: [:line1, :line2, :city, :postcode, :telephone, :emergency_contact, :addressable_id, :addressable_type]])
+      params.require(:swimmer).permit(:asa_number,:email_parent, :asa_category, :date_of_birth, :sex, :photo_consent, :current_squad, :user_id,:ethnic, address_attributes: [:line1, :line2, :city, :postcode, :telephone, :emergency_contact, :addressable_id, :addressable_type],medical_condition_attributes: [:medical_history,:medication,:allergies,:doctor,:disability,address_attributes: [:line1, :line2, :city, :postcode, :telephone, :emergency_contact, :addressable_id, :addressable_type]])
     end
     def stop_administrator
 

@@ -1,0 +1,44 @@
+.container
+  %br
+  .row
+    .col-md-5.col-md-offset-3
+      .alert.alert-info.text-center
+        %h4 Edit DBS Check
+
+      %table.table
+        %tr
+          %th First Name
+          %td= @user.first_name
+        %tr
+          %th Last Name
+          %td= @user.last_name
+        %tr
+          %th Email
+          %td= @user.email
+        %tr
+          %th Level(s)
+          %td= user_levels @user
+    .col-md-2.col-md-offset-3
+      %br
+
+
+  .row
+    .col-md-5.col-md-offset-3
+      = simple_form_for(@user, url: update_dbs_check_user_path(@user), method: :post  ) do |f|
+        = f.label 'DBS Checked: '
+        = f.input_field :dbs_check, as: :boolean, boolean_style: :inline
+        %br
+        = f.label 'Expiry Date:  '
+        = f.input_field :dbs_expiry_date, as: :date
+        %br
+        %br
+        %br
+        = f.submit 'Submit', :class=>'btn btn-success btn-lg active'
+
+
+  .row
+    .col-md-5.col-md-offset-3
+      %br
+      =link_to('<i class="icon-circle-arrow-left "></i> Back'.html_safe,users_view_dbs_status_path)
+  %br
+

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'compare_times/show'
   get 'compare_times/show_external_times'
 
+
   resources :payments
 
   resources :events
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
 
   get 'users/index'
   get 'users/profile'
+  get 'users/view_dbs_status'
 
 
 
@@ -59,7 +61,10 @@ Rails.application.routes.draw do
 
   #devise_for :users
   devise_for :users, controllers: { registrations: "users/registrations" }
-  resources :users
+  resources :users do
+    member {get :edit_dbs_check}
+    member {post :update_dbs_check}
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

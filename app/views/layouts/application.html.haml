@@ -110,11 +110,26 @@
                             Users
 
 
-                        - if current_user.check_roles %w(Welfare\ Officer Swimmer Parent)
-                          = navbar_link_to swimmers_path, title: 'Medical Condition', identifier: :medical do
-                            %i.icon-ambulance
-                            Medical
+                        -#- if current_user.check_roles %w(Swimmer Parent)
+                        -#  = navbar_link_to swimmers_path, title: 'Medical Conditions', identifier: :medical do
+                        -#    %i.icon-ambulance
+                        -#    Medical
 
+                        - if current_user.check_roles %w(Welfare\ Officer Swimmer Parent)
+                          %ul.nav.navbar-nav
+                            %li.dropdown{class: (:active if @current_nav_identifier == :medical)}
+                              %a.dropdown-toggle{'data-toggle' => 'dropdown', 'data-target' => "#", :href => '#'}
+                                %i.icon-ambulance
+                                Medical
+                                %b.caret
+                              %ul.dropdown-menu
+                                =navbar_link_to  swimmers_path, title: 'Medical Conditions' do
+                                  %i.icon-ambulance
+                                  Medical
+                                - if current_user.role? 'Welfare Officer'
+                                  =navbar_link_to users_view_dbs_status_path, title: 'Check DBS Status' do
+                                    %i.icon-eye-open
+                                    Check DBS status
 
                         - if current_user.check_roles %w(Administrator Committee Swimmer Parent)
                           %ul.nav.navbar-nav

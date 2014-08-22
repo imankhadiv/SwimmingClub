@@ -18,6 +18,12 @@
         %tr
           %th Level(s)
           %td= user_levels @user
+        %tr
+          %th DBS Check
+          %th= dbs_check? @user
+        %tr
+          %th DBS Expiry Date
+          %td= @user.dbs_expiry_date
     .col-md-2.col-md-offset-3
   .row
 

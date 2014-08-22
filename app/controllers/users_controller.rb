@@ -5,9 +5,28 @@ class UsersController < ApplicationController
   # before_filter :check_user_level
   # skip_before_filter :authenticate_user!
   before_filter :current_nav_identifier
+  before_filter :check_dbs_permission, only: [:edit_dbs_check,:view_dbs_status,:update_dbs_check]
 
 
+ def view_dbs_status
+   @users = User.all.order(:level)
+ end
 
+  def edit_dbs_check
+
+  end
+
+  def update_dbs_check
+
+    @user = User.find(params[:id])
+    # if @user.update(dbs_chesck: params[:dbs_check],dbs_expiry_date: params[:dbs_expiry_date])
+    if @user.update(user_params)
+      redirect_to users_view_dbs_status_path, notice: 'User was successfully updated.'
+    else
+      render action: 'edit'
+    end
+
+  end
 
 
   def index
@@ -93,7 +112,7 @@ class UsersController < ApplicationController
 
   # sets the permitted attributes for a user
   def user_params
-    params.require(:user).permit(:approved, :role_ids => [])
+    params.require(:user).permit(:approved,:dbs_check,:dbs_expiry_date, :role_ids => [])
   end
 
   #Never trust parameters from the scary internet, only allow the white list through.
@@ -121,6 +140,12 @@ class UsersController < ApplicationController
 
     end
 
+  end
+
+  def check_dbs_permission
+    unless current_user.role? 'Welfare Officer'
+      redirect_to :home, alert: 'You do not have permission to access this page'
+    end
   end
 
 

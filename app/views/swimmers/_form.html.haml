@@ -19,6 +19,9 @@
         =f.select :ethnic, Swimmer::ETHNICITY, label:'Ethnicity:'
         =f.text_field :date_of_birth,required: true
 
+        =f.form_group :email_parent do
+          =f.check_box :email_parent
+
 
         = f.form_group :sex, label: { text: 'Gender:' } do
           = f.radio_button :sex, 'Male', label: 'Male', inline: true

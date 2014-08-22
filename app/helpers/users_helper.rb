@@ -9,5 +9,15 @@ module UsersHelper
     roles[0..-3]
   end
 
+  def dbs_check? user
+
+    if user.dbs_check
+      'Yes'
+    else
+      'No'
+    end
+
+  end
+
 
 end

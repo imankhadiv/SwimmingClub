@@ -1,0 +1,31 @@
+.container
+  .row
+    .col-md-10.col-md-offset-1
+      %h3 DBS Check
+      %table.table.table-striped.table-responsive.table-customstyle.table-hover
+        %thead
+          %tr
+            %th First Name
+            %th Last Name
+            %th Email
+            %th Level
+            %th DBS Check
+            %th DBS Expiry Date
+            %th Action
+
+        - @users.each do |user|
+          %tbody
+          %tr
+            %td= user.first_name
+            %td= user.last_name
+            %td= user.email
+            %td= user_levels user
+            %td= dbs_check? user
+            %td= user.dbs_expiry_date
+            %td
+              %a.btn.btn-success{href: edit_dbs_check_user_path(user), role: 'button'} Edit
+
+
+
+      %br
+      %hr
