@@ -91,6 +91,9 @@
                               = navbar_link_to compare_times_compare_path, title: 'My Payment' do
                                 %i.icon-time
                                 Compare Times
+                              = navbar_link_to swimming_records_path, title: 'My Payment' do
+                                %i.icon-time
+                                Results
                               - if user_signed_in? && (current_user.role? 'Swimmer')
                                 = navbar_link_to swimmer_times_swimmer_path(current_user.swimmer), title: 'My Time' do
                                   %i.icon-time

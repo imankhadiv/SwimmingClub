@@ -28,8 +28,8 @@
               %td= event.title
               %td= truncate(strip_tags(event.details), length: 30)
               %td= event.date
-              %td= event.time.strftime('%H:%M')
-              %td= event.duration
+              %td= event.start.strftime('%H:%M')
+              %td= event.finish.strftime('%H:%M')
               %td
                 %a.btn.btn-success{href: event_path(event), role: 'button'} view
 

@@ -3,12 +3,12 @@
 
 #best_timess
 
-  .alert.alert-success
-    %h2 Best Club Times
-  %br
+  -#.alert.alert-success
+  -#  %h2 Best Club Times
+  -#%br
 
   .row
-    .col-md-8.col-md-offset-2
+    .col-md-10.col-md-offset-1
       .alert.alert-warning.text-center
         %h3 Girls
         -@females.keys.each do |item|
@@ -17,18 +17,22 @@
           %table.table-bordered.table-condensed.table.table-striped.table-responsive.table-customstyle
             %thead
               %th Name
-              %th Times
+              %th Time
+              %th Meet
+              %th Venue
               %th Course
-              %th Age
+              -#%th Age
               %th Date
             %tbody
               %td= link_to @females[item].first.swimmer.swimmer_name, swimmer_times_swimmer_path(@females[item].first.swimmer_id)
               %td= @females[item].first.convert_times
+              %td= @females[item].first.meet
+              %td= @females[item].first.venue
               %td= @females[item].first.course
-              %td= @females[item].first.age
+              -#%td= @females[item].first.age
               %td= @females[item].first.date
   .row
-    .col-md-8.col-md-offset-2
+    .col-md-10.col-md-offset-1
       .alert.alert-warning.text-center
         %h3 Boys
         -@males.keys.each do |item|
@@ -37,13 +41,17 @@
           %table.table-bordered.table-condensed.table.table-striped.table-responsive.table-customstyle
             %thead
               %th Name
-              %th Times
+              %th Time
+              %th Meet
+              %th Venue
               %th Course
               -#%th Age
               %th Date
             %tbody
               %td= link_to @males[item].first.swimmer.swimmer_name, swimmer_times_swimmer_path(@males[item].first.swimmer_id)
               %td= @males[item].first.convert_times
+              %td= @males[item].first.meet
+              %td= @males[item].first.venue
               %td= @males[item].first.course
               -#%td= @males[item].first.age
               %td= @males[item].first.date

@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  skip_before_filter :authenticate_user!
+  # skip_before_filter :authenticate_user!
   # before_filter :authenticate_user!
   before_filter :set_nav_identifier
 
