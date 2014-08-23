@@ -12,7 +12,7 @@ class SwimmingRecord < ActiveRecord::Base
           @info = nil
 
         elsif (line.include? 'SPORTSYSTEMS')
-
+          # @info = nil
         else
           m = line.gsub(/\,+/,',').gsub(/\s+/,' ').split(',')
           @first_name = m[0].split(' ')[0]

@@ -1,6 +1,16 @@
 require 'spec_helper'
+include Warden::Test::Helpers
+Warden.test_mode!
 
 describe 'Calendar tests' do
+
+    before(:each) do
+      role = Role.create name: 'Administrator'
+      user = FactoryGirl.create(:user)
+      user.approved = true
+      user.roles << role
+      login_as(user, :scope => :user)
+    end
 
 
     let!(:event) { FactoryGirl.create(:event) }
