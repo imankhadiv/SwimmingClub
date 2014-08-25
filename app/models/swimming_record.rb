@@ -117,9 +117,10 @@ class SwimmingRecord < ActiveRecord::Base
     records.where("information LIKE ?", "%#{condition}%")
 
   end
-  
+
   def convert_date_format
     self.date = self.date.strftime('%Y/%m/%d')
+    self.date_of_birth = self.date_of_birth.strftime('%Y/%m%d')
   end
 
 end
