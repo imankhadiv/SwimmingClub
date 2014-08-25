@@ -64,7 +64,7 @@ class UsersController < ApplicationController
       @user = set_user
       if @user.update(user_params)
         # AppMailer.user_update_mail(@user).deliver
-        UserNotifier.activated(@user).deliver
+        # UserNotifier.activated(@user).deliver
 
         redirect_to users_path, notice: 'User was successfully updated.'
       else
