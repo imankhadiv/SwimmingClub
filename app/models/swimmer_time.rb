@@ -11,9 +11,11 @@ class SwimmerTime < ActiveRecord::Base
   belongs_to :swimmer
   validates :venue,:date, presence: true
   validate :date_cannot_be_in_the_future
+  # validate :times_can_not_be_zero
 
   attr_accessor :minutes, :seconds, :milli_seconds, :temp_swimmer
   before_save :insert_into_times
+  # before_create :insert_into_times
   before_save :calculate_age
 
   scope :stroke, lambda {|stroke| where(stroke: stroke)}
@@ -49,6 +51,7 @@ class SwimmerTime < ActiveRecord::Base
   def insert_into_times
     times = self.minutes.to_i*6000 + self.seconds.to_i*100 + milli_seconds.to_i
     self.times = times
+
   end
 
   def calculate_age
@@ -72,6 +75,10 @@ class SwimmerTime < ActiveRecord::Base
     errors.add(:date, "can't be in the future") if
         !date.blank? and date > Date.today
   end
+
+  # def times_can_not_be_zero
+  #   errors.add(:times, 'can not be zero') if times == 0
+  # end
 
 
 end

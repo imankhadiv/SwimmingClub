@@ -38,8 +38,8 @@ class CompareTimesController < ApplicationController
 
     swimmer1 = User.find(params[:Swimmer1]).swimmer
     swimmer2 = User.find(params[:Swimmer2]).swimmer
-    swimmer_times1 = SwimmerTime.where(stroke: params[:stroke], distance: params[:distance], swimmer_id: swimmer1.id)
-    swimmer_times2 = SwimmerTime.where(stroke: params[:stroke], distance: params[:distance], swimmer_id: swimmer2.id)
+    swimmer_times1 = SwimmerTime.where(stroke: params[:stroke], distance: params[:distance],course: params[:course], swimmer_id: swimmer1.id)
+    swimmer_times2 = SwimmerTime.where(stroke: params[:stroke], distance: params[:distance],course: params[:course], swimmer_id: swimmer2.id)
     @swimmer_times1 = swimmer_times1.order(:date)
     @swimmer_times2 = swimmer_times2.order(:date)
     @swimmer_times3 = swimmer_times1.order(:age)
@@ -54,8 +54,9 @@ class CompareTimesController < ApplicationController
   def show_external_times
     swimmer1 = User.find(params[:Swimmer1]).swimmer
     swimmer2 = SwimmingRecord.find(params[:Swimmer2])
-    swimmer_times1 = SwimmerTime.where(stroke: params[:stroke], distance: params[:distance], swimmer_id: swimmer1.id)
+    swimmer_times1 = SwimmerTime.where(stroke: params[:stroke], distance: params[:distance],course: params[:course], swimmer_id: swimmer1.id)
     swimmer_times2 = SwimmingRecord.where(stroke: params[:stroke], distance: params[:distance], first_name: swimmer2.first_name, last_name: swimmer2.last_name)
+    swimmer_times2 = SwimmingRecord.filter_swimming_records swimmer_times2, params[:course]
     @swimmer_times1 = swimmer_times1.order(:date)
     @swimmer_times2 = swimmer_times2.order(:date)
     @swimmer_times3 = swimmer_times1.order(:age)

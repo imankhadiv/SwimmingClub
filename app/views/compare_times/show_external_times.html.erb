@@ -12,7 +12,7 @@
             },
             title: {
 
-                text: '<%= "#{@swimmer_times1.first.stroke} Stroke #{@swimmer_times1.first.distance} m" %>'
+                text: '<%= "#{@swimmer_times1.first.stroke} Stroke #{@swimmer_times1.first.distance}m #{@swimmer_times1.first.course}" %>'
 
             },
             xAxis: {
@@ -44,7 +44,7 @@
                     ]
                 },
                 {
-                    name: '<%= "#{@swimmer_times2.first.first_name}" %>',
+                    name: '<%= "#{@swimmer_times2.first.first_name} #{@swimmer_times2.first.last_name}" %>',
                     pointInterval: <%= 1.year * 1000 %>,
                     data: [
                         <%  @swimmer_times2.map do |item| %>
@@ -72,7 +72,7 @@
 
 
             title: {
-                text: '<%= "#{@swimmer_times1.first.stroke} Stroke #{@swimmer_times1.first.distance} m" %>'
+                text: '<%= "#{@swimmer_times1.first.stroke} Stroke #{@swimmer_times1.first.distance}m #{@swimmer_times1.first.course}" %>'
             },
             subtitle: {
 //                  text: 'Click the plot area to add a point. Click a point to remove it.'
@@ -169,7 +169,7 @@
   <div class="col-md-10 col-md-offset-1">
 
     <div class="alert alert-info" style="text-align: center;font-weight: bold">
-      <%= "#{@swimmer_times1.first.swimmer.swimmer_name} VS #{@swimmer_times2.first.first_name} (by year)" %>
+      <%= "#{@swimmer_times1.first.swimmer.swimmer_name} VS #{@swimmer_times2.first.first_name} #{@swimmer_times2.first.last_name} (by year)" %>
     </div>
     <div  id="times_charts" style="margin-bottom:30px"></div>
   </div>
@@ -181,7 +181,7 @@
   <div class="col-md-10 col-md-offset-1">
 
     <div class="alert alert-info" style="text-align: center;font-weight: bold">
-      <%= "#{@swimmer_times1.first.swimmer.swimmer_name} VS #{@swimmer_times2.first.first_name} (by age)" %>
+      <%= "#{@swimmer_times1.first.swimmer.swimmer_name} VS #{@swimmer_times2.first.first_name} #{@swimmer_times2.first.last_name} (by age)" %>
     </div>
     <div id="times_charts2" style="margin-bottom:30px"></div>
   </div>
@@ -195,7 +195,7 @@
   <div class="col-md-10 col-md-offset-1">
 
     <div class="alert alert-success" style="text-align: center;font-weight: bold">
-      <%= "Times for #{@swimmer_times1.first.stroke} Stroke #{@swimmer_times1.first.distance} meter" %>
+      <%= "Times for #{@swimmer_times1.first.stroke} Stroke #{@swimmer_times1.first.distance} meter #{@swimmer_times1.first.course}" %>
     </div>
 
     <table class="table table-bordered table-condensed table table-striped table-responsive table-customstyle">
@@ -236,7 +236,7 @@
     <table class="table-bordered table-condensed table table-striped table-responsive table-customstyle">
       <caption>
         <div class="alert alert-info" style="text-align: center">
-          <%= @swimmer_times2.first.first_name %>
+          <%= "#{@swimmer_times2.first.first_name} #{@swimmer_times2.first.last_name}" %>
         </div>
       </caption>
       <thead>

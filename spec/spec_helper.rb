@@ -59,7 +59,7 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-  # config.use_transactional_fixtures = true  # Each example runs in a transaction avodiing the need to clean the db
+   config.use_transactional_fixtures = true  # Each example runs in a transaction avodiing the need to clean the db
 end
 
 Capybara.configure do |config|

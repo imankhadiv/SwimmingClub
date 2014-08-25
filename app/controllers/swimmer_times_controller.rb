@@ -61,6 +61,8 @@ class SwimmerTimesController < ApplicationController
   def edit
     #@swimmer_time = SwimmerTime.new(swimmer_time_params)
     @swimmers = Swimmer.all
+    swimmer_time = SwimmerTime.find(params[:id])
+    @swimmer = swimmer_time.swimmer
 
   end
 
@@ -88,10 +90,12 @@ class SwimmerTimesController < ApplicationController
   def update
     respond_to do |format|
       if @swimmer_time.update(swimmer_time_params)
-        format.html { redirect_to @swimmer_time, notice: 'Swimmer time was successfully updated.' }
+        format.html { redirect_to swimmer_times_path, notice: 'Swimmer time was successfully updated.' }
         format.js
         format.json { render :show, status: :ok, location: @swimmer_time }
       else
+        swimmer_time = SwimmerTime.find(params[:id])
+        @swimmer = swimmer_time.swimmer
         format.html { render :edit }
         format.json { render json: @swimmer_time.errors, status: :unprocessable_entity }
       end
@@ -118,7 +122,7 @@ class SwimmerTimesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def swimmer_time_params
-      params.require(:swimmer_time).permit(:swimmer_id, :stroke, :distance, :times,:course, :club, :venue,:age, :date, :minutes,:seconds,:milli_seconds)
+      params.require(:swimmer_time).permit(:swimmer_id, :stroke, :distance, :times,:course, :club,:meet, :venue,:age, :date, :minutes,:seconds,:milli_seconds,:asa_top_ten,:bml,:asa_meet)
     end
     def filtering_params(params)
        params.slice(:stroke,:date,:distance,:age)

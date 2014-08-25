@@ -1,4 +1,4 @@
-= @status
+-#= @status
 
 -#- @status.nil??'show': 'shwo2'
 - @url = 'show' unless @status
@@ -7,7 +7,7 @@
 = bootstrap_form_tag url:"#{@url}", method: 'get' do |f|
 
   .row
-    .col-md-5
+    .col-md-6
       -#=debug swimmers1
       = f.collection_select(:Swimmer1, @users1, :id, :combined_name)
       = f.collection_select(:Swimmer2, @users2, :id, :combined_name)
@@ -16,6 +16,8 @@
       = f.select :stroke, SwimmerTime::STROKE_TYPES
     .col-md-2{style: 'margin-left:8px'}
       = f.select :distance, SwimmerTime::DISTANCE
+    .col-md-2{style: 'margin-left:8px'}
+      = f.select :course, ['Long Course', 'Short Course']
 
   .actions
 

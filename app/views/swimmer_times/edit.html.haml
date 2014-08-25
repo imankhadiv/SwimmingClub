@@ -1,7 +1,45 @@
-%h1 Editing swimmer_time
+.container
+  -#.row{style: 'margin-top:100px'}
+  .col-md-4.col-md-offset-3{style: 'margin-top:50px'}
 
-= render 'form'
+    = bootstrap_form_for @swimmer_time do |f|
+      - if @swimmer_time.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@swimmer_time.errors.count, "error")} prohibited this swimmer_time from being saved:"
+          %ul
+            - @swimmer_time.errors.full_messages.each do |msg|
+              %li= msg
 
-= link_to 'Show', @swimmer_time
-\|
-= link_to 'Back', swimmer_times_path
+      #bml.form-inupt
+        -##bml-name= f.collection_select(:swimmer_id, @swimmers, :id, :swimmer_name)
+        .alert.alert-success
+          = @swimmer.swimmer_name
+        = f.select :stroke, SwimmerTime::STROKE_TYPES
+        = f.select :distance, SwimmerTime::DISTANCE
+        = f.text_field :meet
+        = f.text_field :venue
+        = f.text_field :date
+        .row
+          .col-md-2
+            = f.select :minutes, SwimmerTime::MINUTES,label: 'Min:'
+          .col-md-2
+            = f.select :seconds, SwimmerTime::MINUTES,label: 'Min:'
+          .col-md-2
+            = f.select :milli_seconds, SwimmerTime::MINUTES,label: 'Min:'
+
+      .form-input
+        = f.select :bml, %w(Not\ Applicable Winter\ Yorkshire Summer\ Yorkshire Winter\ Regional Summer\ Regional), text: ''
+        = f.check_box :asa_meet, text: 'ASA Meet'
+        = f.check_box :asa_top_ten, text: 'ASA Meet'
+        %br
+        = f.submit 'Submit', class: 'btn btn-primary'
+      %br
+      %br
+      %br
+      %br
+
+
+  %br
+  %br
+:javascript
+  $('#bml-name').hide()

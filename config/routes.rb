@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  resources :swimming_records do
+  resources :swimming_records, except: [:show,:edit,:update] do
     collection { post :import_times }
     collection { get :update_system }
     collection { get :results}
+    collection { post :synchronise}
   end
 
   get 'compare_times/compare'
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
 
   post 'parents/check_relation', as: :check
 
-  resources :swimmer_times, except: [:show,:edit] do
+  resources :swimmer_times, except: [:show] do
     get 'search', on: :collection
     get 'best_times', on: :collection
   end

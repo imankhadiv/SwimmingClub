@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140822110158) do
+ActiveRecord::Schema.define(version: 20140825102948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,9 @@ ActiveRecord::Schema.define(version: 20140822110158) do
     t.integer  "age"
     t.string   "course"
     t.string   "level"
+    t.boolean  "asa_meet",    default: false
+    t.boolean  "asa_top_ten", default: false
+    t.string   "bml",         default: ""
   end
 
   add_index "swimmer_times", ["swimmer_id"], name: "index_swimmer_times_on_swimmer_id", using: :btree

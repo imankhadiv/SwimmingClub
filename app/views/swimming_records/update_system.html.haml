@@ -11,14 +11,15 @@
         = file_field_tag :file
         .span must be a csv file
         %br
-        =button_tag 'Import', class: 'btn btn-primary', style: {width:'96px'}
+        =button_tag 'Import', class: 'btn btn-success', style: {width:'96px'}
         %br
         %br
         %br
     .col-md-8.col-md-offset-2
       .alert.alert-info
         %h4 Update Club Records
-      = link_to 'Synchronise', import_times_swimming_records_path, class: 'btn btn-lg btn-primary'
+      = button_to'Update',synchronise_swimming_records_path, {class: 'btn btn-primary btn-sm' }
+      %br
       %br
       %br
 

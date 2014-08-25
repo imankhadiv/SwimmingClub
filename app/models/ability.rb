@@ -18,6 +18,7 @@ class Ability
         can [:profile,:update,:destroy,:create], User
         can [:read], MedicalCondition
         can [:show], Payment
+        can [:results,:index], SwimmingRecord
 
       end
 
@@ -29,6 +30,8 @@ class Ability
         can [:profile,:update], User
         can [:read], MedicalCondition
         can [:show], Payment
+        can [:results,:index], SwimmingRecord
+
 
 
       end
@@ -45,12 +48,16 @@ class Ability
         can [:manage], Event
         can [:profile,:update], User
         can [:manage], Payment
+        can [:results,:index], SwimmingRecord
+
       end
 
       if user.role? 'Coach'
         can [:search,:swimmer_times], Swimmer
         can [:read], Event
         can [:profile,:update], User
+        can [:results,:index], SwimmingRecord
+
 
       end
       #

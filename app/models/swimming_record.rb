@@ -1,11 +1,11 @@
 class SwimmingRecord < ActiveRecord::Base
   validate :first_name,:last_name,:date_of_birth,:gender,:stroke,:distance,:level,:meet,:venue,:time,:date,:region,:region_code,:age,:information, presence: true
-
+  before_save :convert_date_format
   def self.import_times file
     CSV.foreach(file.path, headers: true) do |row|
 
       line = row.to_s
-      puts line
+      # puts line
 
       if( line[0] != ',' )
         if (line.include?'Page' and line.include? '/')
@@ -42,10 +42,14 @@ class SwimmingRecord < ActiveRecord::Base
           @temp,@temp,@date,@meet,@venue,@level,@time = record.split(',')
           @meet = @meet.gsub(/\s\s+/,'')
           @venue = @venue.gsub(/\s\s+/,'')
-          SwimmingRecord.create( first_name: @first_name,last_name: @last_name,gender: @gender, date_of_birth: @date_of_birth,stroke: @stroke, distance: @distance.to_i, level: @level, meet: @meet, venue: @venue, time: (SwimmingRecord.convert_time_into_mil_seconds @time),date: @date, region: @region, region_code: @region_code,information: @info,age: SwimmingRecord.calculate_age,)
+          swimming_record = SwimmingRecord.where( first_name: @first_name,last_name: @last_name,gender: @gender, date_of_birth: @date_of_birth,stroke: @stroke, distance: @distance.to_i, level: @level, meet: @meet, venue: @venue, time: (SwimmingRecord.convert_time_into_mil_seconds @time),date: @date, region: @region, region_code: @region_code,information: @info,age: SwimmingRecord.calculate_age,)
+
+          SwimmingRecord.create( first_name: @first_name,last_name: @last_name,gender: @gender, date_of_birth: @date_of_birth,stroke: @stroke, distance: @distance.to_i, level: @level, meet: @meet, venue: @venue, time: (SwimmingRecord.convert_time_into_mil_seconds @time),date: @date, region: @region, region_code: @region_code,information: @info,age: SwimmingRecord.calculate_age,) if swimming_record.empty?
+
         end
       end
     end
+    @info = nil
   end
 
 
@@ -82,6 +86,41 @@ class SwimmingRecord < ActiveRecord::Base
     time / 100
   end
 
+  def self.synchronise_club_times
 
+    SwimmingRecord.all.each do |record|
+
+      s = Swimmer.joins(:user).where(users: {first_name: 'Shem',last_name: 'Fair'}).where(date_of_birth: record.date_of_birth, sex: record.gender)
+      next if s.empty?
+      puts record.time
+
+      swimmer_time = SwimmerTime.joins(:swimmer).where(swimmer: s).where(date: record.date,course: record.course_type, times: record.time )
+      if swimmer_time.empty?
+        swimmer_time = SwimmerTime.new(swimmer: s.first, stroke: record.stroke, distance: record.distance, times: record.time, meet: record.meet,venue: record.venue,date: record.date,course: record.course_type)
+        SwimmerTime.skip_callback(:save, :before, :insert_into_times)
+        swimmer_time.save
+
+
+      end
+    end
+  end
+
+  def course_type
+    if self.information.include? 'Short Course'
+      'Short Course'
+    else
+      'Long Course'
+    end
+  end
+
+  def self.filter_swimming_records records, condition
+    records.where("information LIKE ?", "%#{condition}%")
+
+  end
+  
+  def convert_date_format
+    self.date = self.date.strftime('%Y/%m/%d')
+  end
 
 end
+

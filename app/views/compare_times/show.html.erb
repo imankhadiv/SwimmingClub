@@ -12,7 +12,7 @@
               },
               title: {
 
-                  text: '<%= "#{@swimmer_times1.first.stroke} Stroke #{@swimmer_times1.first.distance} m" %>'
+                  text: '<%= "#{@swimmer_times1.first.stroke} Stroke #{@swimmer_times1.first.distance}m #{@swimmer_times1.first.course}" %>'
 
               },
               xAxis: {
@@ -72,7 +72,7 @@
 
 
               title: {
-                  text: '<%= "#{@swimmer_times1.first.stroke} Stroke #{@swimmer_times1.first.distance} m" %>'
+                  text: '<%= "#{@swimmer_times1.first.stroke} Stroke #{@swimmer_times1.first.distance}m #{@swimmer_times1.first.course}" %>'
               },
               subtitle: {
 //                  text: 'Click the plot area to add a point. Click a point to remove it.'
@@ -195,7 +195,7 @@
     <div class="col-md-10 col-md-offset-1">
 
             <div class="alert alert-success" style="text-align: center;font-weight: bold">
-             <%= "Times for #{@swimmer_times1.first.stroke} Stroke #{@swimmer_times1.first.distance} meter" %>
+             <%= "Times for #{@swimmer_times1.first.stroke} Stroke #{@swimmer_times1.first.distance} meter #{@swimmer_times1.first.course}" %>
             </div>
       <table class="table-bordered table-condensed table table-striped table-responsive table-customstyle">
         <caption>

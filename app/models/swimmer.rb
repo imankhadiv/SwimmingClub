@@ -1,6 +1,6 @@
 class Swimmer < ActiveRecord::Base
   belongs_to :user
-  has_many :payments
+  has_many :payments, dependent: :destroy
   has_one :medical_condition, dependent: :destroy
   accepts_nested_attributes_for :medical_condition, allow_destroy: true
   has_many :swimmer_times, dependent: :destroy
@@ -48,7 +48,7 @@ class Swimmer < ActiveRecord::Base
 
   def details_of_times
 
-    self.swimmer_times.order(:date,:times).group_by {|e| [e.stroke,e.distance]}
+    self.swimmer_times.order(:date,:times).group_by {|e| [e.stroke,e.distance,e.course]}
   end
 
   def check_parents

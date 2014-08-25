@@ -48,6 +48,7 @@
             %th Date
             - if ((current_user.role? 'Administrator') || (current_user.role? 'Coach') || (current_user.role? 'Committee'))
               %th Action
+              %th BML
           %tbody#result_tbody
             -#= render @swimmer_times
 

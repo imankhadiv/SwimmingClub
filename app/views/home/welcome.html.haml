@@ -31,29 +31,32 @@
           %div
             %p
               =link_to 'View Your Profile', users_profile_path
-    - if current_user.check_roles %w(Swimmer Parent Welfare\ Officer)
-      .col1.clearfix
-        %li.tile.tile-small.tile-6.slideTextRight{"data-page-name" => "random-restored-page", "data-page-type" => "s-page"}
-          %div
-            %p.icon-ambulance
-              =link_to 'Medical Conditions', swimmers_path
-          %div
-            %p Medical
-        -#- if current_user.role? 'Welfare Officer'
-        %li.tile.tile-small.last.tile-2.slideTextLeft{"data-page-name" => "random-restored-page", "data-page-type" => "s-page"}
-          %div
-            %span.icon-eye-open
-          %div
-            %p
-              =link_to 'DBS', users_view_dbs_status_path
+    -#- if current_user.check_roles %w(Swimmer Parent Welfare\ Officer)
+    .col1.clearfix
+      %li.tile.tile-small.tile-6.slideTextRight{"data-page-name" => "random-restored-page", "data-page-type" => "s-page"}
+        %div
+          %p.icon-ambulance
+            =link_to 'Medical Conditions', swimmers_path
+        %div
+          %p Medical
+      -#- if current_user.role? 'Welfare Officer'
+      %li.tile.tile-small.last.tile-2.slideTextLeft{"data-page-name" => "random-restored-page", "data-page-type" => "s-page"}
+        %div
+          %span.icon-eye-open
+        %div
+          %p
+            =link_to 'DBS', users_view_dbs_status_path
       -#- if current_user.check_roles %w(Administrator Committee Swimmer Parent)
     .col2.clearfix
       %li.tile.tile-small.tile-1.slideTextRight{"data-page-name" => "random-restored-page", "data-page-type" => "s-page"}
         %div
-          %p.icon-money Payments
-        %div
           %p
-            = link_to 'Payment', payments_path
+            - if current_user.role? 'Swimmer'
+              = link_to 'Payment', payment_swimmer_path(current_user.swimmer)
+            - else
+              = link_to 'Payment', payments_path
+        %div
+          %p.icon-mondy Payments
       -#- if current_user.role? 'Welfare Officer'
       %li.tile.tile-small.last.tile-4.slideTextLeft{"data-page-name" => "random-restored-page", "data-page-type" => "s-page"}
         %div
@@ -65,10 +68,10 @@
     .col3.clearfix
       %li.tile.tile-small.tile-5.slideTextRight{"data-page-name" => "random-restored-page", "data-page-type" => "s-page"}
         %div
-          %p Best Times
-        %div
           %p
             =link_to 'Best Times', best_times_swimmer_times_path
+        %div
+          %p Best Times
 
 
 

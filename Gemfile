@@ -91,6 +91,9 @@ end
 
 
 group :development, :test do
+  gem 'rb-fsevent'
+  gem 'guard'
+  gem 'guard-rspec'
   gem 'rspec-rails'
   # gem 'debugger'
   gem 'pry-rails'

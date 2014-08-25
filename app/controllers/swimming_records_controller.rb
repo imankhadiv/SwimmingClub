@@ -1,6 +1,7 @@
 class SwimmingRecordsController < ApplicationController
   before_action :set_swimming_record, only: [:show, :edit, :update, :destroy]
 
+  load_and_authorize_resource
 
 
   def import_times
@@ -39,6 +40,13 @@ class SwimmingRecordsController < ApplicationController
     @records = SwimmingRecord.where(information: params[:information]).group_by {|e|[e.first_name,e.last_name]}
 
   end
+  def synchronise
+
+
+    SwimmingRecord.synchronise_club_times
+    redirect_to :home, notice: 'Times updated successfully!'
+
+  end
   # GET /swimming_records
   # GET /swimming_records.json
   def index
@@ -49,7 +57,7 @@ class SwimmingRecordsController < ApplicationController
   # GET /swimming_records/1
   # GET /swimming_records/1.json
   def show
-    render text: params
+    # render text: params
   end
 
   # GET /swimming_records/new
@@ -64,6 +72,8 @@ class SwimmingRecordsController < ApplicationController
   # POST /swimming_records
   # POST /swimming_records.json
   def create
+
+
     @swimming_record = SwimmingRecord.new(swimming_record_params)
 
     respond_to do |format|
@@ -80,15 +90,16 @@ class SwimmingRecordsController < ApplicationController
   # PATCH/PUT /swimming_records/1
   # PATCH/PUT /swimming_records/1.json
   def update
-    respond_to do |format|
-      if @swimming_record.update(swimming_record_params)
-        format.html { redirect_to @swimming_record, notice: 'Swimming record was successfully updated.' }
-        format.json { render :show, status: :ok, location: @swimming_record }
-      else
-        format.html { render :edit }
-        format.json { render json: @swimming_record.errors, status: :unprocessable_entity }
-      end
-    end
+
+    # respond_to do |format|
+    #   if @swimming_record.update(swimming_record_params)
+    #     format.html { redirect_to @swimming_record, notice: 'Swimming record was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @swimming_record }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @swimming_record.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /swimming_records/1

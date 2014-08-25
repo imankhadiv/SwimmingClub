@@ -4,6 +4,7 @@
   <!--<h2>-->
   <!--<%= "#{@swimmer.swimmer_name}'s Times" %>-->
   <!--</div>-->
+
   <script>
 
       $(function(){
@@ -40,9 +41,9 @@
               },
               series: [
 
-                  <% @swimmer_times.keys.each do |key| %>
+                  <% @swimmer_times.keys.each_with_index do |key,index| %>
                   {
-                      name: '<%= "#{key.first} #{key.second}m" %>',
+                      name: '<%= "#{key.first} #{key.second}m #{key.third}" %>',
                       pointInterval: <%= 1.year * 1000 %>,
                       pointStart: <%= @years_ago.years.ago.to_i * 1000  %>,
                       data: [
@@ -52,7 +53,10 @@
 
                           <% end %>
 
-                      ]
+                      ],
+                      <% if index > 5 %>
+                      visible: false
+                      <% end %>
                   },
                   <% end %>
 
@@ -63,11 +67,13 @@
       });
 
 
+
   </script>
 
-  <div class="row">
+  <div class="row" style="margin-top: 25px">
     <div class="col-md-10 col-md-offset-1" id="times_charts" style="margin-bottom:30px"></div>
   </div>
+
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
       <% @swimmer_times.keys.each do |item| %>
@@ -81,12 +87,14 @@
             <th>Age</th>
             <th>Times</th>
             <th>Course</th>
+            <th>Meet</th>
             <th>Venue</th>
             <th>Date</th>
             </thead>
             <% values = Hash.new %>
+            <tbody>
             <% @swimmer_times[item].each do |item| %>
-                <tbody>
+                <tr>
                 <td>
                   <%= item.age %>
                 </td>
@@ -97,14 +105,18 @@
                   <%= item.course %>
                 </td>
                 <td>
+                  <%= item.meet %>
+                </td>
+                <td>
                   <%= item.venue %>
                 </td>
                 <td>
                   <%= item.date %>
                 </td>
                 <% #- values[item.date.year] = (item.times/10) %>
-                </tbody>
+                </tr>
             <% end %>
+            </tbody>
           </table>
 
       <% end %>
