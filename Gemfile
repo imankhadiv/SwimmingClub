@@ -108,3 +108,7 @@ gem 'nokogiri', '~> 1.6.1'
 gem "chartkick"
 
 gem 'sprockets-rails', :require => 'sprockets/railtie'
+
+gem 'mysql2', '< 0.3'
+
+
