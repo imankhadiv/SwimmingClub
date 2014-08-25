@@ -1,6 +1,6 @@
 class SwimmingRecord < ActiveRecord::Base
   validate :first_name,:last_name,:date_of_birth,:gender,:stroke,:distance,:level,:meet,:venue,:time,:date,:region,:region_code,:age,:information, presence: true
-  before_save :convert_date_format
+
   def self.import_times file
     CSV.foreach(file.path, headers: true) do |row|
 
@@ -18,6 +18,7 @@ class SwimmingRecord < ActiveRecord::Base
           @first_name = m[0].split(' ')[0]
           @last_name = m[0].split(' ')[1]
           @date_of_birth = m[1]
+          @date_of_birth = DateTime.parse(@date_of_birth).strftime('%Y/%m/%d')
           @region = m[2]
           @region_code = m[3]
         end
@@ -42,9 +43,12 @@ class SwimmingRecord < ActiveRecord::Base
           @temp,@temp,@date,@meet,@venue,@level,@time = record.split(',')
           @meet = @meet.gsub(/\s\s+/,'')
           @venue = @venue.gsub(/\s\s+/,'')
+          @date = DateTime.parse(@date).strftime('%Y/%m/%d')
+
           swimming_record = SwimmingRecord.where( first_name: @first_name,last_name: @last_name,gender: @gender, date_of_birth: @date_of_birth,stroke: @stroke, distance: @distance.to_i, level: @level, meet: @meet, venue: @venue, time: (SwimmingRecord.convert_time_into_mil_seconds @time),date: @date, region: @region, region_code: @region_code,information: @info,age: SwimmingRecord.calculate_age,)
 
           SwimmingRecord.create( first_name: @first_name,last_name: @last_name,gender: @gender, date_of_birth: @date_of_birth,stroke: @stroke, distance: @distance.to_i, level: @level, meet: @meet, venue: @venue, time: (SwimmingRecord.convert_time_into_mil_seconds @time),date: @date, region: @region, region_code: @region_code,information: @info,age: SwimmingRecord.calculate_age,) if swimming_record.empty?
+          # SwimmingRecord.create( first_name: @first_name,last_name: @last_name,gender: @gender,stroke: @stroke,date_of_birth: @date_of_birth, distance: @distance.to_i, level: @level, meet: @meet, venue: @venue, time: (SwimmingRecord.convert_time_into_mil_seconds @time), region: @region, region_code: @region_code,information: @info,age: SwimmingRecord.calculate_age,)
 
         end
       end
@@ -118,10 +122,7 @@ class SwimmingRecord < ActiveRecord::Base
 
   end
 
-  def convert_date_format
-    self.date = self.date.strftime('%Y/%m/%d')
-    self.date_of_birth = self.date_of_birth.strftime('%Y/%m/%d')
-  end
+
 
 end
 
