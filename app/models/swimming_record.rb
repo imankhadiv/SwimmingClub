@@ -94,10 +94,8 @@ class SwimmingRecord < ActiveRecord::Base
 
     SwimmingRecord.all.each do |record|
 
-      s = Swimmer.joins(:user).where(users: {first_name: 'Shem',last_name: 'Fair'}).where(date_of_birth: record.date_of_birth, sex: record.gender)
+      s = Swimmer.joins(:user).where(users: {first_name: record.first_name,last_name: record.last_name}).where(date_of_birth: record.date_of_birth, sex: record.gender)
       next if s.empty?
-      puts record.time
-
       swimmer_time = SwimmerTime.joins(:swimmer).where(swimmer: s).where(date: record.date,course: record.course_type, times: record.time )
       if swimmer_time.empty?
         swimmer_time = SwimmerTime.new(swimmer: s.first, stroke: record.stroke, distance: record.distance, times: record.time, meet: record.meet,venue: record.venue,date: record.date,course: record.course_type)

@@ -109,6 +109,6 @@ gem "chartkick"
 
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 
-gem 'mysql2', '< 0.3'
+# gem 'mysql2', '< 0.3'
 
 
