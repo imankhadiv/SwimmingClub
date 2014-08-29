@@ -22,10 +22,12 @@ ENV['RAILS_ENV'] ||= 'test'
 
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
+require 'capybara/rspec'
 require 'factory_girl_rails'
 $: << File.expand_path('../../db/', __FILE__)
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each {|f| require f}
+
 
 RSpec.configure do |config|
   config.include Shoulda::Matchers::ActiveRecord
@@ -37,6 +39,12 @@ RSpec.configure do |config|
   config.after(:each) do
     Warden.test_reset!
   end
+
+
+  # Capybara.register_driver :selenium do |app|
+  #   Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  # end
+
 
   config.mock_with :rspec
 
@@ -59,11 +67,14 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-   config.use_transactional_fixtures = true  # Each example runs in a transaction avodiing the need to clean the db
+   # config.use_transactional_fixtures = true  # Each example runs in a transaction avodiing the need to clean the db
 end
 
 Capybara.configure do |config|
   config.match = :prefer_exact
 
 end
+
+# RSpec.configure {|c| c.formatter = 'documentation'}
+
 

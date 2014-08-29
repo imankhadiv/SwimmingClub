@@ -1,4 +1,4 @@
-# require 'rails_helper'
+# require 'rspec-rails'
 #
 # RSpec.describe "Events", :type => :request do
 #   describe "GET /events" do

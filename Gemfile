@@ -43,6 +43,7 @@ gem 'simple_form'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'webshims-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -67,8 +68,8 @@ gem "cancan"
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-group :test do
-  gem 'capybara'
+group :test , :development do
+  # gem 'capybara'
   gem 'selenium-webdriver'
   gem 'launchy'             # Used for save_and_open_page
   gem 'database_cleaner'
@@ -78,6 +79,7 @@ group :test do
   gem 'simplecov','~> 0.8.2'           # Code test coverage
                                        #gem 'capybara-bootstrap-datepicker'
 end
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -95,7 +97,8 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'rspec-rails'
-  # gem 'debugger'
+  gem 'capybara'
+  gem 'debugger'
   gem 'pry-rails'
 end
 gem 'rails_12factor', group: :production
@@ -108,6 +111,9 @@ gem 'nokogiri', '~> 1.6.1'
 gem "chartkick"
 
 gem 'sprockets-rails', :require => 'sprockets/railtie'
+
+gem "chromedriver-helper"
+
 
 # gem 'mysql2', '< 0.3'
 

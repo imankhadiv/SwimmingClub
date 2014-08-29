@@ -102,7 +102,6 @@ class SwimmingRecord < ActiveRecord::Base
         SwimmerTime.skip_callback(:save, :before, :insert_into_times)
         swimmer_time.save
 
-
       end
     end
   end

@@ -32,7 +32,6 @@
       it 'is invalid without a last name' do
         user.first_name = 'user1'
         user.last_name = nil
-        # user.should_not be_valid
         expect(user).not_to be_valid
 
       end

@@ -5,8 +5,8 @@ FactoryGirl.define do
     title 'Event1'
     details 'some details'
     date Date.tomorrow
-    time '10:00'
-    duration '120'
+    start '10:00'
+    finish '12:00'
 
   end
 
