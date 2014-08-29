@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
 
  def view_dbs_status
-   @users = User.all.order(:level)
+   @users = User.where(approved: true).order(:level)
  end
 
   def edit_dbs_check
