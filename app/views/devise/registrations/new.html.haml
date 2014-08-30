@@ -16,9 +16,13 @@
             = f.text_field :last_name, required: true, placeholder: 'last name'
             = f.select :level, %w(Committee Welfare\ Officer Swimmer Parent Coach)
             = f.email_field :email, required: true, placeholder: 'email'
-            = f.password_field :password, required: true, placeholder: 'password'
-            = f.password_field :password_confirmation, required: true
-            %br
+
+
+            = f.password_field :password, required: true, append: "<i id='eye1' class='icon-eye-open'></i>".html_safe
+
+
+            = f.password_field :password_confirmation, required: true, append: "<i id ='eye2' class='icon-eye-open'></i>".html_safe
+            %br.icon
             = show_simple_captcha :label => 'Enter code'
             %br
 
@@ -29,4 +33,48 @@
             %br
   %br
   %br
+:javascript
+  //(function ($) {
+  //    $.toggleShowPassword = function (options) {
+  //        var settings = $.extend({
+  //            field: "#password",
+  //            control: "#toggle_show_password",
+  //        }, options);
+  //
+  //        var control = $(settings.control);
+  //        var field = $(settings.field)
+  //
+  //        control.bind('click', function () {
+  //            if (control.is(':checked')) {
+  //                field.attr('type', 'text');
+  //            } else {
+  //                field.attr('type', 'password');
+  //            }
+  //        })
+  //    };
+  //}(jQuery));
+  //
+  //$(document).ready(function(){
+  //  $('#check1').hide();
+  //  $('#check2').hide();
+  //  $('#eye1').parent().click(function(){
+  //    $('#check1').click();
+  //    $.toggleShowPassword({
+  //          field: '#user_password',
+  //          control: '#check1'
+  //      });
+  //
+  //  });
+  //  $('#eye2').parent().click(function(){
+  //    $('#check2').click();
+  //    $.toggleShowPassword({
+  //          field: '#user_password_confirmation',
+  //          control: '#check2'
+  //      });
+  //
+  //  });
+  //
+  //});
+
+
 

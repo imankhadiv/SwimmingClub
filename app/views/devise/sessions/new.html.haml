@@ -1,19 +1,23 @@
+.container
+  .row
 
-%ul
-  .col1
-    %li.tile.tile-4
-      %img{src: image_path("SCSC-Logo.jpg"), style: 'border:2px solid blue'}
+    %ul
+      .col1
 
-  .col2
-    .sign-in.border-form-div
-      %h2 Login
-      = bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        = f.email_field :email, :placeholder => 'Email address'
-        = f.password_field :password, :placeholder => 'Password'
-        = f.label 'Keep me Signed in: '
-        = f.check_box :remember_me, :as => :boolean if devise_mapping.rememberable?
+        %li.tile.tile-4
+          %img{src: image_path("SCSC-Logo.jpg"), style: 'border:2px solid blue'}
+
+    .col-md-4
+      .sign-in.sign-in-form-div
+        %h2 Login
+        = bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form-inputs
+            = f.email_field :email, :placeholder => 'Email address'
+            = f.password_field :password, :placeholder => 'Password', append: "<i id='eye1' class='icon-eye-open'></i>".html_safe
+            = f.label 'Keep me Signed in: '
+            = f.check_box :remember_me, :as => :boolean if devise_mapping.rememberable?
+            %br
+            = f.submit 'Sign in', :class => 'btn btn-primary'
         %br
-        = f.submit 'Sign in', :class => 'btn btn-primary'
-      %br
-      %br
-      = render 'devise/shared/links'
+        %br
+        = render 'devise/shared/links'
