@@ -1,0 +1,52 @@
+.container
+  .row
+    .col-md-4.col-md-offset-4
+      .alert.alert-info
+        %h3  Contact Users
+
+      = bootstrap_form_tag url: '/users/contact_users2'  do |f|
+
+        .form-inputs
+          = f.text_field :subject
+          = f.text_area :body,rows: 8
+          = f.form_group :terms, label: { text: 'Select:' } do
+
+            = f.check_box :parents  do
+              Parents
+            = f.check_box :swimmers do
+              Swimmers
+            = f.check_box :coaches do
+              Coaches
+            = f.check_box :committee do
+              Committee Members
+
+          -#= f.collection_select(:id, @users, :id, :combined_name, prompt: 'N/A', label: 'Select a user')
+
+          = f.hidden_field :user_id, value: current_user.id if current_user
+
+        .form-actions
+          = f.submit 'Send', :class=>'btn btn-primary btn-lg'
+
+        %br
+        %br
+        %br
+
+:javascript
+  $(document).ready(function(){
+   //$('#_swimmers').val(1);
+   //
+    //$('#_all').click(function(){
+
+     //$('#_all').attr('checked','false');
+     //var vvv = $('#_all').attr('checked');
+
+    $('input:checkbox:not("#_all")').click();
+    //$("#_swimmers).prev('label').hide();
+
+
+
+    //$('.checkbox').hide();
+    //$('#_all').show();
+
+    })
+  });

@@ -9,7 +9,15 @@ class UserNotifier < ActionMailer::Base
   def activated user
 
     @user = user
-    mail(to: @user.email, subject: 'Your Account has been activated')
+    mail(to: user.email, subject: 'Your Account has been updated')
+  end
+
+  def contact_user (user, subject, text,sender)
+    @body = text
+    @sender = sender
+    @user = user
+
+    mail(to: user.email, subject: subject)
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml

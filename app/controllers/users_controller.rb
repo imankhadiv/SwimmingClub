@@ -28,6 +28,42 @@ class UsersController < ApplicationController
 
   end
 
+  def contact_users
+
+
+    @users = User.where(approved: true).sort_by {|e|[e.first_name]}
+
+  end
+
+  def contact_users2
+
+    @parents = User.get_users_by_role 'Parent' if params[:parents].to_i == 1
+    @swimmers = User.get_users_by_role 'Swimmer' if params[:swimmers].to_i == 1
+    @coaches = User.get_users_by_role 'Coach' if params[:coaches].to_i == 1
+    @committee = User.get_users_by_role 'Committee' if params[:committee].to_i == 1
+
+
+    unless @swimmers.nil?
+      @temp = []
+      @swimmers.each do |user|
+        if user.swimmer.email_parent
+          @temp << user.swimmer.parents.first.user
+        end
+      end
+    end
+
+    @users = (@parents ||= []) + (@swimmers ||= []) + (@coaches ||= []) + (@committee ||= [] )+ (@temp ||= [])
+    @users.uniq!
+    @users = @users - User.where(id: current_user.id)
+
+   @users.each do |user|
+    UserNotifier.contact_user(user,params[:subject],params[:body],current_user.combined_name).deliver
+   end
+
+    redirect_to :home, notice: 'Your message was sent successfully'
+
+  end
+
 
   def index
 
@@ -64,7 +100,7 @@ class UsersController < ApplicationController
       @user = set_user
       if @user.update(user_params)
         # AppMailer.user_update_mail(@user).deliver
-        # UserNotifier.activated(@user).deliver
+        UserNotifier.activated(@user).deliver
 
         redirect_to users_path, notice: 'User was successfully updated.'
       else
@@ -89,13 +125,25 @@ class UsersController < ApplicationController
   # DELETE /swimmers/1
   # DELETE /swimmers/1.json
   def destroy
+
+    # if session[:temp_swimmer_user_id] || session[:temp_parent_swimmer_id]
+
+    #   format.html { redirect_to new_user_url, notice: 'Your registration has been canceled'}
+    #   session[:temp_swimmer_user_id] = nil
+    #   session[:temp_swimmer_parent_id] = nil
+    #   puts @user
+    #   puts '.............................................'
+    #   @user.destroy unless @user.nil?
+    #   return
+    # end
+
     @user.destroy
     respond_to do |format|
-      if session[:temp_swimmer_user_id] || session[:temp_parent_swimmer_id]
+      if session[:temp_swimmer_user_id] || session[:tmp_parent_user_id]
 
         format.html { redirect_to new_user_url, notice: 'Your registration has been canceled'}
         session[:temp_swimmer_user_id] = nil
-        session[:temp_swimmer_parent_id] = nil
+        session[:tmp_parent_user_id] = nil
       else
       format.html { redirect_to users_url, notice: 'User was successfully deleted' }
       end

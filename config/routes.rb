@@ -45,6 +45,8 @@ Rails.application.routes.draw do
   get 'users/index'
   get 'users/profile'
   get 'users/view_dbs_status'
+  get 'users/contact_users'
+  post 'users/contact_users2'
 
 
 

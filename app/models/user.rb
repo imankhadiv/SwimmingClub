@@ -135,6 +135,11 @@
 
     end
 
+    def self.get_users_by_role role
+      User.joins(:roles).where(roles: {name: "#{role}"})
+    end
+
+
 
 
 

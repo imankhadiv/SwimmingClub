@@ -19,6 +19,14 @@ $('#check').prepend("<%= escape_javascript render('child_form') %>");
     }).appendTo('#new_parent');
 
     $('#temp').attr('id','');
+    var seen = {};
+    $('li').each(function() {
+        var txt = $(this).text();
+        if (seen[txt])
+            $(this).remove();
+        else
+            seen[txt] = true;
+    });
 
 <% else %>
 
