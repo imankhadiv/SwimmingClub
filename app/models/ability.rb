@@ -46,7 +46,7 @@ class Ability
       if user.role? 'Committee'
         can [:search,:swimmer_times,:medical_conditions], Swimmer
         can [:manage], Event
-        can [:profile,:update], User
+        can [:profile,:update,:contact_users,:contact_users2], User
         can [:manage], Payment
         can [:results,:index], SwimmingRecord
 
@@ -55,7 +55,7 @@ class Ability
       if user.role? 'Coach'
         can [:search,:swimmer_times], Swimmer
         can [:read], Event
-        can [:profile,:update], User
+        can [:profile,:update,:contact_users,:contact_users2], User
         can [:results,:index], SwimmingRecord
 
 

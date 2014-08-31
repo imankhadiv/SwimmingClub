@@ -19,8 +19,15 @@ $(document).ready(function(){
         }else{
             $('#user_password_confirmation').attr('type','password');
         }
+    });
+    $('#eye3').parent().click(function(){
 
-
+        var v  = $('#user_current_password').attr('type');
+        if (v === 'password') {
+            $('#user_current_password').attr("type", "text");
+        }else{
+            $('#user_current_password').attr('type','password');
+        }
     });
 
 });

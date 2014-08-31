@@ -7,8 +7,8 @@
       = bootstrap_form_tag url: '/users/contact_users2'  do |f|
 
         .form-inputs
-          = f.text_field :subject
-          = f.text_area :body,rows: 8
+          = f.text_field :subject, required: true
+          = f.text_area :body,rows: 8, required: true
           = f.form_group :terms, label: { text: 'Select:' } do
 
             = f.check_box :parents  do

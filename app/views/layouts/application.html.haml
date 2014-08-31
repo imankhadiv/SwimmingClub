@@ -122,13 +122,24 @@
                                   = navbar_link_to users_profile_path, title: 'Profile', identifier: :profile do
                                     %i.icon-user
                                     My Profile
+                                    - if roles_notification_number > 0
+                                      .badge.badge-important{style: 'background-color:red'}= roles_notification_number
+                                  - if current_user.check_roles %w(Committee Coach)
+                                    = navbar_link_to users_contact_users_path, title: 'Contact' do
+                                      %i.icon-envelope
+                                      Contact Users
+
 
 
                         -#- if current_user.check_roles %w(Swimmer Parent)
                         -#  = navbar_link_to swimmers_path, title: 'Medical Conditions', identifier: :medical do
                         -#    %i.icon-ambulance
                         -#    Medical
-
+                        - unless current_user.role? 'Administrator'
+                          - if current_user.check_roles %w(Committee Coach)
+                            = navbar_link_to users_contact_users_path, title: 'Contact' do
+                              %i.icon-envelope
+                              Contact Users
                         - if current_user.check_roles %w(Welfare\ Officer Swimmer Parent)
                           %ul.nav.navbar-nav
                             %li.dropdown{class: (:active if @current_nav_identifier == :medical)}
@@ -189,6 +200,7 @@
                                   = navbar_link_to update_system_swimming_records_url, title: 'Import Records' do
                                     %i.icon-file-text-alt
                                     Import Records
+
 
 
                       - if user_signed_in?

@@ -55,6 +55,10 @@ class UsersController < ApplicationController
     @users = (@parents ||= []) + (@swimmers ||= []) + (@coaches ||= []) + (@committee ||= [] )+ (@temp ||= [])
     @users.uniq!
     @users = @users - User.where(id: current_user.id)
+    if @users.empty?
+      redirect_to users_contact_users_path, alert: 'Please select at least one group'
+      return
+    end
 
    @users.each do |user|
     UserNotifier.contact_user(user,params[:subject],params[:body],current_user.combined_name).deliver

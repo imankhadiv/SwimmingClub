@@ -18,11 +18,11 @@
             = f.email_field :email, required: true, placeholder: 'email'
             %i (leave blank if you don't want to change it)
 
-            = f.password_field :password, placeholder: 'password'
-            = f.password_field :password_confirmation
+            = f.password_field :password, placeholder: 'password',append: "<i id='eye1' class='icon-eye-open'></i>".html_safe
+            = f.password_field :password_confirmation, append: "<i id='eye2' class='icon-eye-open'></i>".html_safe
             %br
             %i (we need your current password to confirm your changes)
-            = f.password_field :current_password, required: true
+            = f.password_field :current_password, required: true,append: "<i id='eye3' class='icon-eye-open'></i>".html_safe
 
             -#= show_simple_captcha :label => 'Enter code'
             %br
