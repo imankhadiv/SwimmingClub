@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+
+  resources :posts do
+    resources :comments
+  end
+
   resources :swimming_records, except: [:show,:edit,:update] do
     collection { post :import_times }
     collection { get :update_system }

@@ -1,0 +1,11 @@
+.container
+  .row
+    .col-md-5.col-md-offset-3
+
+      .alert.alert-info.text-center
+        %h4=  'Editing Post'
+
+      = render 'form'
+      %br
+      =link_to('<i class="icon-circle-arrow-left "></i> Back'.html_safe, post_path(@post))
+

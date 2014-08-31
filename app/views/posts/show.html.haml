@@ -1,0 +1,41 @@
+.container
+  .row
+
+    .col-md-5.col-md-offset-3
+      .alert.alert-info.text-center
+        %h4= " #{@post.title}"
+
+      -#%table.table
+      -#  %tr
+      %p{style: 'border:solid black 1px;background-color:rgba(165, 65, 163, 0.10);padding-bottom: 50px;'}= @post.content
+
+
+  .row
+    .col-md-5.col-md-offset-3
+      = post_navigation_links @post if current_user.check_roles %w(Administrator Committee)
+      .alert.alert-info.text-center
+        %h4 Comments
+      - @post.comments.each do |comment|
+        %h4= "Posted by #{comment.user.combined_name}:"
+        %hr
+        %p.com= comment.body
+
+        - if current_user.check_roles %w(Administrator Committee)
+          =link_to ('<i class="icon-trash"></i> Delete'.html_safe), [comment.post, comment], method: :delete, :data => { :confirm => 'Are you sure?' }
+      %br
+      %br
+      =bootstrap_form_for([@post, @post.comments.build]) do |f|
+
+        =f.text_area :body, label: 'New Comment', rows:4
+        =f.hidden_field :user_id, value: current_user.id
+
+        = f.submit 'Submit',class:'btn btn-success'
+        %br
+        %br
+        %br
+        %br
+      -#  %tr
+      -#- if (current_user.role? 'Administrator')|| (current_user.role? 'Committee')
+      -#  = payment_navigation_links @payment
+      -#- elsif current_user.role? 'Swimmer'
+      -#  =link_to('<i class="icon-circle-arrow-left"></i> Back'.html_safe,payment_swimmer_path(current_user.swimmer))

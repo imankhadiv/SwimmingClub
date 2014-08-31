@@ -19,6 +19,8 @@ class Ability
         can [:read], MedicalCondition
         can [:show], Payment
         can [:results,:index], SwimmingRecord
+        can [:read], Post
+        can [:read,:create], Comment
 
       end
 
@@ -31,6 +33,8 @@ class Ability
         can [:read], MedicalCondition
         can [:show], Payment
         can [:results,:index], SwimmingRecord
+        can [:read], Post
+        can [:read,:create], Comment
 
 
 
@@ -40,6 +44,8 @@ class Ability
         can [:read,:search,:swimmer_times,:medical_conditions], Swimmer
         can [:read], Event
         can [:profile,:update], User
+        can [:read], Post
+        can [:read,:create], Comment
 
       end
 
@@ -49,6 +55,8 @@ class Ability
         can [:profile,:update,:contact_users,:contact_users2], User
         can [:manage], Payment
         can [:results,:index], SwimmingRecord
+        can [:crud], Post
+        can [:crud], Comment
 
       end
 
@@ -57,6 +65,10 @@ class Ability
         can [:read], Event
         can [:profile,:update,:contact_users,:contact_users2], User
         can [:results,:index], SwimmingRecord
+        can [:read], Post
+        can [:read,:create], Comment
+
+
 
 
       end

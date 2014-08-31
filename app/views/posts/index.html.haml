@@ -1,0 +1,35 @@
+
+.container
+  .row
+    .col-md-8.col-md-offset-2
+      %h3 Posts
+      %table.table.table-striped.table-responsive.table-customstyle
+        %thead
+          %tr
+            %th Title
+            %th Content
+            %th Posted by
+            %th Created
+            %th Action
+
+        - @posts.each do |post|
+          %tbody
+          %tr
+            %td= post.title
+            %td= truncate(strip_tags(post.content), length: 20)
+            %td= post.user.combined_name
+            %td= post.created_at.strftime("%B %d, %Y")
+            %td
+              %a.btn.btn-success{href: post_path(post), role: 'button'} view
+  .row
+    .col-md-5.col-md-offset-2
+      %br
+      = link_to 'Add New Post', new_post_path, class: 'btn btn-success'
+      %br
+      %br
+      %br
+
+
+
+
+

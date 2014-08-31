@@ -1,0 +1,10 @@
+
+= bootstrap_form_for(@post) do |f|
+
+  .form-inputs
+    = f.hidden_field :user_id, value: current_user.id
+    = f.text_field :title
+    = f.text_area :content, rows:8
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-primary'
