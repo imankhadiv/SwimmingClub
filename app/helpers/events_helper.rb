@@ -5,7 +5,7 @@ module EventsHelper
 
   # control the navigation links for different categories of users
   def event_navigation_links(event)
-    content_tag :h3 do
+    content_tag :h4 do
       # if (current_user.role? "ProductionTeam")
         [
             link_to('<i class="icon-circle-arrow-left"></i> Back'.html_safe,calendar_index_path),

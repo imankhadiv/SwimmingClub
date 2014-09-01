@@ -1,13 +1,15 @@
 .container
   .row
     #event.col-md-5.col-md-offset-3
-      #event_alert.alert.alert-info.text-center
+      #event_alertd.alert.alert-info.text-center
         %h4= @event.title
 
-      %table.table.alert.alert-success
-        %tr
-          %th Details:
-          %td= @event.details
+      %p{style: 'back'}= @event.details
+
+      %table.table.alert
+        -#%tr
+        -#  %th Details:
+        -#  %td= @event.details
         %tr
           %th Date:
           %td= @event.date

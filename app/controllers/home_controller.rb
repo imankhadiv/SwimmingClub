@@ -5,6 +5,8 @@ class HomeController < ApplicationController
 
   def welcome
 
+    @post = Post.last
+
   end
 
   private

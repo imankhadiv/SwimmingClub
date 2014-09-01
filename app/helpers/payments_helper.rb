@@ -5,7 +5,7 @@ module PaymentsHelper
 
 
   def payment_navigation_links(payment)
-    content_tag :h3 do
+    content_tag :h4 do
       # if (current_user.role? "ProductionTeam")
       [
           link_to('<i class="icon-circle-arrow-left"></i> Back'.html_safe,payments_path),

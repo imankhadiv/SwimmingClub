@@ -1,13 +1,17 @@
-
 .dashboard
   %ul.tiles
-    .col1.clearfix
+    .col1
       %li.tile.tile-big.tile-1.slideTextUp{"data-page-name" => "random-r-page", "data-page-type" => "r-page"}
         %div
-          %p.icon-calendar Calendar
+          - if @post.nil?
+            %p.icon-comment Forum
+          -else
+            %span{style: 'color:black;'}= @post.title
+            %span{style: 'float:left;padding:5px;'}= truncate(strip_tags(@post.content), length: 250)
+
         %div
           %p
-            =link_to 'Calendar', calendar_index_path
+            =link_to 'SCSC Forum', posts_path
     .col2.clearfix
       %li.tile.tile-big.tile-2.slideTextUp{"data-page-name" => "random-r-page", "data-page-type" => "r-page"}
         %div
@@ -72,6 +76,14 @@
             =link_to 'Best Times', best_times_swimmer_times_path
         %div
           %p Best Times
+      %li.tile.tile-small.last.tile-2.slideTextRight{"data-page-name" => "random-restored-page", "data-page-type" => "s-page"}
+        %div
+          %p
+            = link_to 'Calendar', calendar_index_path
+        %div
+          %p.icon-calendar Calendar
+
+
 
 
 
