@@ -2,12 +2,12 @@
   %ul.tiles
     .col1
       %li.tile.tile-big.tile-1.slideTextUp{"data-page-name" => "random-r-page", "data-page-type" => "r-page"}
-        %div
-          - if @post.nil?
-            %p.icon-comment Forum
-          -else
-            %span{style: 'color:black;'}= @post.title
-            %span{style: 'float:left;padding:5px;'}= truncate(strip_tags(@post.content), length: 250)
+        %div{style: 'margin-right:5px;'}
+          -#- if @post.nil?
+          %p.icon-comment Forum
+          -#-else
+          -#  %span{style: 'color:black;'}= @post.title
+          -#  %span{style: 'float:left;padding:59px;padding-right:120px;'}= truncate(strip_tags(@post.content), length: 250)
 
         %div
           %p
