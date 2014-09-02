@@ -85,7 +85,8 @@ Rails.application.configure do
   config.action_dispatch.x_sendfile_header = "X-Sendfile"
 
 
-  config.action_mailer.default_url_options = { host: 'http://www.swimmingclub.nestednet.com' }
+  # config.action_mailer.default_url_options = { host: 'http://www.swimmingclub.nestednet.com' }
+  config.action_mailer.default_url_options = { host: 'http://swimmingclub.herokuapp.com/' }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
