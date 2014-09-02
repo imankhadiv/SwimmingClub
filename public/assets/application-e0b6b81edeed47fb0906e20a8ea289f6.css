@@ -9602,11 +9602,11 @@ hr {
 
 /* line 70, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
 .flash-messages {
-  width: 500px;
+  width: 700px;
   margin-left: -250px;
   position: fixed;
   top: 160px;
-  left: 50%;
+  left: 40%;
   z-index: 1035;
 }
 /* line 78, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
@@ -9662,7 +9662,7 @@ hr {
 
 /* line 110, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
 .border-form-div {
-  max-width: 280px;
+  max-width: 350px;
   padding: 5px 25px 25px;
   margin: 0 auto 20px;
   background-color: white;
@@ -9676,12 +9676,27 @@ hr {
 }
 
 /* line 123, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
+.sign-in-form-div {
+  max-width: 350px;
+  padding: 5px 25px 25px;
+  margin: 0 auto 20px;
+  background-color: white;
+  border: 3px solid #e5e5e5;
+  -webkit-border-radius: 5px;
+  -webkit-border-radius--moz-border-radius: 5px;
+  -webkit-border-radius--moz-border-radius-border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow--moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow--moz-box-shadow-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* line 136, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
 .form-signin-heading, .checkbox {
   margin-bottom: 10px;
   margin-left: 20px;
 }
 
-/* line 128, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
+/* line 141, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
 .border-form-div input[type="text"],
 .border-form-div input[type="email"],
 .border-form-div input[type="password"] {
@@ -9691,28 +9706,28 @@ hr {
   padding: 7px 9px;
 }
 
-/* line 135, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
+/* line 148, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
 .error {
   color: #ff0a11;
 }
 
-/* line 138, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
+/* line 151, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: rgba(1, 1, 1, 0.23);
 }
 
-/* line 141, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
+/* line 154, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
 .badge-important {
   background-color: red;
 }
 
 @media print {
-  /* line 145, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
+  /* line 158, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
   #pdf_link {
     display: none;
   }
 }
-/* line 147, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
+/* line 160, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
 .sign-up, .sign-in {
   background-color: rgba(217, 215, 231, 0.18);
   padding-left: 10px;
@@ -9720,42 +9735,53 @@ hr {
   padding-bottom: 9px;
 }
 
-/* line 153, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
+/* line 166, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
 .times {
   background-color: rgba(51, 51, 51, 0.18);
   padding-left: 10px;
   border: solid black 2px;
 }
-/* line 157, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
+/* line 170, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
 .times .input {
   padding-left: 10px;
 }
 
-/* line 161, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
+/* line 174, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
 #h2sample {
   text-shadow: 2px 2px 2px #61c8ff;
 }
 
-/* line 164, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
+/* line 177, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
 .btn {
   box-shadow: 5px 5px 8px black;
 }
 
-/* line 166, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
+/* line 179, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
 #approve-btn {
   margin-left: 300px;
 }
 
-/* line 170, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
+/* line 183, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
 .badge {
   background-color: #4bf665;
   color: black;
 }
 
-/* line 174, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
+/* line 187, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
 .forget-password {
   border: 2px solid;
   padding-left: 5px;
+}
+
+/* line 196, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
+#new_user .checkbox label {
+  padding-left: 0px;
+}
+
+/* line 199, /Users/Iman/ManagementSystem/app/assets/stylesheets/layout.sass */
+.com {
+  background-color: rgba(224, 227, 226, 0.6);
+  padding-bottom: 50px;
 }
 /* line 3, /Users/Iman/ManagementSystem/app/assets/stylesheets/nav.sass */
 .navbar-inverse {
@@ -13859,6 +13885,14 @@ body .ui-tooltip {
   font-size: 'bold';
   margin-top: 60px;
   background-color: #00A3A3;
+}
+
+/* line 14, /Users/Iman/ManagementSystem/app/assets/stylesheets/events.css.scss */
+#event p {
+  background-color: #e3e3e3;
+  padding: 5px;
+  padding-bottom: 50px;
+  height: 50%;
 }
 /*!
  *  Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
