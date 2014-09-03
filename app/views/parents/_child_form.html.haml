@@ -1,6 +1,8 @@
 =bootstrap_form_tag( url: :check, remote:true,layout: :horizantal,id:'sub') do |f|
   -#= f.collection_select(:swimmer_id, @swimmers, :id, :swimmer_name,hide_label: true)
+  = f.label "Your child's email:"
   = f.text_field :email, hide_label: true, required: true, placeholder: 'your child\'s email'
+  = f.label "Your child's password:"
   = f.text_field :password, hide_label: true, required: true,placeholder: 'your child\'s password'
   #child_submit=f.submit
 
