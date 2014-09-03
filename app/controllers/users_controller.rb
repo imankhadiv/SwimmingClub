@@ -60,9 +60,10 @@ class UsersController < ApplicationController
       return
     end
 
-   @users.each do |user|
-    UserNotifier.contact_user(user,params[:subject],params[:body],current_user.combined_name).deliver
-   end
+   # @users.each do |user|
+   #  UserNotifier.contact_user(user,params[:subject],params[:body],current_user.combined_name).deliver
+   # end
+   UserNotifier.contact_user(@users,params[:subject],params[:body],current_user.combined_name).deliver
 
     redirect_to :home, notice: 'Your message was sent successfully'
 
