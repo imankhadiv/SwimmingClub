@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
   validate :time_cannot_be_in_the_past
   # validates :duration, numericality: {greater_than: 0, less_than_or_equal_to: 600}
   after_create :add_notifications
-  # before_destroy :remove_notification
+  before_destroy :remove_notification
 
 
 
@@ -30,5 +30,10 @@ class Event < ActiveRecord::Base
       Notification.create(user_id: user.id,notifiable_id: self.id, notifiable_type: 'Event')
     end
 
+  end
+
+  def remove_notification
+    notifications = Notification.where(notifiable_type: 'Event',notifiable_id: self.id)
+    notifications.destroy_all
   end
 end

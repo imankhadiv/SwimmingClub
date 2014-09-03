@@ -67,7 +67,7 @@ class SwimmerTime < ActiveRecord::Base
 
   def self.best_times gender
 
-    a = SwimmerTime.swimmer(Swimmer.where(sex: gender)).order(:times).group_by{|e|[e.stroke,e.distance,e.age]}
+    swimmer_time = SwimmerTime.swimmer(Swimmer.where(sex: gender)).order(:times).group_by{|e|[e.stroke,e.distance,e.age]}
 
   end
 

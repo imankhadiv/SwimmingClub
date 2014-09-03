@@ -20,8 +20,16 @@ class UserNotifier < ActionMailer::Base
     users.each do |item|
       i << item.id
     end
-    @recipients = User.where(id: i).pluck(:email)
-    mail(to: (@recipients.uniq), subject: subject)
+     @recipients = User.where(id: i).pluck(:email)
+     mail(to: (@recipients.uniq), subject: subject)
+
+
+
+
+
+
+
+
     # mail(to: users.pluck(:email), subject: subject)
     # mail(to: User.where(users).pluck(:email), subject: subject)
   end
