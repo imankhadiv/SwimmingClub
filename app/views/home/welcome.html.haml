@@ -39,10 +39,10 @@
     .col1.clearfix
       %li.tile.tile-small.tile-6.slideTextRight{"data-page-name" => "random-restored-page", "data-page-type" => "s-page"}
         %div
-          %p.icon-ambulance
-            =link_to '', swimmers_path
+          %p
+            =link_to 'Medical', swimmers_path
         %div
-          %p Medical
+          %p.icon-ambulance= link_to '', swimmers_path
         -#- if current_user.role? 'Welfare Officer'
       %li.tile.tile-small.last.tile-2.slideTextLeft{"data-page-name" => "random-restored-page", "data-page-type" => "s-page"}
         %div

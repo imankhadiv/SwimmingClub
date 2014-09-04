@@ -8,7 +8,7 @@
     before_save :assign_roles_to_user
     before_save { |user| user.first_name = user.first_name.downcase.capitalize }
     before_save { |user| user.last_name = user.last_name.downcase.capitalize }
-    after_update :add_notification
+    # after_update :add_notification
 
 
 
@@ -110,9 +110,7 @@
     def assign_roles_to_user
       role = Role.find_by(name: self.level)
       self.roles << role if self.roles.size == 0
-      # unless self.roles.include? role
-      # self.roles << role
-      # end
+
     end
 
     def self.search (first_name, last_name)
@@ -127,13 +125,11 @@
     end
 
 
-    def add_notification
-      #
-      # users = User.all - [user_id]
-      # users.each do |user|
-        Notification.create(user_id: id,notifiable_id: self.id, notifiable_type: 'Role')
-
-    end
+    # def add_notification
+    #
+    #     Notification.create(user_id: id,notifiable_id: self.id, notifiable_type: 'Role')
+    #
+    # end
 
     def self.get_users_by_role role
       User.joins(:roles).where(roles: {name: "#{role}"})

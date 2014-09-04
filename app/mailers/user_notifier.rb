@@ -23,15 +23,6 @@ class UserNotifier < ActionMailer::Base
      @recipients = User.where(id: i).pluck(:email)
      mail(to: (@recipients.uniq), subject: subject)
 
-
-
-
-
-
-
-
-    # mail(to: users.pluck(:email), subject: subject)
-    # mail(to: User.where(users).pluck(:email), subject: subject)
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml

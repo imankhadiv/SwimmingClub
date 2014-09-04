@@ -11,7 +11,6 @@ class Swimmer < ActiveRecord::Base
   validate :date_cannot_be_in_the_future
   validates :asa_number, numericality: true
   before_destroy :check_parents
-  # around_destroy :destroy_user
 
 
 
@@ -26,20 +25,12 @@ class Swimmer < ActiveRecord::Base
   scope :sex, lambda {|sex| where(sex: sex)}
   scope :user, lambda {|user| where(user: user)}
 
-  # def swimmer_name
-  #   u = User.find(self.user_id)
-  #   u.combined_name
-  # end
+
   def date_cannot_be_in_the_future
     errors.add(:date_of_birth, "can't be in the future") if
         !date_of_birth.blank? and date_of_birth > Date.today
   end
-  #debugger
-  #def remove_user
-  #  user = User.find(user_id)
-  #  puts user
-  #  user.delete!
-  #end
+
   def swimmer_name
     u = User.find(user_id)
     u.combined_name
@@ -58,8 +49,6 @@ class Swimmer < ActiveRecord::Base
     end
 
   end
-  # def destroy_user
-  #   User.destroy(self.user_id) if self.user.id
-  # end
+
 
 end

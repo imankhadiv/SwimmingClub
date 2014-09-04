@@ -5,7 +5,6 @@ class SwimmingRecord < ActiveRecord::Base
     CSV.foreach(file.path, headers: true) do |row|
 
       line = row.to_s
-      # puts line
 
       if( line[0] != ',' )
         if (line.include?'Page' and line.include? '/')

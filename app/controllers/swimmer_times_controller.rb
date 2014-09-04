@@ -79,6 +79,7 @@ class SwimmerTimesController < ApplicationController
         # format.json { render :show, status: :created, location: @swimmer_time }
       else
         # format.html { render :new }
+
         format.js { render 'create_failure' }
         # format.json { render json: @swimmer_time.errors, status: :unprocessable_entity }
       end

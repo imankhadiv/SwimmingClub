@@ -4,7 +4,7 @@
 
     = bootstrap_form_for @swimmer_time do |f|
       - if @swimmer_time.errors.any?
-        #error_explanation
+        #error_explanation.alert.alert-danger
           %h2= "#{pluralize(@swimmer_time.errors.count, "error")} prohibited this swimmer_time from being saved:"
           %ul
             - @swimmer_time.errors.full_messages.each do |msg|

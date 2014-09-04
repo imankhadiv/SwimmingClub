@@ -7,10 +7,6 @@ class SwimmersController < ApplicationController
   before_filter :set_nav_identifier
 
 
-
-
-
-
   def swimmer_times
 
     @swimmer = Swimmer.find(params[:id])
@@ -18,8 +14,6 @@ class SwimmersController < ApplicationController
 
     time = SwimmerTime.where(swimmer_id:params[:id]).sort_by {|date| date.date}
      @years_ago = Time.now.year - time.first.date.year unless time.empty?
-    # puts @swimmer.user.first_name
-
 
   end
 
@@ -56,8 +50,6 @@ class SwimmersController < ApplicationController
     else
       redirect_to new_user_registration_path, notice: 'Sing Up'
     end
-    # medical = @swimmer.build_medical_condition
-    # doctor_address = medical.build_address
   end
 
   # GET /swimmers/1/edit

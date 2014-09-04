@@ -6,11 +6,7 @@
   = f.error_notification
 
   .form-inputs
-    -#= f.label "Approved: "
-    -#= f.check_box :approved
-
     = f.association :roles,as: :check_boxes, only: 'Parent' do
-
 
   .form-actions
     = f.button :submit

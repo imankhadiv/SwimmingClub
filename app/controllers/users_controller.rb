@@ -87,7 +87,6 @@ class UsersController < ApplicationController
 
        @user = current_user
        Notification.remove_roles_notification current_user.id, 'Role'
-
     end
 
   end
@@ -104,6 +103,8 @@ class UsersController < ApplicationController
   def update
       @user = set_user
       if @user.update(user_params)
+        Notification.create(user_id: current_user.id,notifiable_id: current_user.id, notifiable_type: 'Role')
+
         # AppMailer.user_update_mail(@user).deliver
         UserNotifier.activated(@user).deliver
 
@@ -131,17 +132,6 @@ class UsersController < ApplicationController
   # DELETE /swimmers/1.json
   def destroy
 
-    # if session[:temp_swimmer_user_id] || session[:temp_parent_swimmer_id]
-
-    #   format.html { redirect_to new_user_url, notice: 'Your registration has been canceled'}
-    #   session[:temp_swimmer_user_id] = nil
-    #   session[:temp_swimmer_parent_id] = nil
-    #   puts @user
-    #   puts '.............................................'
-    #   @user.destroy unless @user.nil?
-    #   return
-    # end
-
     @user.destroy
     respond_to do |format|
       if session[:temp_swimmer_user_id] || session[:tmp_parent_user_id]
@@ -168,10 +158,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:approved,:dbs_check,:dbs_expiry_date, :role_ids => [])
   end
 
-  #Never trust parameters from the scary internet, only allow the white list through.
-  #def user_params
-  #  params.require(:user).permit(:approved,:id)
-  #end
+
   def check_user_level
 
     if !current_user

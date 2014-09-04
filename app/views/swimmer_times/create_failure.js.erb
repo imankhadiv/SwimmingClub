@@ -1,0 +1,15 @@
+<%  @swimmer_time.errors.each do |error| %>
+<% if error.to_s.include?('times') %>
+    alert("Time can not be 00:00:00");
+<% next %>
+<% else %>
+    alert("Date can not be in the future")
+<% end %>
+
+<% end %>
+
+
+
+
+//alert("Date can not be in the future")
+
