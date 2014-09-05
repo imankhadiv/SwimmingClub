@@ -20,12 +20,12 @@ class ParentsController < ApplicationController
 
   # GET /parents/new
   def new
-    user = User.where(id: session[:tmp_parent_user_id])
+    user = User.where(id: session[:tmp_parents_user_id])
     if user.empty?
-      session[:tmp_parent_user_id] = nil
+      session[:tmp_parents_user_id] = nil
       redirect_to new_user_registration_path, notice: 'Sign Up'
 
-    elsif session[:tmp_parent_user_id]
+    elsif session[:tmp_parents_user_id]
       @parent = Parent.new
       @parent.build_address
       @swimmers = Swimmer.all
@@ -70,7 +70,7 @@ class ParentsController < ApplicationController
 
          # format.html { redirect_to @parent, notice: 'Parent was successfully created.' }
          format.html { redirect_to :awaiting}
-         session[:tmp_parent_user_id] = nil
+         session[:tmp_parents_user_id] = nil
          format.json { render :show, status: :created, location: @parent }
       else
         format.html { render :new }
@@ -110,9 +110,9 @@ class ParentsController < ApplicationController
   end
 
   def cancel_parent_registration
-    user = User.find(session[:tmp_parent_user_id])
+    user = User.find(session[:tmp_parents_user_id])
     user.destroy
-    session[:tmp_parent_user_id] = nil
+    session[:tmp_parents_user_id] = nil
     redirect_to new_user_registration_url, notice: "Registration canceled!\n Please try again"
   end
 

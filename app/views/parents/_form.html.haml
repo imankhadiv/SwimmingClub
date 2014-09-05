@@ -9,7 +9,7 @@
 
       .col-md-9
         =f.select :relation,Parent::RELATION,label: 'Relation:'
-        =f.hidden_field :user_id, value: session[:tmp_parent_user_id] unless current_user
+        =f.hidden_field :user_id, value: session[:tmp_parents_user_id] unless current_user
         =f.hidden_field :user_id, value: current_user.id if current_user
         %input{type: 'hidden',name: 'swimmer[ids][]', require: true,id: 'new_parent'}
 
@@ -22,7 +22,7 @@
           %br
           %br
 
-          =link_to 'Cancel registration', cancel_parent_registration_parents_path(:tmp_parent_user_id),data: {confirm: 'Are you sure?'}, class: 'col-md-9 btn  btn-danger' unless current_user
+          =link_to 'Cancel registration', cancel_parent_registration_parents_path(:tmp_parents_user_id),data: {confirm: 'Are you sure?'}, class: 'col-md-9 btn  btn-danger' unless current_user
 
         %br
         %br

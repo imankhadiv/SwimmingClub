@@ -11,7 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def check_temp_session
 
       redirect_to  new_swimmer_url, notice: 'Please Complete Your Registration' if session[:temp_swimmer_user_id]
-      redirect_to  new_parent_url, notice: 'Please Complete Your Registration' if session[:tmp_parent_user_id]
+      redirect_to  new_parent_url, notice: 'Please Complete Your Registration' if session[:tmp_parents_user_id]
   end
 
   def create
@@ -65,7 +65,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     elsif resource.level == 'Parent'
 
       flash[:notice] = 'Please Complete Your Registration'
-      session[:tmp_parent_user_id] = resource.id
+      session[:tmp_parents_user_id] = resource.id
       new_parent_path
 
     else
