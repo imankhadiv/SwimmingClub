@@ -7,6 +7,7 @@ class Event < ActiveRecord::Base
   validates :title,:details,:date, presence: true
   validate :date_cannot_be_in_the_past
   validate :time_cannot_be_in_the_past
+  validate :finish_time_cannot_be_before_start_time
   # validates :duration, numericality: {greater_than: 0, less_than_or_equal_to: 600}
   after_create :add_notifications
   before_destroy :remove_notification
@@ -35,5 +36,9 @@ class Event < ActiveRecord::Base
   def remove_notification
     notifications = Notification.where(notifiable_type: 'Event',notifiable_id: self.id)
     notifications.destroy_all
+  end
+
+  def finish_time_cannot_be_before_start_time
+    errors.add(:start, 'Finish time can not be before start time') if (self.start > self.finish)
   end
 end
