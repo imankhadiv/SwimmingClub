@@ -19,7 +19,7 @@ class SwimmingRecordsController < ApplicationController
     end
     directory = 'public/images/uploads'
     if File.exist?("#{directory}/#{name}")
-      redirect_to update_system_swimming_records_url, alert: 'This file has been uploaded before'
+      redirect_to update_system_swimming_records_url, alert: 'This file has already been uploaded'
       return
     end
 

@@ -23,9 +23,9 @@
           .col-md-2
             = f.select :minutes, SwimmerTime::MINUTES,label: 'Min:'
           .col-md-2
-            = f.select :seconds, SwimmerTime::MINUTES,label: 'Min:'
+            = f.select :seconds, SwimmerTime::MINUTES,label: 'Sec:'
           .col-md-2
-            = f.select :milli_seconds, SwimmerTime::MINUTES,label: 'Min:'
+            = f.select :milli_seconds, SwimmerTime::MINUTES,label: 'Ms:'
 
       .form-input
         = f.select :bml, %w(Not\ Applicable Winter\ Yorkshire Summer\ Yorkshire Winter\ Regional Summer\ Regional), text: ''
