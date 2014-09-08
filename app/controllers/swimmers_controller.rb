@@ -1,7 +1,7 @@
 class SwimmersController < ApplicationController
   before_action :set_swimmer, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
-  before_filter :stop_administrator, only: [:index]
+  before_filter :stop_administrator, only: [:index,:medical_conditions]
   skip_before_filter :authenticate_user!, only: [:new,:cancel_swimmer_registration,:create]
   skip_authorize_resource only: [:new,:cancel_swimmer_registration,:create]
   before_filter :set_nav_identifier
@@ -57,7 +57,17 @@ class SwimmersController < ApplicationController
   end
 
   def medical_conditions
-    @swimmer = Swimmer.find(params[:id])
+
+    if current_user.role? 'Welfare Officer'
+      @swimmer = Swimmer.find(params[:id])
+    elsif current_user.role? 'Swimmer'
+       @swimmer = Swimmer.find(current_user.swimmer.id)
+    else
+      swimmers = Parent.find(current_user.parent.id).swimmers
+      if swimmers.ids.include? params[:id].to_i
+        @swimmer = Swimmer.find(params[:id])
+      end
+    end
   end
 
   def payment

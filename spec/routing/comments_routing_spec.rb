@@ -1,4 +1,4 @@
-require "rails_helper"
+require "rspec-rails"
 
 RSpec.describe CommentsController, :type => :routing do
   describe "routing" do

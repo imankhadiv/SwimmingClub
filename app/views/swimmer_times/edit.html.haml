@@ -21,7 +21,7 @@
         = f.text_field :date
         .row
           .col-md-2
-            = f.select :minutes, SwimmerTime::MINUTES,label: 'Min:'
+            = f.select :minutes, SwimmerTime::MINUTES, default:'03',label: 'Min:'
           .col-md-2
             = f.select :seconds, SwimmerTime::MINUTES,label: 'Sec:'
           .col-md-2
