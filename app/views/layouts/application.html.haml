@@ -86,13 +86,13 @@
                               = navbar_link_to swimmer_times_path, title: 'Times' do
                                 %i.icon-time
                                 Search Times
-                              = navbar_link_to best_times_swimmer_times_path, title: 'My Payment' do
+                              = navbar_link_to best_times_swimmer_times_path, title: 'times' do
                                 %i.icon-time
                                 Best Club Times
-                              = navbar_link_to compare_times_compare_path, title: 'My Payment' do
+                              = navbar_link_to compare_times_compare_path, title: 'times' do
                                 %i.icon-time
                                 Compare Times
-                              = navbar_link_to swimming_records_path, title: 'My Payment' do
+                              = navbar_link_to swimming_records_path, title: 'times' do
                                 %i.icon-time
                                 Results
                               - if user_signed_in? && (current_user.role? 'Swimmer')
@@ -102,7 +102,7 @@
 
                               - if user_signed_in? && (current_user.role? 'Parent')
                                 - current_user.parent.swimmers.each do |swimmer|
-                                  = navbar_link_to swimmer_times_swimmer_path(swimmer), title: 'Payments' do
+                                  = navbar_link_to swimmer_times_swimmer_path(swimmer), title: 'times' do
                                     %i.icon-time
                                     = "#{swimmer.user.first_name}'s times"
 
@@ -190,7 +190,7 @@
                         - if current_user.role? 'Administrator'
 
                           %ul.nav.navbar-nav
-                            %li.dropdown{class: (:active if @current_nav_identifier == :payments)}
+                            %li.dropdown{class: (:active if @current_nav_identifier == :system)}
                               %a.dropdown-toggle{'data-toggle' => 'dropdown', 'data-target' => "#", :href => '#'}
                                 %i.icon-upload
                                 System
@@ -210,7 +210,7 @@
                           .cart
                             .badge.badge-alert= "Hi #{current_user.first_name}"
 
-                        -##current_user.pull-right="Hi #{current_user.first_name}"
+                        #current_user.pull-right="Hi #{current_user.first_name}"
                       -else
                         = navbar_link_to new_user_session_path, method: :get, title: 'Log In', identifier: :login do
                           %i.icon-signin

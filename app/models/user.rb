@@ -125,12 +125,6 @@
     end
 
 
-    # def add_notification
-    #
-    #     Notification.create(user_id: id,notifiable_id: self.id, notifiable_type: 'Role')
-    #
-    # end
-
     def self.get_users_by_role role
       User.joins(:roles).where(roles: {name: "#{role}"})
     end

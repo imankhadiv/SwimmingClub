@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show,:destroy]
   load_and_authorize_resource
-
-  # before_filter :check_user_level
-  # skip_before_filter :authenticate_user!
   before_filter :current_nav_identifier
   before_filter :check_dbs_permission, only: [:edit_dbs_check,:view_dbs_status,:update_dbs_check]
 
@@ -60,9 +57,6 @@ class UsersController < ApplicationController
       return
     end
 
-   # @users.each do |user|
-   #  UserNotifier.contact_user(user,params[:subject],params[:body],current_user.combined_name).deliver
-   # end
    UserNotifier.contact_user(@users,params[:subject],params[:body],current_user.combined_name).deliver
 
     redirect_to :home, notice: 'Your message was sent successfully'
@@ -112,19 +106,6 @@ class UsersController < ApplicationController
       else
         render action: 'show'
       end
-
-      # @user = set_user
-      # if @user.approved
-      #   @user.approved = false
-      # else
-      #   @user.approved = true
-      #   UserNotifier.activated(@user).deliver
-      #
-      # end
-      #
-      # @user.save
-      # redirect_to users_url, notice: 'User was successfully approved' if @user.approved
-      # redirect_to users_url, notice: 'User was successfully suspended' unless @user.approved
 
   end
 
